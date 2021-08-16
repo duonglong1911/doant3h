@@ -1,0 +1,63 @@
+.rightbar {
+    flex: 3;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    position: sticky;
+    top: 50px;
+}
+.rightbarWrapper {}
+
+.rightbarTop {
+    margin-top: 20px;
+}
+
+.rightbarTopTitle {
+
+}
+
+.rightbarTopDev {
+    margin-top: 10px;
+}
+
+.rightbarDevImg {
+    width: 100px;
+    border-radius: 10px;
+}
+
+.rightbarTopName {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+.sidebarFriendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebarFriend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.sidebarFriendImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.sidebarFriendOnline {
+    position: relative;
+}
+.sidebarFriendOnlineLeb {
+    background-color: limegreen;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    position: absolute;
+    bottom: 0;
+    left: 24px;
+}
