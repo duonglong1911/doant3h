@@ -11,7 +11,6 @@ export default class Feed extends Component {
                 <div className="feedWrapper">
                     <Share />
                     {Posts.map(post => (
-                        
                         <Post key={post.id} post={post} />
                     ))}
                 </div>

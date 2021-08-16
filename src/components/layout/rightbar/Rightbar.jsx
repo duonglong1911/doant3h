@@ -6,7 +6,7 @@ export default class Rightbar extends Component {
     render() {
 
        const listUser = Users.map(user => ( 
-            <li className="sidebarFriend">
+            <li className="sidebarFriend" key={user.id}>
                <div className="sidebarFriendOnline">
                     <img src={user.profilePictrue} alt="" className="sidebarFriendImg" />
                     <span className="sidebarFriendOnlineLeb"></span>

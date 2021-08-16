@@ -1,27 +1,44 @@
 import React, { Component } from 'react'
 import "./post.css"
-import { MoreVert} from "@material-ui/icons"
+
 import { Users } from "./../../dataPost"
+import SelectPost from './../selectpost/SelectPost'
+import HeaderPost from './HeaderPost';
 
 export default class Post extends Component {
-    render() {
-        console.log(this.props.post);
+
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                 isChecked: 0 
+                };
+            }
+        
+       onClick = (e) => {
+            // console.log(e.target);
+            // console.log(image);
+            this.setState({
+                isChecked:1
+            }) 
+        } 
+        handleSelect = () => {
+            this.setState({
+                isChecked: 0
+            })
+        }
+
+        
+
+    render() {      
         var {post} = this.props;
         return (
             <div className="post">
                 <div className="postWrapper">
-                    <div className="postTop">
-                        <div className="postTopLeft">
-                            <img className="postProfileImg" src={Users.filter((user) => user.id === post.userId)[0].profilePictrue} alt="" />
-                            <span className="postUsername">{Users.filter((user) => user.id === post.userId)[0].userName}</span> <span className="postDate">{post.date}</span>
-                        </div>
-                        <div className="postTopRight">
-                            <MoreVert />
-                        </div>
-                    </div>
-                    <div className="postCenter">
+                    <HeaderPost post={post} />
+                    <div className="postCenter" key={post.id}>
                         <span className="postText">{post.desc}</span>
-                        <img className="postImg" src={post.photo} alt="" />
+                        <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
                     </div>
                     {/* <div className="postBottom">
                         <div className="postBottomLeft">
@@ -31,6 +48,9 @@ export default class Post extends Component {
                         </div>
                     </div> */}
                 </div>
+                {this.state.isChecked=== 1 ? <SelectPost image ={post.photo} 
+                postID ={post.id}
+                handleSelect={this.handleSelect}  /> : ''}
             </div>
         )
     }
