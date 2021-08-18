@@ -5,7 +5,6 @@
     box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
     -webkit-box-shadow: 0px 0px 16px -8px rgba(0,0,0,0.68);
     background-color: white;
-    /* background-color: #F0F2F5; */
 }
 
 .shareWrapper {
@@ -28,6 +27,9 @@
 .shareInput {
     border: none;
     width: 80%;
+    padding: 10px;
+    /* border: 1px solid #999; */
+    border-radius: 40px;
 }
 .shareInput:focus {
     outline: none;

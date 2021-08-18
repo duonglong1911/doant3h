@@ -46,7 +46,7 @@
 
 .searchInput {
     border: none;
-    width: 40%;
+    width: 80%;
     background-color: #eeeeee;
 }
 .searchInput:focus {
@@ -119,25 +119,8 @@
     color: #333;
 
 }
-.topbarCenter {
-    /* height: 100%; */
-}
 
 
-.active {
-    color: #1877f2;
-    /* border-bottom: 3px solid #1877f2; */
-}
-.linebar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0px;
-    height: 3px;
-    border-radius: 5px;
-    background-color: #1877f2;
-    transition:all 0.2 ease;
-}
 
 .topbarCenterIcon {
     box-shadow: none !important;
@@ -149,9 +132,13 @@
 .MuiTabs-scroller {
     padding: 6px 0;
 }
-.Mui-selected {
-    color: #1877f2 !important;
-}
+
 .PrivateTabIndicator-colorPrimary-2 {
     background-color: #1877f2 !important;
+}
+.MuiTab-textColorPrimary {
+    color: #b0b3b8 !important;
+}
+.Mui-selected {
+    color: #1877f2 !important;
 }

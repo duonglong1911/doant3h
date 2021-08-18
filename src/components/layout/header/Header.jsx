@@ -21,6 +21,11 @@ export default class Header extends Component {
             };
         }
 
+    handleToggleDarkmode= (e) => {
+      console.log(e.target);
+    }
+  
+
   render() {
     const handleChange = (event, newValue) => {
       this.setState({
@@ -60,19 +65,19 @@ export default class Header extends Component {
           </div>
           <div className="topbarIcons">
             <div className="topbarIconItem">
-              <Person />
+              <Person className="topbarIconIcon" />
               <span className="topbarIconBadge">1</span>
             </div>
             <div className="topbarIconItem">
-              <Chat />
+              <Chat className="topbarIconIcon" />
               <span className="topbarIconBadge">2</span>
             </div>
             <div className="topbarIconItem">
-              <NightsStayIcon />
+              <NightsStayIcon className="topbarIconIcon" onClick={this.props.handleToggleDarkmode} />
               <span className="topbarIconBadge">1</span>
             </div>
             <div className="topbarIconItem">
-              <ExitToApp />
+              <ExitToApp className="topbarIconIcon" />
             </div>
           </div>
         </div>

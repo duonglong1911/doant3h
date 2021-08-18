@@ -11,11 +11,11 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header handleToggleDarkmode={this.props.handleToggleDarkmode} />
                 <div className="homeContainer">
-                <Sidebar />
-                <Feed />
-                <Rightbar />
+                    <Sidebar />
+                    <Feed />
+                    <Rightbar />
                 </div>
                 {/* <SelectPost /> */}
             </div>
