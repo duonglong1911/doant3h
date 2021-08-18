@@ -9,7 +9,6 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                
                 <div className="homeContainer">
                     <Sidebar />
                     <Feed />

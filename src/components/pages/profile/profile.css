@@ -63,7 +63,7 @@
 .profileCenterIntro {
     flex:4;
     height: calc(100vh - 100px);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     position: sticky;
     top: 70px;
 }

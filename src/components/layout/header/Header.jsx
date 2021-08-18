@@ -35,8 +35,8 @@ export default class Header extends Component {
 
     return (
       <div className="topbarContainer">
-        {/* <Link to='/'>aa</Link>
-        <Link to='/profile'>bb</Link> */}
+        <Link to='/'>aa</Link>
+        <Link to='/profile'>bb</Link>
         <div className="topbarLeft">
           <span className="logo">Facebook</span>
           <div className="searchbar">
@@ -53,7 +53,7 @@ export default class Header extends Component {
               textColor="primary"
               centered
             >
-              <Link to="/"><Tab icon={<HomeIcon />} /></Link>
+              <Tab icon={<HomeIcon />} />
               <Tab icon={<GroupIcon />} />
               <Tab icon={<PermMediaIcon />} />
               <Tab icon={<OndemandVideoIcon />} />
