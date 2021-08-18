@@ -1,45 +1,85 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
 import "./header.css";
-import { Search, Person, Chat, Notifications, ExitToApp } from "@material-ui/icons"
+import { Search, Person, Chat, ExitToApp } from "@material-ui/icons"
+import HomeIcon from '@material-ui/icons/Home';
+import GroupIcon from '@material-ui/icons/Group';
+import PermMediaIcon from '@material-ui/icons/PermMedia';
+import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
+import NightsStayIcon from '@material-ui/icons/NightsStay';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { Link } from 'react-router-dom';
 
 
 export default class Header extends Component {
+
+  constructor(props) {
+        super(props);
+        this.state = {
+                value: 0 
+            };
+        }
+
+    handleToggleDarkmode= (e) => {
+      console.log(e.target);
+    }
+  
+
   render() {
+    const handleChange = (event, newValue) => {
+      this.setState({
+        value:newValue
+      })
+    };
+
     return (
       <div className="topbarContainer">
+        {/* <Link to='/'>aa</Link>
+        <Link to='/profile'>bb</Link> */}
         <div className="topbarLeft">
           <span className="logo">Facebook</span>
-        </div>
-        <div className="topbarCenter">
           <div className="searchbar">
             <Search className="searchIcon" />
             <input type="text" className="searchInput" placeholder="Tìm kiếm"/>
           </div>
         </div>
+        <div className="topbarCenter">
+          <Paper className="topbarCenterIcon">
+            <Tabs
+              value={this.state.value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+            >
+              <Link to="/"><Tab icon={<HomeIcon />} /></Link>
+              <Tab icon={<GroupIcon />} />
+              <Tab icon={<PermMediaIcon />} />
+              <Tab icon={<OndemandVideoIcon />} />
+            </Tabs>
+          </Paper>
+        </div>
         <div className="topbarRight">
-          {/* <div className="topbarLinks">
-            <span className="topbarLink">HomePage</span>
-            <span className="topbarLink">Timeline</span>
-            <span className="topbarLink"></span>
-          </div> */}
           <div>
             <img src="/assets/images/anhtoi.jpg" alt="" className="topbarImg" />
             <span className="topbarUsername">Dương Long</span>
           </div>
           <div className="topbarIcons">
             <div className="topbarIconItem">
-              <Person />
-              <span className="topbarIconBadge">1</span>
-            </div><div className="topbarIconItem">
-              <Chat />
-              <span className="topbarIconBadge">2</span>
-            </div><div className="topbarIconItem">
-              <Notifications />
+              <Person className="topbarIconIcon" />
               <span className="topbarIconBadge">1</span>
             </div>
             <div className="topbarIconItem">
-              <ExitToApp />
+              <Chat className="topbarIconIcon" />
+              <span className="topbarIconBadge">2</span>
+            </div>
+            <div className="topbarIconItem">
+              <NightsStayIcon className="topbarIconIcon" onClick={this.props.handleToggleDarkmode} />
+              <span className="topbarIconBadge">1</span>
+            </div>
+            <div className="topbarIconItem">
+              <ExitToApp className="topbarIconIcon" />
             </div>
           </div>
         </div>

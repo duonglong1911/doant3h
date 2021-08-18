@@ -4,6 +4,8 @@ import Share from '../../share/Share'
 import ".//feed.css"
 import { Posts } from './../../../dataPost'
 
+
+
 export default class Feed extends Component {
     render() {
         return (

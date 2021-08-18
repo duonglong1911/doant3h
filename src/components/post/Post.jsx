@@ -6,8 +6,6 @@ import SelectPost from './../selectpost/SelectPost'
 import HeaderPost from './HeaderPost';
 
 export default class Post extends Component {
-
-
         constructor(props) {
             super(props);
             this.state = {
@@ -27,8 +25,6 @@ export default class Post extends Component {
                 isChecked: 0
             })
         }
-
-        
 
     render() {      
         var {post} = this.props;
