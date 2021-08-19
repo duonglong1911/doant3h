@@ -1,0 +1,28 @@
+
+
+.galleryCenter {
+    padding-top:30px;
+    padding-bottom: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+
+.galleryCenterButtons {}
+
+.galleryCenterContent {
+    padding: 0 60px;
+}
+
+
+.galleryCard {
+    cursor: pointer;
+    border: none !important;
+}
+
+.galleryCartImg {
+    width: auto;
+    height: 200px;
+    object-fit: cover;
+}

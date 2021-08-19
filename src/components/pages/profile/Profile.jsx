@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from "./../../layout/header/Header";
 import "./profile.css";
 import WorkIcon from "@material-ui/icons/Work";
 import SchoolIcon from "@material-ui/icons/School";
@@ -7,7 +6,6 @@ import HomeWorkIcon from "@material-ui/icons/HomeWork";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import Share from './../../../components/share/Share'
 import Feed from './../../layout/feed/Feed'
 
 
@@ -15,7 +13,6 @@ class Profile extends Component {
   render() {
     return (
       <div className="profile">
-        <Header />
         <div className="profileWrapper">
           <div className="a"></div>
           <div className="profileContent">

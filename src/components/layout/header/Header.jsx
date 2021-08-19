@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./header.css";
-import { Search, Person, Chat, Notifications, ExitToApp } from "@material-ui/icons"
+import { Search, Person, Chat, ExitToApp } from "@material-ui/icons"
 import HomeIcon from '@material-ui/icons/Home';
 import GroupIcon from '@material-ui/icons/Group';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
@@ -9,7 +9,7 @@ import NightsStayIcon from '@material-ui/icons/NightsStay';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
+import { Link } from 'react-router-dom';
 
 
 export default class Header extends Component {
@@ -51,18 +51,19 @@ export default class Header extends Component {
               textColor="primary"
               centered
             >
-              <Tab icon={<HomeIcon />} />
+              <Tab icon={<HomeIcon />} to="/" component={Link}/>
               <Tab icon={<GroupIcon />} />
-              <Tab icon={<PermMediaIcon />} />
+              <Tab icon={<PermMediaIcon />} to="/imagesgallery" component={Link}/>
               <Tab icon={<OndemandVideoIcon />} />
             </Tabs>
           </Paper>
         </div>
         <div className="topbarRight">
+          <Link to="/profile">
           <div>
             <img src="/assets/images/anhtoi.jpg" alt="" className="topbarImg" />
             <span className="topbarUsername">Dương Long</span>
-          </div>
+          </div></Link>
           <div className="topbarIcons">
             <div className="topbarIconItem">
               <Person className="topbarIconIcon" />
