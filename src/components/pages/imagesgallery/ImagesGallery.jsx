@@ -22,7 +22,6 @@ class ImagesGallery extends Component {
                   year: 0
                 };
             }
-
             onClickFilter = (nameFilter) =>{
                 this.setState({
                     a: nameFilter
@@ -77,9 +76,6 @@ class ImagesGallery extends Component {
             else if(a === 'month'){
                 return image.date.slice(3,5) === (getMonth < 10 ? '0'+getMonth : getMonth).toString();
             }
-            // else if(a === 'day'){
-            //     return image.date.indexOf(newdate.getDate()) !== -1;
-            // }
             else if(a === 'year'){
                 return image.date.indexOf(newdate.getFullYear()) !== -1;
             }
@@ -87,17 +83,32 @@ class ImagesGallery extends Component {
         }) 
         if(day){
             currentImages = currentImages.filter(image=>{
-                return image.date.slice(0,2) === day.toString()
+                if(Number(day) === 0){
+                    return image;
+                }
+                else{
+                 return image.date.slice(0,2) === day.toString()
+                }
             }) 
         }
         if(month){
             currentImages = currentImages.filter(image=>{
-                return image.date.slice(3,5) === month.toString()
+                if(Number(month) === 0){
+                    return image;
+                }
+                else{
+                    return image.date.slice(3,5) === month.toString()
+                }
             }) 
         }
         if(year){
             currentImages = currentImages.filter(image=>{
-                return image.date.indexOf(year) !== -1
+                if(Number(year) === 0){
+                    return image;
+                }
+                else{
+                    return image.date.indexOf(year) !== -1
+                }
             }) 
         }
         return (
@@ -113,13 +124,13 @@ class ImagesGallery extends Component {
                             <h4>Tìm kiếm</h4>
                             <div className="selectDate">
                                 <select name="day" id="day" onChange={this.onChange} value={day}>
-                                    <option value="0">Ngày</option>     
+                                    <option value={0}>Ngày</option>     
                                 </select>
                                 <select name="month" id="month" onChange={this.onChange} value={month}>
-                                    <option value="0">Tháng</option>     
+                                    <option value={0}>Tháng</option>     
                                 </select>
                                 <select name="year" id="year" onChange={this.onChange} value={year}>
-                                    <option value="0">Năm</option>     
+                                    <option value={0}>Năm</option>     
                                 </select>
                             </div>
                             
@@ -128,7 +139,6 @@ class ImagesGallery extends Component {
                             <ButtonGroup>
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('all')}>All</Button>
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('day')}>Day </Button>
-                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('week')}>Week</Button>
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('month')}>Month</Button>
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('year')}>Year</Button>
                                 </ButtonGroup>
