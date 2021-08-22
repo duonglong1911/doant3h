@@ -53,10 +53,12 @@ class ImagesGallery extends Component {
                 })
             }
     render() {
+
         const newdate = new Date();
         const indexOfLastImage = this.state.currentPage * this.state.imagesPerPage;
         const indexOfFirstImage = indexOfLastImage - this.state.imagesPerPage;
-        var currentImages = this.state.images.slice(indexOfFirstImage,indexOfLastImage);
+        const currentImages = this.state.images.slice(indexOfFirstImage,indexOfLastImage);
+
         const paginate = (pageNumber) => {
             this.setState({
                 currentPage:pageNumber
@@ -111,6 +113,7 @@ class ImagesGallery extends Component {
                 }
             }) 
         }
+
         return (
             <div className="imagesgallery">
                 <div className="galleryWrapp">
@@ -141,7 +144,7 @@ class ImagesGallery extends Component {
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('day')}>Day </Button>
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('month')}>Month</Button>
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('year')}>Year</Button>
-                                </ButtonGroup>
+                            </ButtonGroup>
                         </div>
                         <div className="galleryCenterContent mt-5">
                             <div className="row">
@@ -167,7 +170,7 @@ class ImagesGallery extends Component {
                         <Pagination imagesPerPage={this.state.imagesPerPage} totalImages={this.state.images.length} paginate={paginate} />
                     </div>
                 </div>
-            </div>
+                </div>
         );
     }
 }
