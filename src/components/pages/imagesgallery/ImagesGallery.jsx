@@ -54,7 +54,6 @@ class ImagesGallery extends Component {
             }
     render() {
 
-        const newdate = new Date();
         const indexOfLastImage = this.state.currentPage * this.state.imagesPerPage;
         const indexOfFirstImage = indexOfLastImage - this.state.imagesPerPage;
         const currentImages = this.state.images.slice(indexOfFirstImage,indexOfLastImage);
@@ -145,6 +144,14 @@ class ImagesGallery extends Component {
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('month')}>Month</Button>
                                     <Button color="primary" className="m-1" onClick={() => this.onClickFilter('year')}>Year</Button>
                             </ButtonGroup>
+                        <div className="galleryCenterButtons m-3 text-center">
+                            <ButtonGroup>
+                                    <Button color="primary" className="m-1" >All</Button>
+                                    <Button color="primary" className="m-1" >Day </Button>
+                                    <Button color="primary" className="m-1" >Week</Button>
+                                    <Button color="primary" className="m-1" >Month</Button>
+                                    <Button color="primary" className="m-1" >Year</Button>
+                                </ButtonGroup>
                         </div>
                         <div className="galleryCenterContent mt-5">
                             <div className="row">
@@ -171,6 +178,7 @@ class ImagesGallery extends Component {
                     </div>
                 </div>
                 </div>
+            </div>
         );
     }
 }
