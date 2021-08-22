@@ -27,7 +27,6 @@ class SelectPost extends Component {
 
 
      handleChangeImg = () => {
-        var {image} = this.props;
         var index = 0;
         index = [...Posts].findIndex(post => post.id===this.props.postID)
         index+=1;

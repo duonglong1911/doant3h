@@ -1,0 +1,44 @@
+
+
+.galleryCenter {
+    padding-top:30px;
+    padding-bottom: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.galleryCenterContent {
+    padding: 0 60px;
+}
+
+
+.galleryCard {
+    cursor: pointer;
+    border: none !important;
+}
+
+.galleryCartImg {
+    width: auto;
+    height: 200px;
+    object-fit: cover;
+}
+
+.inputSearch{
+    width: 100%;
+    text-align: center;
+}
+.inputSearch input{
+    width: 30%;
+    padding: 8px 10px;
+    border:1px solid rgba(0, 0, 0, 0.14);
+    outline: none;
+
+}
+
+.selectDate select{
+    padding: 8px 10px;
+    outline: none;
+    margin-right: 10px;
+    cursor: pointer;
+    text-align: center;
+}
