@@ -63,6 +63,7 @@ class ImagesGallery extends Component {
                 currentPage:pageNumber
             })
         } 
+        const newdate = new Date();
 
         var {a, day, month, year} = this.state
 
