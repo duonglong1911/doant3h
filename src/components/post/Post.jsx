@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import "./post.css"
 
-import { Users } from "./../../dataPost"
 import SelectPost from './../selectpost/SelectPost'
 import HeaderPost from './HeaderPost';
 

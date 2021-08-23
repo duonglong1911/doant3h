@@ -11,6 +11,7 @@ class RouterLink extends Component {
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/profile/" component={Profile} exact/>
+                <Route path="/imagesgallery/" component={ImagesGallery} exact />
                 <Route path="/imagesgallery" component={ImagesGallery} exact />
                 <Route path="/login" component={Login} exact />
             </Switch>
