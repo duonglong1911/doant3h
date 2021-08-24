@@ -33,3 +33,10 @@
     cursor: pointer;
 }
 
+.disableBtnPrev {
+    display: none;
+}
+.disableBtnNext {
+    display: none;
+}
+

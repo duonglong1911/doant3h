@@ -9,12 +9,16 @@
 
 .postWrapper {
     padding: 10px;
+    position: relative;
 }
 
 .postTop {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.postname {
+    padding: 0 10px;
 }
 
 .postTopLeft {
@@ -32,7 +36,6 @@
 .postUsername {
     font-size: 15px;
     font-weight: 500;
-    margin: 0 10px;
 }
 
 .postDate {
@@ -47,9 +50,35 @@
 
 .postBottom {}
 .postImg {
-    margin-top: 20px;
+    margin-top: 8px;
     width: 100%;
     max-height: 500px;
     object-fit: cover;
     cursor: pointer;
+}
+
+.btn-show {
+    cursor: pointer;
+}
+
+.menu-child {
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    padding: 0;
+    margin: 10px 0;
+    background: white;
+    right: 5%;
+    top: 7%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+}
+
+.menu-child li {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.menu-child li:hover {
+    background: rgba(0, 0, 0, 0.14);
 }

@@ -56,5 +56,8 @@ export const GlobalStyles = createGlobalStyle`
     .topbarIconIcon {
         color:${(props) => props.theme.colorIconHeader};
     }
+    .galleryCardContent, .galleryCenter {
+        background-color:${(props) => props.theme.colorInput};
+    }
     
 `;
