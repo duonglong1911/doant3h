@@ -4,7 +4,7 @@ import { lightTheme, darkTheme, GlobalStyles} from './themes.js'
 import { BrowserRouter as Router } from 'react-router-dom';
 import RouterLink from './RouterLink';
 import Header from './components/layout/header/Header';
-// import Login from './components/pages/login/Login.jsx';
+import Login from './components/pages/login/Login.jsx';
 
 const StyledApp = styled.div`
   color: ${(props => props.theme.fontColor)};
@@ -21,20 +21,20 @@ function App() {
 
 
   const [isLogin, setIsLogin] = useState(false);
-  const onClickRedirect = () =>{
-    setIsLogin(!isLogin)
-  }
+  
   return (
     <div>
+      { isLogin ? <Login/> : 
         <Router>
           <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme } >
-                <GlobalStyles />
-                  <StyledApp>
-                  {isLogin && <Header handleToggleDarkmode={themeToggle} onClickRedirect={onClickRedirect}/>}
-                    <RouterLink onClickRedirect={onClickRedirect} isLogin={isLogin}/>
-                  </StyledApp>
+          <GlobalStyles />
+            <StyledApp>
+            <Header handleToggleDarkmode={themeToggle} />
+              <RouterLink/>
+            </StyledApp>
           </ThemeProvider>
         </Router>
+      }
     </div>
   );
 }
