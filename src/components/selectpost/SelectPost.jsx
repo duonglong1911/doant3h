@@ -10,79 +10,65 @@ class SelectPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                isChangeImg: 1,
+                current: this.props.index,
+                length: Posts.length,
                 imageUrl:this.props.image,
-                index:[...Posts].findIndex(post => post.id===this.props.postID),
             };
         }
     
-   handleSelect = (e) => {
+    handleSelect = (e) => {
         if(e.target.matches(".selectpost")) {
             this.props.handleSelect();
         }
     }
 
-
-
     handlePrevImg = () => {
-        if(this.state.index < 1){
+        if(this.state.current === 0) {
             this.setState({
-                // isChangeImg:false,
-                index:10
+                current : this.state.length -1
             })
-            
         } else {
             this.setState({
-                isChangeImg: -1,
-                 index : this.state.index -1,
+                current: this.state.current - 1
             })
         }
-        const newImage = [...Posts][this.state.index].photo;
-        this.setState({
-            imageUrl:newImage,
-        })
     }
 
 
-     handleNextImg = () => {
-        //  debugger
-        if(this.state.index >= Posts.length){
+    handleNextImg = () => {
+        
+        if(this.state.current === this.state.length -1) {
             this.setState({
-                // isChangeImg:false,
-                index:0
+                current : 0
             })
-            
         } else {
             this.setState({
-                isChangeImg:1,
-                index :  this.state.index +1
+                current: this.state.current + 1
             })
-            const newImage = [...Posts][this.state.index].photo;
+        }   
+    }
+    componentDidUpdate(preProps, preState) {
+        if(this.state.current !== preState.current) {
             this.setState({
-                imageUrl:newImage,
-        }) 
-        }  
+            imageUrl:[...Posts][this.state.current].photo,
+        })
+        }
     }
 
-    
-
-
-    
-    // componentDidMount() {
-    // this.state.isChangeImg ===1 ? this.handlePrevImg() :this.handleNextImg(); 
-    // }
-    
-    // a = componentDidUpdate() {
-    //     if()
-    // }
 
     render() {
-        console.log(this.state.index);
+        console.log(this.state.current);
+        console.log(this.props.image);
+        console.log(this.props.index);
         return (
             <div className ="selectpost" onClick={this.handleSelect}>
                 <div className="selectpostContent">
                     <NavigateBeforeIcon className="selectpostIcon selectpostIconPrev" onClick={this.handlePrevImg} />
-                     <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
+                     <div key={this.state.index}>
+                         
+                         <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
+                         
+                     </div>
                     <NavigateNextIcon className= "selectpostIcon selectpostIconNext" onClick={this.handleNextImg}/>
                 </div>
             </div>

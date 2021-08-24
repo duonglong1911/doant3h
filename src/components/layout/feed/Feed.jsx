@@ -71,9 +71,10 @@ export default class Feed extends Component {
             <div className ="feed">
                 <div className="feedWrapper">
                     <Share onChangeContent={this.onChangeContent} onSubmitcmp={this.onSubmitcmp}/>
-                    {data.map(post => (
+                    {data.map((post,index) => (
                         <Post key={post.id}
                         post={post} 
+                        index={index}
                         onDelete={this.onDelete}
                         onEdit={this.onEdit}
                         onSubmitcmp={this.onSubmitcmp}
