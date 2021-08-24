@@ -30,8 +30,11 @@ export default class Post extends Component {
         return (
             <div className="post">
                 <div className="postWrapper">
-                    <HeaderPost post={post} />
-                    <div className="postCenter" key={post.id}>
+                    <HeaderPost post={post}
+                     onDelete={this.props.onDelete}
+                      onEdit={this.props.onEdit}
+                      onSubmitcmp={this.props.onSubmitcmp}/>
+                    <div className="postCenter">
                         <span className="postText">{post.desc}</span>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
                     </div>

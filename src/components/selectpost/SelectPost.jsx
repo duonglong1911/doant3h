@@ -6,7 +6,7 @@ import { Posts } from './../../dataPost'
 
 
 class SelectPost extends Component {
-
+   
     constructor(props) {
         super(props);
         this.state = {
@@ -21,6 +21,9 @@ class SelectPost extends Component {
             this.props.handleSelect();
         }
     }
+
+
+
     handlePrevImg = () => {
         if(this.state.index < 1){
             this.setState({
@@ -60,15 +63,21 @@ class SelectPost extends Component {
         }) 
         }  
     }
-    componentDidMount() {
 
-        this.state.isChangeImg =1 ? this.handleNextImg() :this.handlePrevImg();
-        // this.handleNextImg()
-        // this.handlePrevImg()
-    }
+    
+
+
+    
+    // componentDidMount() {
+    // this.state.isChangeImg ===1 ? this.handlePrevImg() :this.handleNextImg(); 
+    // }
+    
+    // a = componentDidUpdate() {
+    //     if()
+    // }
 
     render() {
-        
+        console.log(this.state.index);
         return (
             <div className ="selectpost" onClick={this.handleSelect}>
                 <div className="selectpostContent">

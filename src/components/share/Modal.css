@@ -1,0 +1,63 @@
+.ReactModal__Content {
+    inset: unset !important; 
+    text-align: center;
+    padding: 0 !important;
+}
+.ReactModal__Overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titlepost h3{
+    margin: 0;
+}
+.titlepost{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
+}
+.form-Modalpost{
+    padding: 20px;
+}
+
+.modalpost-p{
+    padding: 20px;
+    position: relative;
+}
+
+.shareTop h4{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.shareInput-modalpost{
+    width: 100%;
+    margin: 20px 0;
+    height: auto;
+    border: none;
+    outline: none;
+}
+
+.shareOptions-modalpost{
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.shareButton-modalpost{
+    margin: 10px 0;
+    width: 100% !important;
+}
+
+.titlepost button{
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    position: absolute;
+    margin-right: 20px;
+    top: 20%;
+    right: 0;
+    padding: 10px;
+}
