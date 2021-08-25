@@ -150,7 +150,7 @@ class ImagesGallery extends Component {
                                         const { id, photo, date} = image;
 
                                         return(
-                                            <div className="col-3" key={id}>
+                                            <div className="col-12 col-lg-3 col-md-4 col-sm-6" key={id}>
                                                 <Card className="galleryCard mb-5 text-center">
                                                     <CardImg top src={photo} alt="Card image cap" className="galleryCartImg" />
                                                     <CardBody className="galleryCardContent">

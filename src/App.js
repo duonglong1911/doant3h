@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import RouterLink from './RouterLink';
 import Header from './components/layout/header/Header';
 import Login from './components/pages/login/Login.jsx';
+import './app.css'
 
 const StyledApp = styled.div`
   color: ${(props => props.theme.fontColor)};
