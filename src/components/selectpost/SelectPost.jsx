@@ -3,6 +3,7 @@ import './selectpost.css'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import { Posts } from './../../dataPost'
+import CloseIcon from '@material-ui/icons/Close';
 
 
 class SelectPost extends Component {
@@ -17,9 +18,12 @@ class SelectPost extends Component {
         }
     
     handleSelect = (e) => {
-        if(e.target.matches(".selectpost")) {
+        if(e.target.matches(".selectpost") || e.target.matches(".selectCloseIcon")) {
             this.props.handleSelect();
         }
+    }
+    handleCloseForm = () => {
+        this.props.handleSelect();
     }
 
     handlePrevImg = () => {
@@ -57,18 +61,16 @@ class SelectPost extends Component {
 
 
     render() {
-        console.log(this.state.current);
-        console.log(this.props.image);
-        console.log(this.props.index);
         return (
             <div className ="selectpost" onClick={this.handleSelect}>
                 <div className="selectpostContent">
                     <NavigateBeforeIcon className="selectpostIcon selectpostIconPrev" onClick={this.handlePrevImg} />
-                     <div key={this.state.index}>
+                     <div className="selectpostCenter" key={this.state.index}>
                          
                          <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
                          
                      </div>
+                    <CloseIcon className="selectCloseIcon" onClick={this.handleCloseForm}/>
                     <NavigateNextIcon className= "selectpostIcon selectpostIconNext" onClick={this.handleNextImg}/>
                 </div>
             </div>
