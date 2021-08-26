@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import './login.css'
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import { Link } from 'react-router-dom';
 
 class Login extends Component {
     render() {
         return (
-            <div>
-                {/* vl */}
+            <div className="login-hidden">
                 <div className="login">
                     <div className="box-root flex-flex flex-direction--column" style={{"minHeight":"100vh","WebkitFlexGrow":"1","msFlexGrow":"1","flexGrow":"1"}}>
                         <div className="loginbackground box-background--white padding-top--64">
                         <div className="loginbackground-gridContainer">
                             <div className="box-root flex-flex" style={{"gridArea":"top / start / 8 / end"}}>
-                            <div className="box-root" style={{"backgroundImage":"linear-gradient(white 0%,rgb(247, 250, 252) 33%)","WebkitFlexGrow":"1","msFlexGrow":"1","flexGrow":"1"}} />
+                            <div className="box-root" style={{"backgroundImage":"linear-gradient(                    white 0%,                    rgb(247, 250, 252) 33%                  )","WebkitFlexGrow":"1","msFlexGrow":"1","flexGrow":"1"}} />
                             </div>
                             <div className="box-root flex-flex" style={{"gridArea":"4 / 2 / auto / 5"}}>
                             <div className="
@@ -82,7 +80,6 @@ class Login extends Component {
                                 <div className="loginImage">
                                     <img src="/assets/images/anhbiaregister.jpeg" alt="" className="loginImageImg" />
                                 </div>
-                                <Link to="/" onClick={this.props.onClickRedirect}>aa</Link>
                                 <div className="loginContent">
                                     <div className="loginContentTop">
                                         <PermIdentityIcon className="loginIconPerson" />

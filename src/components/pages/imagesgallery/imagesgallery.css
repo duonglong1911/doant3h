@@ -46,3 +46,7 @@
     cursor: pointer;
     text-align: center;
 }
+
+.paginationPage{
+    margin-bottom: 50px;
+}

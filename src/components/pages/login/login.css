@@ -1,4 +1,7 @@
 
+.login-hidden{
+    overflow: hidden;
+}
 .login {
     background: #fff;
     display: flex;
@@ -70,9 +73,6 @@
 }
 .color-red {
     background-color: #e20707;
-}
-.loginIcon {
-    
 }
 .loginbackground {
     min-height: 692px;
@@ -234,3 +234,4 @@
         transform: translateX(0px);
     }
 }
+
