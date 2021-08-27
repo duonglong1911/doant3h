@@ -61,7 +61,7 @@ return (
         isToggle &&
         <ul className="menu-child">
             <li onClick={this.onEdit}>Edit</li>
-            <li onClick={this.onDelete}>Delete</li>
+            <li onClick={() => {if(window.confirm('Bạn có muốn xóa bài viết ?')){ this.onDelete(this.props.id)};}}>Delete</li>
         </ul>
         }
     </div>

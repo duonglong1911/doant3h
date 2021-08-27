@@ -45,6 +45,7 @@ export default class Feed extends Component {
                     data: data
                 })
             }
+        
     }
 
     findIndex = (id) =>{
