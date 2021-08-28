@@ -22,6 +22,11 @@ export default class Post extends Component {
                 isChecked: 0
             })
         }
+        // componentWillUnmount() {
+        //     this.setState({
+        //         isChecked:0
+        //     })
+        // }
 
     render() {      
         var {post, index} = this.props;

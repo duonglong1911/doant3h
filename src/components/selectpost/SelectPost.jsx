@@ -58,9 +58,11 @@ class SelectPost extends Component {
         })
         }
     }
+    
 
 
     render() {
+        console.log(this.state.current);
         return (
             <div className ="selectpost" onClick={this.handleSelect}>
                 <div className="selectpostContent">

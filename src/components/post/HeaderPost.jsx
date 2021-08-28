@@ -3,6 +3,7 @@ import { MoreVert} from "@material-ui/icons"
 import { Users } from "./../../dataPost"
 import Modal from 'react-modal';
 import Modals from '../share/Modals';
+import AlertNotification from '../layout/alertNotification/AlertNotification';
 
 export default class HeaderPost extends Component {
 constructor(props){
@@ -10,6 +11,7 @@ constructor(props){
     this.state = {
         isToggle: false,
         modalIsOpen: false,
+        isDelete:false,
     }
 }
 componentDidMount() {
@@ -34,13 +36,16 @@ isToggle: !this.state.isToggle
 }
 onDelete = () =>{
   this.props.onDelete(this.props.post.id)
-
+  this.setState({
+    isDelete:true,
+  })
 }
 onEdit = () =>{
   this.openModal();
   this.props.onEdit(this.props.post.id);
   this.onClickToggle()
 }
+
 render() {
 var {post} = this.props;
 const {isToggle, modalIsOpen} = this.state
@@ -71,6 +76,7 @@ return (
                 onSubmitcmp={this.props.onSubmitcmp}
                 post={post}
                 />
+    <AlertNotification handleToggleNotice={this.onDelete} />
 </div>
 );
 }
