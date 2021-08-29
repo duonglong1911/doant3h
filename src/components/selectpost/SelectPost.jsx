@@ -3,6 +3,7 @@ import './selectpost.css'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import { Posts } from './../../dataPost'
+import CloseIcon from '@material-ui/icons/Close';
 
 
 class SelectPost extends Component {
@@ -21,7 +22,9 @@ class SelectPost extends Component {
             this.props.handleSelect();
         }
     }
-
+    handleCloseForm = () => {
+        this.props.handleSelect();
+    }
     handlePrevImg = () => {
         if(this.state.current === 0) {
             this.setState({
@@ -69,6 +72,7 @@ class SelectPost extends Component {
                          <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
                          
                      </div>
+                      <CloseIcon className="selectCloseIcon" onClick={this.handleCloseForm}/>
                     <NavigateNextIcon className= "selectpostIcon selectpostIconNext" onClick={this.handleNextImg}/>
                 </div>
             </div>

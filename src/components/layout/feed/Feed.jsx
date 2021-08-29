@@ -5,6 +5,7 @@ import { Posts } from './../../../dataPost'
 // import { v4 as uuidv4 } from 'uuid';
 import Post from './../../post/Post';
 import firebase from 'firebase';
+import AlertNotification from './../alertNotification/AlertNotification'
 
 
 export default class Feed extends Component {
@@ -17,17 +18,12 @@ export default class Feed extends Component {
             desc:'',
             date:'',
             userId:'',
-            dataPost: []
+            dataPost: [],
+            isToggleNotice:false,
+            type:'nothing',
         }
     }
-    // ona = () =>{
-    //     const today = new Date();
-    //     firebase.database().ref('post').push({
-    //         desc:"Hồ gươm ngày nắng!",
-    //         photo:"assets/images/post4.jpg",
-    //         date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
-    //     })
-    // }
+    
     componentDidMount(){
         // const {desc, photo, date, userId, dataPost} = this.state
         
@@ -59,6 +55,15 @@ export default class Feed extends Component {
             userId: this.props.displayName.uid,
             date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
         })
+        this.setState({
+            isToggleNotice:true,
+            type:'add',
+        })
+        setTimeout(() => {
+            this.setState({
+             isToggleNotice:false,
+            })
+        }, 3000);
     }
     upload = (post) =>{
         const storage = firebase.storage();
@@ -110,6 +115,15 @@ export default class Feed extends Component {
                     data: data
                 })
             }
+        this.setState({
+            isToggleNotice:true,
+            type:'delete',
+        })
+        setTimeout(() => {
+            this.setState({
+             isToggleNotice:false,
+            })
+        }, 3000);
     }
 
     findIndex = (id) =>{
@@ -131,7 +145,7 @@ export default class Feed extends Component {
         })
     }
     render() {
-        const {dataPost, photo} = this.state;
+        const {dataPost, photo, isToggleNotice} = this.state;
         return (
             <div className ="feed">
                 <div className="feedWrapper">
@@ -157,6 +171,7 @@ export default class Feed extends Component {
                         return false
                     })}
                 </div>
+                { isToggleNotice ? <AlertNotification type={this.state.type} />:''}
             </div>
         )
     }
