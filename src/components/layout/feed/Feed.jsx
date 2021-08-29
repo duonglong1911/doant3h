@@ -13,7 +13,8 @@ export default class Feed extends Component {
         this.state= {
             data: [...Posts],
             newdata: null,
-            isDelete:false,
+            isToggleNotice:false,
+            type:'nothing',
         }
     }
     onSubmitcmp = (post) =>{
@@ -27,17 +28,36 @@ export default class Feed extends Component {
                 userId: 1,
                 date: date
             }
-            data.unshift(newdata)
+            data.unshift(newdata);
+            this.setState({
+            isToggleNotice:true,
+            type:'add',
+        })
+        setTimeout(() => {
+            this.setState({
+             isToggleNotice:false,
+            })
+        }, 3000);
         }
         else{
             var index = this.findIndex(post.id);
-            data[index] = post
+            data[index] = post;
+            this.setState({
+            isToggleNotice:true,
+            type:'edit',
+        })
+        setTimeout(() => {
+            this.setState({
+             isToggleNotice:false,
+            })
+        }, 3000);
         }
         this.setState({
             data: data,
             newdata: null
         })
     }
+
     onDelete = (id) =>{
         const {data} = this.state;
         var index = this.findIndex(id);
@@ -48,8 +68,14 @@ export default class Feed extends Component {
                 })
             }
         this.setState({
-            isDelete:true
+            isToggleNotice:true,
+            type:'delete',
         })
+        setTimeout(() => {
+            this.setState({
+             isToggleNotice:false,
+            })
+        }, 3000);
     }
 
     findIndex = (id) =>{
@@ -70,14 +96,10 @@ export default class Feed extends Component {
             newdata: newdata
         })
     }
-    // setTimeout(() => {
-    //     this.setState({
-    //         isDelete:false,
-    //     })
-    // }, 2000);
+    
     
     render() {
-        const {data,isDelete} = this.state
+        const {data,isToggleNotice} = this.state
         return (
             <div className ="feed">
                 <div className="feedWrapper">
@@ -92,7 +114,7 @@ export default class Feed extends Component {
                         />
                     ))}
                 </div>
-                { isDelete ? <AlertNotification />:''}
+                { isToggleNotice ? <AlertNotification type={this.state.type} />:''}
             </div>
             
         )
