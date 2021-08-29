@@ -2,6 +2,7 @@
     inset: unset !important; 
     text-align: center;
     padding: 0 !important;
+    z-index: 99999999 !important;
 }
 .ReactModal__Overlay {
     display: flex;
@@ -30,7 +31,9 @@
     font-weight: 400;
     text-transform: capitalize;
 }
-
+form{
+    text-align: left;
+}
 .shareInput-modalpost{
     width: 100%;
     margin: 20px 0;
@@ -60,4 +63,15 @@
     top: 20%;
     right: 0;
     padding: 10px;
+}
+
+.overflow{
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    text-indent: none;
+}
+input{
+    cursor: pointer !important;
 }

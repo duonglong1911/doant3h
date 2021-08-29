@@ -13,8 +13,6 @@ export default class Post extends Component {
             }
         
        onClick = (e) => {
-            // console.log(e.target);
-            // console.log(image);
             this.setState({
                 isChecked:1
             }) 
@@ -26,14 +24,16 @@ export default class Post extends Component {
         }
 
     render() {      
-        var {post} = this.props;
+        var {post, index} = this.props;
         return (
             <div className="post">
                 <div className="postWrapper">
                     <HeaderPost post={post}
                      onDelete={this.props.onDelete}
                       onEdit={this.props.onEdit}
-                      onSubmitcmp={this.props.onSubmitcmp}/>
+                      onSubmitcmp={this.props.onSubmitcmp}
+                      displayName={this.props.displayName}
+                      upload={this.props.upload}/>
                     <div className="postCenter">
                         <span className="postText">{post.desc}</span>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
@@ -47,7 +47,7 @@ export default class Post extends Component {
                     </div> */}
                 </div>
                 {this.state.isChecked=== 1 ? <SelectPost image ={post.photo} 
-                postID ={post.id}
+                postID ={post.id} index={index}
                 handleSelect={this.handleSelect}  /> : ''}
             </div>
         )

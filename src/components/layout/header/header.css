@@ -61,7 +61,6 @@
     color: white;
 }
 
-.topbarLinks {}
 
 .topbarLink {
     margin-right: 10px;
@@ -87,7 +86,11 @@
     align-items: center;
     justify-content: center;
 }
-
+.topbarIconItem:first-child{
+    border-radius: unset;
+    background-color: unset;
+    margin-right: 30px;
+}
 .topbarIconBadge {
     width: 20px;
     height: 20px;
@@ -141,4 +144,35 @@
 }
 .Mui-selected {
     color: #1877f2 !important;
+}
+@media screen and (max-width: 1439px) {
+    .topbarIconItem:first-child{
+        margin-right: 15px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .MuiButtonBase-root{
+        padding: 0 !important;
+    }
+    .topbarContainer{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        flex-direction: column;
+        height: auto !important;
+    }
+    .topbarRight{
+        width: 100%;
+        display: block;
+        padding: 8px 0;
+    }
+    .topbarIcons{
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        margin: 0;
+    }
+    .topbarIconItem, .topbarIconItem:first-child{
+        margin: 0;
+    }
+    
 }

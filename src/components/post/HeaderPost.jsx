@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { MoreVert} from "@material-ui/icons"
-import { Users } from "./../../dataPost"
 import Modal from 'react-modal';
 import Modals from '../share/Modals';
 
@@ -47,10 +46,9 @@ const {isToggle, modalIsOpen} = this.state
 return (
 <div className="postTop">
     <div className="postTopLeft">
-        <img className="postProfileImg" src={Users.filter((user)=> user.id === post.userId)[0].profilePictrue} alt=""
-        />
+        <img className="postProfileImg" src={this.props.displayName.photoURL} alt=""/>
         <div className="postname">
-            <span className="postUsername">{Users.filter((user) => user.id === post.userId)[0].userName}</span>
+            <span className="postUsername">{this.props.displayName.displayName}</span>
             <br />
             <span className="postDate">{post.date}</span>
         </div>
@@ -70,6 +68,8 @@ return (
                 onChangeContent={this.props.onChangeContent}
                 onSubmitcmp={this.props.onSubmitcmp}
                 post={post}
+                displayName={this.props.displayName}
+                upload={this.props.upload}
                 />
 </div>
 );

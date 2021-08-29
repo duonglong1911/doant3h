@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import './login.css'
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import { Link } from 'react-router-dom';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase';
 
 class Login extends Component {
     render() {
         return (
-            <div>
-                {/* vl */}
+            <div className="login-hidden">
                 <div className="login">
                     <div className="box-root flex-flex flex-direction--column" style={{"minHeight":"100vh","WebkitFlexGrow":"1","msFlexGrow":"1","flexGrow":"1"}}>
                         <div className="loginbackground box-background--white padding-top--64">
                         <div className="loginbackground-gridContainer">
                             <div className="box-root flex-flex" style={{"gridArea":"top / start / 8 / end"}}>
-                            <div className="box-root" style={{"backgroundImage":"linear-gradient(white 0%,rgb(247, 250, 252) 33%)","WebkitFlexGrow":"1","msFlexGrow":"1","flexGrow":"1"}} />
+                            <div className="box-root" style={{"backgroundImage":"linear-gradient(                    white 0%,                    rgb(247, 250, 252) 33%                  )","WebkitFlexGrow":"1","msFlexGrow":"1","flexGrow":"1"}} />
                             </div>
                             <div className="box-root flex-flex" style={{"gridArea":"4 / 2 / auto / 5"}}>
                             <div className="
@@ -82,18 +82,12 @@ class Login extends Component {
                                 <div className="loginImage">
                                     <img src="/assets/images/anhbiaregister.jpeg" alt="" className="loginImageImg" />
                                 </div>
-                                <Link to="/" onClick={this.props.onClickRedirect}>aa</Link>
                                 <div className="loginContent">
                                     <div className="loginContentTop">
                                         <PermIdentityIcon className="loginIconPerson" />
                                     </div>
                                     <span className="loginContentTitle mb-3 mt-3">Welcome back</span>
-                                    <div className="loginBtnLogin  color-red">
-                                        <span className="loginBtnText">Đăng nhập với Google <i className="fab fa-google-plus-g loginIcon"></i></span>
-                                    </div>
-                                    <div className="loginBtnLogin color-blue">
-                                        <span className="loginBtnText ">Đăng nhập với FaceBook <i className="fab fa-facebook-f loginIcon"></i></span>
-                                    </div>
+                                    <StyledFirebaseAuth uiConfig={this.props.uiConfig} firebaseAuth={firebase.auth()} ></StyledFirebaseAuth>
                                 </div>
                             </div>
                             </div>

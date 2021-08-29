@@ -15,8 +15,8 @@ export default class SideBar extends Component {
                 <div className="sidebarWrapper">
                     <ul className="sidebarList">
                         <li className="sidebarListItem">
-                            <img src="/assets/images/anhtoi.jpg" alt="" className="sidebarImg" />
-                            <span className="sidebarUsername">Dương Long</span>
+                            <img src={this.props.displayName.photoURL} alt="" className="sidebarImg" />
+                            <span className="sidebarUsername">{this.props.displayName.displayName}</span>
                         </li>
                         <li className="sidebarListItem">
                             <GroupIcon htmlColor="blue"  className="sidebarIcon"/>

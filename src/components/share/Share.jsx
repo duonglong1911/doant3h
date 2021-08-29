@@ -32,7 +32,7 @@ class Share extends Component {
             <div className="share">
                 <div className="shareWrapper">
                     <div className="shareTop">
-                        <img className="shareProfileImg" src="/assets/images/anhtoi.jpg" alt="" />
+                        <img className="shareProfileImg" src={this.props.displayName.photoURL} alt="" />
                         <input type="text" className="shareInput" placeholder="What's in your mind ?" onClick={this.openModal}/>
                     </div>
                     <hr className="shareHr" />
@@ -61,6 +61,9 @@ class Share extends Component {
                         modalIsOpen={modalIsOpen} 
                         onChangeContent={this.props.onChangeContent}
                         onSubmitcmp={this.props.onSubmitcmp}
+                        displayName={this.props.displayName}
+                        upload={this.props.upload}
+                        photo={this.props.photo}
                     />
                 </div>
             </div>

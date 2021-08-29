@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Login from './components/pages/login/Login';
 
 
-
 ReactDOM.render(
   <React.StrictMode>
     {/* <Login/> */}
