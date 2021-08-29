@@ -23,13 +23,13 @@ class Profile extends Component {
                 className="profileCoverImg"
               />
               <img
-                src="assets/images/anhtoi.jpg"
+                src={this.props.displayName.photoURL}
                 alt=""
                 className="profileAvatarImg"
               />
             </div>
             <div className="profileUserInfo">
-              <h3 className="profileUsername">Dương Long</h3>
+              <h3 className="profileUsername">{this.props.displayName.displayName}</h3>
               <span className="profileUserDesc">
                 Contact for work:0366369782
               </span>
@@ -74,7 +74,7 @@ class Profile extends Component {
                   </ul>
                 </div>
                 <div className="profileCenterFeed">
-                  <Feed />
+                  <Feed displayName={this.props.displayName}/>
                   
                 </div>
               </div>

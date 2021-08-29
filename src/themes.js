@@ -9,7 +9,7 @@ export const darkTheme = {
     body:'#18191A',
     fontColor:'#e4e6eb',
     backgroundColor:'#242526',
-    colorInput:'#4E4F50',
+    colorInput:'#242526',
     colorIconHeader:'#b0b3b8'
 }
 

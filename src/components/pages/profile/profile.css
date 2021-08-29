@@ -1,6 +1,4 @@
-.profile {
 
-}
 
 .profileWrapper {
     display: flex;
@@ -34,7 +32,9 @@
     border: 4px solid #fff;
     position: absolute;
     bottom: -30px;
-    left: 44%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 .profileUserInfo {
     margin-top: 30px;
@@ -52,9 +52,7 @@
     /* line-height: 20px; */
 }
 
-.profileCenter {}
 
-.profileHr {}
 
 .profileCenterContent {
     display: flex;

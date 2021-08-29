@@ -75,9 +75,7 @@
         max-width: 90%;
         margin: auto;
     }
-    .profileAvatarImg {
-        left: 40%;
-    }
+
 
 }
 
@@ -114,12 +112,6 @@
     .MuiTab-root {
         min-width: 90px !important;
     }
-    .shareOption:last-child {
-        display: none;
-    }
-    .shareOption:nth-child(2) {
-        display: none;
-    }
     .feed {
         width: 100% !important;
     }
@@ -151,7 +143,6 @@
     .profileAvatarImg {
         width: 140px;
         height: 140px;
-        /* left: 34%; */
     }
     .profileCenterContent {
         flex-direction: column;
@@ -166,7 +157,6 @@
     .profileAvatarImg {
         width: 140px;
         height: 140px;
-        left: 34%;
     }
 }
 @media screen and (min-width:500px) and (max-width: 738px)  {

@@ -47,32 +47,27 @@
     align-items: center;
     justify-content: center;
 }
-.loginBtnLogin {
-    width: 80%;
-    height: 60px;
-    background-color: #5469d4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 0 auto;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-.loginBtnText {
-    color: white;
-    font-size: 18px;
+
+.firebaseui-idp-text {
+    color: white !important;
+    font-size: 18px !important;
 }
 .loginContentTitle {
     font-size: 24px;
     font-weight: 600;
 }
-.color-blue {
-    background-color: #1877F2;
+.firebaseui-card-content{
+    width: 100% !important;
+    padding: 0 !important;
 }
-.color-red {
-    background-color: #e20707;
+.firebaseui-idp-button {
+    max-width: unset !important;
+    width: 100% !important;
+    background-color: #e20707 !important;
+    border-radius: 50px !important;
+}
+.firebaseui-list-item:last-child .firebaseui-idp-button {
+    background-color: #1877F2 !important;
 }
 .loginbackground {
     min-height: 692px;

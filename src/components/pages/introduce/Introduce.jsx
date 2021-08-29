@@ -40,8 +40,8 @@ export default class Introduce extends Component {
                                             </p>
                                         </div>
                                         <div className="introduceMap w-100">
-                                            <iframe className="introduceMapImg w-75" title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59582.98890814379!2d105.84841521153007!3d21.035214375488966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a96e2e72c51f%3A0x54689ea60eeeee78!2zTG9uZyBCacOqbiwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1629876730508!5m2!1svi!2s" style={{"border":"0"}} allow
-                                            FullScreen loading="lazy" />  
+                                            <iframe className="introduceMapImg w-75" title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59582.98890814379!2d105.84841521153007!3d21.035214375488966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a96e2e72c51f%3A0x54689ea60eeeee78!2zTG9uZyBCacOqbiwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1629876730508!5m2!1svi!2s" style={{"border":"0"}} allow="true"
+                                            fullscreen="true" loading="lazy" />  
                                         </div>
                                         <div className="introducePartDesc">
                                             <span className="wrap-heading">Hoặc qua :</span>

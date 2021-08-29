@@ -10,7 +10,8 @@ class Modals extends Component {
         this.state = {
             id: '',
             desc: '',
-            userId: null
+            file:'',
+            isToggleIMG: false
         }
     }
     componentDidMount() {
@@ -19,18 +20,31 @@ class Modals extends Component {
             this.setState({
                 desc: post.desc,
                 id: post.id,
-                userId: post.userId
             })
         }
-        
+    }
+    upload = (e) =>{
+        e.preventDefault();
+        this.props.upload(this.state)
+        this.setState({
+            isToggleIMG: !this.state.isToggleIMG
+        })
     }
     closeModal = () =>{
         this.props.closeModal()
+        this.setState({
+            desc: '',
+            file:'',
+            isToggleIMG: false
+        })
     }
     onChangeContent = (e) =>{
         // this.props.onChangeContent(e)
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
         this.setState({
-            desc: e.target.value
+            [name]: name === 'desc' ? value : e.target.files[0]
         })
     }
     onSubmit = (event) =>{
@@ -38,10 +52,14 @@ class Modals extends Component {
         this.props.onSubmitcmp(this.state)
         this.props.closeModal()
         this.setState({
-            desc: ''
+            desc: '',
+            file:'',
+            isToggleIMG: false
         })
     }
     render() {
+        const {isToggleIMG} = this.state
+        const {photo} = this.props
         return (
                 <Modal
                     isOpen={this.props.modalIsOpen}
@@ -55,18 +73,23 @@ class Modals extends Component {
                         </div>
                         <div className="form-Modalpost">
                             <div className="shareTop">
-                                <img className="shareProfileImg" src="/assets/images/anhtoi.jpg" alt="" />
-                                <h4>Dương Long</h4>
+                                <img className="shareProfileImg" src={this.props.displayName.photoURL} alt="" />
+                                <h4>{this.props.displayName.displayName}</h4>
                             </div>
                             <form action="" onSubmit={this.onSubmit}>
                                 <textarea rows="5" cols="40" 
                                 className="shareInput shareInput-modalpost" 
                                 placeholder="What's in your mind ?"
                                 onChange={this.onChangeContent}
+                                name="desc"
                                 value={this.state.desc}
                                 />
+                                {isToggleIMG && <img src={photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}}/>}
+                                <br /><br />
+                                <button onClick={this.upload}>upload</button>
                                 <div className="shareOptions shareOptions-modalpost">
                                     <div className="shareOption shareOption-modalpost">
+                                        <input type="file" className="overflow" name="file" onChange={this.onChangeContent}/>
                                         <PermMedia htmlColor="tomato" className="shareIcon"/>
                                         <span className="shareOptionText">Photo or Video</span>
                                     </div>

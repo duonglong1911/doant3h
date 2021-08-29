@@ -9,7 +9,8 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import firebase from 'firebase';
 
 
 export default class Header extends Component {
@@ -24,8 +25,6 @@ export default class Header extends Component {
     handleToggleDarkmode= (e) => {
       console.log(e.target);
     }
-  
-
   render() {
     const handleChange = (event, newValue) => {
       this.setState({
@@ -62,8 +61,8 @@ export default class Header extends Component {
           <div className="topbarIcons">
           <Link to="/profile">  
           <div className="topbarIconItem">
-            <img src="/assets/images/anhtoi.jpg" alt="" className="topbarImg" />
-            <span className="topbarUsername">Long</span>
+            <img src={this.props.displayName.photoURL} alt="" className="topbarImg" />
+            <span className="topbarUsername">{this.props.displayName.displayName.slice(this.props.displayName.displayName.lastIndexOf(' '), 1000)}</span>
           </div></Link>
             {/* <div className="topbarIconItem">
               <Person className="topbarIconIcon" />
@@ -77,7 +76,7 @@ export default class Header extends Component {
               <NightsStayIcon className="topbarIconIcon" onClick={this.props.handleToggleDarkmode} />
             </div>
             <div className="topbarIconItem">
-              <ExitToApp className="topbarIconIcon" />
+              <ExitToApp className="topbarIconIcon" onClick={() =>firebase.auth().signOut()}/>
             </div>
           </div>
         </div>

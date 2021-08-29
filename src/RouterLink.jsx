@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from './components/pages/home/Home';
 import ImagesGallery from './components/pages/imagesgallery/ImagesGallery';
 import Introduce from './components/pages/introduce/Introduce';
@@ -10,12 +10,13 @@ class RouterLink extends Component {
     render() {
         return (
             <Switch>
-                <Route path="/" component={Home} exact />
-                <Route path="/profile/" component={Profile} exact/>
+                <Route path="/" exact><Home displayName={this.props.displayName}/></Route>
+                <Route path="/profile/" exact><Profile displayName={this.props.displayName}/></Route>
                 <Route path="/imagesgallery/" component={ImagesGallery} exact />
-                <Route path="/imagesgallery" component={ImagesGallery} exact />
                 <Route path="/introduce" component={Introduce} exact />
-                <Route path="/login" component={Login} exact />
+                <Route path="/login" render={()=>{
+                    return this.props.isSignedIn === true ? <Redirect to="/" /> : <Login/>
+                }} exact />
             </Switch>
         );
     }

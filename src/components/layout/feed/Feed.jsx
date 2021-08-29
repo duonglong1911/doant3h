@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Share from '../../share/Share'
 import ".//feed.css"
 import { Posts } from './../../../dataPost'
-import { v4 as uuidv4 } from 'uuid';
-import Post from './../../post/Post'
+// import { v4 as uuidv4 } from 'uuid';
+import Post from './../../post/Post';
+import firebase from 'firebase';
 
 
 export default class Feed extends Component {
@@ -11,31 +12,95 @@ export default class Feed extends Component {
         super(props);
         this.state= {
             data: [...Posts],
-            newdata: null
+            newdata: null,
+            photo:'',
+            desc:'',
+            date:'',
+            userId:'',
+            dataPost: []
         }
     }
-    onSubmitcmp = (post) =>{
-        var {data} = this.state
-        var today = new Date();
-        var date = today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
-        if(post.id === ''){
-            var newdata = {
-                id: uuidv4(),
-                desc: post.desc,
-                userId: 1,
-                date: date
+    // ona = () =>{
+    //     const today = new Date();
+    //     firebase.database().ref('post').push({
+    //         desc:"Hồ gươm ngày nắng!",
+    //         photo:"assets/images/post4.jpg",
+    //         date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
+    //     })
+    // }
+    componentDidMount(){
+        // const {desc, photo, date, userId, dataPost} = this.state
+        
+        const firebaseStore = firebase.database().ref('post');
+        firebaseStore.on('value', (res)=>{
+            const data = res.val();
+            let postList = []
+            for(let id in data){
+                postList.push({
+                    id: id,
+                    desc: data[id].desc,
+                    photo: data[id].photo,
+                    date: data[id].date,
+                    userId: data[id].userId
+                })
             }
-            data.unshift(newdata)
-        }
-        else{
-            var index = this.findIndex(post.id);
-            data[index] = post
-        }
-        this.setState({
-            data: data,
-            newdata: null
+            this.setState({
+                dataPost: postList
+            })
         })
     }
+    onSubmitcmp = (post) =>{
+        
+        const today = new Date();
+        
+        firebase.database().ref('post').push({
+            desc:post.desc,
+            photo:this.state.photo,
+            userId: this.props.displayName.uid,
+            date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
+        })
+    }
+    upload = (post) =>{
+        const storage = firebase.storage();
+        const upLoadImage = storage.ref('images/'+post.file.name).put(post.file);
+        upLoadImage.on(
+            'state_change',
+            snapshot =>{},
+            error=>{
+                console.log(error)
+            },
+            () =>{
+                storage.ref('images').child(post.file.name).getDownloadURL()
+                .then(url =>{
+                    this.setState({
+                        photo: url
+                    })
+                })
+            }
+        )
+    }
+    // onSubmitcmp = (post) =>{
+    //     var {data} = this.state
+    //     var today = new Date();
+    //     var date = today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
+    //     if(post.id === ''){
+    //         var newdata = {
+    //             id: uuidv4(),
+    //             desc: post.desc,
+    //             userId: 1,
+    //             date: date
+    //         }
+    //         data.unshift(newdata)
+    //     }
+    //     else{
+    //         var index = this.findIndex(post.id);
+    //         data[index] = post
+    //     }
+    //     this.setState({
+    //         data: data,
+    //         newdata: null
+    //     })
+    // }
     onDelete = (id) =>{
         const {data} = this.state;
         var index = this.findIndex(id);
@@ -66,20 +131,31 @@ export default class Feed extends Component {
         })
     }
     render() {
-        const {data} = this.state
+        const {dataPost, photo} = this.state;
         return (
             <div className ="feed">
                 <div className="feedWrapper">
-                    <Share onChangeContent={this.onChangeContent} onSubmitcmp={this.onSubmitcmp}/>
-                    {data.map((post,index) => (
-                        <Post key={post.id}
-                        post={post} 
-                        index={index}
-                        onDelete={this.onDelete}
-                        onEdit={this.onEdit}
-                        onSubmitcmp={this.onSubmitcmp}
-                        />
-                    ))}
+                    <Share onChangeContent={this.onChangeContent}
+                     onSubmitcmp={this.onSubmitcmp} 
+                    displayName={this.props.displayName} 
+                    upload={this.upload}
+                    photo={photo}/>
+                    {dataPost.map((post,index) => {
+                        if(post.userId === this.props.displayName.uid){
+                            return(
+                                <Post key={post.id}
+                                    post={post} 
+                                    index={index}
+                                    onDelete={this.onDelete}
+                                    onEdit={this.onEdit}
+                                    onSubmitcmp={this.onSubmitcmp}
+                                    displayName={this.props.displayName}
+                                    upload={this.upload}
+                                />
+                            )
+                        }
+                        return false
+                    })}
                 </div>
             </div>
         )

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './login.css'
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase';
 
 class Login extends Component {
     render() {
@@ -85,12 +87,7 @@ class Login extends Component {
                                         <PermIdentityIcon className="loginIconPerson" />
                                     </div>
                                     <span className="loginContentTitle mb-3 mt-3">Welcome back</span>
-                                    <div className="loginBtnLogin  color-red">
-                                        <span className="loginBtnText">Đăng nhập với Google <i className="fab fa-google-plus-g loginIcon"></i></span>
-                                    </div>
-                                    <div className="loginBtnLogin color-blue">
-                                        <span className="loginBtnText ">Đăng nhập với FaceBook <i className="fab fa-facebook-f loginIcon"></i></span>
-                                    </div>
+                                    <StyledFirebaseAuth uiConfig={this.props.uiConfig} firebaseAuth={firebase.auth()} ></StyledFirebaseAuth>
                                 </div>
                             </div>
                             </div>

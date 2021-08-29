@@ -31,7 +31,9 @@ export default class Post extends Component {
                     <HeaderPost post={post}
                      onDelete={this.props.onDelete}
                       onEdit={this.props.onEdit}
-                      onSubmitcmp={this.props.onSubmitcmp}/>
+                      onSubmitcmp={this.props.onSubmitcmp}
+                      displayName={this.props.displayName}
+                      upload={this.props.upload}/>
                     <div className="postCenter">
                         <span className="postText">{post.desc}</span>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>

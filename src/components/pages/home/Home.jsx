@@ -10,8 +10,8 @@ export default class Home extends Component {
         return (
             <div>
                 <div className="homeContainer">
-                    <Sidebar />
-                    <Feed />
+                    <Sidebar displayName={this.props.displayName} />
+                    <Feed displayName={this.props.displayName}/>
                     <Rightbar />
                 </div>
                 {/* <SelectPost /> */}
