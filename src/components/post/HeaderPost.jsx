@@ -24,21 +24,22 @@ componentDidMount() {
     });
   };
 
-  closeModal = () => {
+closeModal = () => {
     this.setState({
       modalIsOpen: false
     });
   };
 onClickToggle = () =>{
-this.setState({
-isToggle: !this.state.isToggle
-})
+  this.setState({
+  isToggle: !this.state.isToggle
+  })
 }
 onDelete = () =>{
   this.props.onDelete(this.props.post.id)
-  this.setState({
-    isDelete:true,
-  })
+  // this.setState({
+  //   isDelete:true,
+  // })
+  // console.log(this.state.isDelete);
 }
 onEdit = () =>{
   this.openModal();
@@ -46,9 +47,12 @@ onEdit = () =>{
   this.onClickToggle()
 }
 
+
 render() {
 var {post} = this.props;
-const {isToggle, modalIsOpen} = this.state
+const {isToggle, modalIsOpen,isDelete} = this.state;
+// console.log(isDelete);
+
 return (
 <div className="postTop">
     <div className="postTopLeft">
@@ -66,7 +70,7 @@ return (
         isToggle &&
         <ul className="menu-child">
             <li onClick={this.onEdit}>Edit</li>
-            <li onClick={() => {if(window.confirm('Bạn có muốn xóa bài viết ?')){ this.onDelete(this.props.id)};}}>Delete</li>
+            <li onClick={() => {if(window.confirm('Bạn có muốn xóa bài viết?')){this.onDelete(this.props.id)}}}>Delete</li>
         </ul>
         }
     </div>
@@ -76,7 +80,9 @@ return (
                 onSubmitcmp={this.props.onSubmitcmp}
                 post={post}
                 />
-    <AlertNotification handleToggleNotice={this.onDelete} />
+    
+              {/* <AlertNotification/> */}
+
 </div>
 );
 }

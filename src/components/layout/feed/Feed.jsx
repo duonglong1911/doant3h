@@ -4,6 +4,7 @@ import ".//feed.css"
 import { Posts } from './../../../dataPost'
 import { v4 as uuidv4 } from 'uuid';
 import Post from './../../post/Post'
+import AlertNotification from '../alertNotification/AlertNotification';
 
 
 export default class Feed extends Component {
@@ -11,7 +12,8 @@ export default class Feed extends Component {
         super(props);
         this.state= {
             data: [...Posts],
-            newdata: null
+            newdata: null,
+            isDelete:false,
         }
     }
     onSubmitcmp = (post) =>{
@@ -45,7 +47,9 @@ export default class Feed extends Component {
                     data: data
                 })
             }
-        
+        this.setState({
+            isDelete:true
+        })
     }
 
     findIndex = (id) =>{
@@ -66,8 +70,14 @@ export default class Feed extends Component {
             newdata: newdata
         })
     }
+    // setTimeout(() => {
+    //     this.setState({
+    //         isDelete:false,
+    //     })
+    // }, 2000);
+    
     render() {
-        const {data} = this.state
+        const {data,isDelete} = this.state
         return (
             <div className ="feed">
                 <div className="feedWrapper">
@@ -82,7 +92,9 @@ export default class Feed extends Component {
                         />
                     ))}
                 </div>
+                { isDelete ? <AlertNotification />:''}
             </div>
+            
         )
     }
 }

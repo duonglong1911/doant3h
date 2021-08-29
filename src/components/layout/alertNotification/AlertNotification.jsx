@@ -3,23 +3,18 @@ import './alertnotification.css'
 
 export default class AlertNotification extends Component {
 
-    constructor(props)
-    {
-        super(props);
-        this.state = { 
-            isToggleNotice:false,
-        };
-    }
+    // constructor(props)
+    // {
+    //     super(props);
+    //     this.state = { 
+    //         isToggleNotice:false,
+    //     };
+    // }
 
-    handleToggleNotice = () => {
-        console.log(this.props.handleToggleNotice.onDelete);
-    }
 
     render() {
-        const { isToggleNotice} = this.state;
         return (
-
-            <div className={isToggleNotice ? "alert show" : "alert hide"}>
+            <div className="alert show">
                 <span className="fas fa-exclamation-circle alertIcon"></span>
                 <span className="alertMessage">Thành công: Bạn đã xóa bài viết ! </span>
                 <span className="alertCloseBtn">

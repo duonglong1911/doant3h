@@ -58,9 +58,6 @@ class SelectPost extends Component {
         })
         }
     }
-    
-
-
     render() {
         console.log(this.state.current);
         return (
