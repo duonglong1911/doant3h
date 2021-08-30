@@ -59,5 +59,15 @@ export const GlobalStyles = createGlobalStyle`
     .galleryCardContent, .galleryCenter {
         background-color:${(props) => props.theme.colorInput};
     }
+    .menuChildDrop {
+        background-color: ${(props) => props.theme.body};
+    }
+    .menuChildDrop:hover {
+        color:${(props) => props.theme.body};
+    }
+    .peopleCardBody {
+        background-color:${(props) => props.theme.colorInput};
+
+    }
     
 `;

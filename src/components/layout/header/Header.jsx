@@ -52,7 +52,7 @@ export default class Header extends Component {
               centered
             >
               <Tab icon={<HomeIcon />} to="/" component={Link}/>
-              <Tab icon={<GroupIcon />} />
+              <Tab icon={<GroupIcon />} to="/people" component={Link} />
               <Tab icon={<PermMediaIcon />} to="/imagesgallery" component={Link}/>
               <Tab icon={<ContactSupportIcon />} to="/introduce" component={Link}/>
             </Tabs>

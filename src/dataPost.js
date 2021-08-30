@@ -24,6 +24,11 @@ export const Users = [
         profilePictrue:"assets/images/user3.jpg",
         userName:"Thang Long"
     },
+    {
+        id:6,
+        profilePictrue:"assets/images/mensi.jpg",
+        userName:"Mén Sì"
+    },
     
 ]
 
