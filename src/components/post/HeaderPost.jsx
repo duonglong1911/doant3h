@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { MoreVert} from "@material-ui/icons"
 import Modal from 'react-modal';
 import Modals from '../share/Modals';
+import firebase from 'firebase';
 
 export default class HeaderPost extends Component {
 constructor(props){
@@ -10,10 +11,27 @@ constructor(props){
         isToggle: false,
         modalIsOpen: false,
         isDelete:false,
+        dataUser: []
     }
 }
 componentDidMount() {
     Modal.setAppElement('body');
+    const firebaseStore = firebase.database().ref('user');
+        firebaseStore.on('value', (res)=>{
+            const data = res.val();
+            let postList = []
+            for(let id in data){
+                postList.push({
+                    id: id,
+                    photo:data[id].photo,
+                    uid: data[id].uid,
+                    displayName: data[id].displayName
+                })
+            }
+            this.setState({
+                dataUser: postList
+            })
+        })
   };
 
   openModal = () => {
@@ -43,13 +61,13 @@ onEdit = () =>{
 }
 render() {
 var {post} = this.props;
-const {isToggle, modalIsOpen} = this.state
+const {isToggle, modalIsOpen, dataUser} = this.state
 return (
 <div className="postTop">
     <div className="postTopLeft">
-        <img className="postProfileImg" src={this.props.displayName.photoURL} alt=""/>
+        <img className="postProfileImg" src={dataUser.map(item=>item.uid===post.userId? item.photo : false)} alt=""/>
         <div className="postname">
-            <span className="postUsername">{this.props.displayName.displayName}</span>
+            <span className="postUsername">{dataUser.map(item=>item.uid===post.userId? item.displayName : false)}</span>
             <br />
             <span className="postDate">{post.date}</span>
         </div>

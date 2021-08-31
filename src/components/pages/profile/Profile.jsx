@@ -6,7 +6,7 @@ import HomeWorkIcon from "@material-ui/icons/HomeWork";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import Feed from './../../layout/feed/Feed'
+import Feed from './../../layout/feed/Feed';
 
 
 class Profile extends Component {
