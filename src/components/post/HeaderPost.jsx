@@ -9,6 +9,7 @@ constructor(props){
     this.state = {
         isToggle: false,
         modalIsOpen: false,
+        isDelete:false,
     }
 }
 componentDidMount() {
@@ -59,7 +60,7 @@ return (
         isToggle &&
         <ul className="menu-child">
             <li onClick={this.onEdit}>Edit</li>
-            <li onClick={this.onDelete}>Delete</li>
+            <li onClick={() => {if(window.confirm('Bạn có muốn xóa bài viết?')){this.onDelete(this.props.id)}}}>Delete</li>
         </ul>
         }
     </div>
@@ -70,6 +71,7 @@ return (
                 post={post}
                 displayName={this.props.displayName}
                 upload={this.props.upload}
+                photo={this.props.photo}
                 />
 </div>
 );

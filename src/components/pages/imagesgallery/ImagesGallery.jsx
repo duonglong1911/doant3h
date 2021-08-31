@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import './imagesgallery.css'
-import {
-  Card, CardImg, CardBody,
-  CardTitle, CardSubtitle, Button, ButtonGroup
-} from 'reactstrap';
+import { Button, ButtonGroup } from 'reactstrap';
 import {Posts} from './../../../dataPost.js'
 import Pagination from './../../layout/pagination/Pagination'
+import ImageGalleryItem from './ImageGalleryItem';
 
 class ImagesGallery extends Component {
 
@@ -146,21 +144,14 @@ class ImagesGallery extends Component {
                         <div className="galleryCenterContent mt-5">
                             <div className="row">
                                 {
-                                    currentImages.map((image)=> {
-                                        const { id, photo, date} = image;
-
-                                        return(
-                                            <div className="col-12 col-lg-3 col-md-4 col-sm-6" key={id}>
-                                                <Card className="galleryCard mb-3 text-center">
-                                                    <CardImg top src={photo} alt="Card image cap" className="galleryCartImg" />
-                                                    <CardBody className="galleryCardContent">
-                                                        <CardTitle tag="h6" className="galleryCardUsername" >Duong Long</CardTitle>
-                                                        <CardSubtitle className="mb-2 text-muted galleryCardDate">{date}</CardSubtitle>
-                                                    </CardBody>
-                                                </Card>
-                                            </div>
-                                        )
-                                    })
+                                    currentImages.map((image,index)=> 
+                                        <ImageGalleryItem 
+                                        key={image.id}
+                                        photo={image.photo} 
+                                        index={index}
+                                        date={image.date}
+                                        />
+                                    )
                                 }
                             </div>
                         </div>

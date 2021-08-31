@@ -11,7 +11,7 @@ class Modals extends Component {
             id: '',
             desc: '',
             file:'',
-            isToggleIMG: false
+            isToggleIMG: false,
         }
     }
     componentDidMount() {
@@ -35,7 +35,7 @@ class Modals extends Component {
         this.setState({
             desc: '',
             file:'',
-            isToggleIMG: false
+            isToggleIMG: false,
         })
     }
     onChangeContent = (e) =>{
@@ -59,7 +59,7 @@ class Modals extends Component {
     }
     render() {
         const {isToggleIMG} = this.state
-        const {photo} = this.props
+        const {photo} = this.props;
         return (
                 <Modal
                     isOpen={this.props.modalIsOpen}
