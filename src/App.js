@@ -36,6 +36,7 @@ const uiConfig = {
     signInSuccessWithAuthResult: () => false,
   },
 };
+
 firebase.initializeApp(config);
 function App() {
 
@@ -44,25 +45,40 @@ function App() {
     theme ==='light' ? setTheme("dark") : setTheme("light");
   }
 
-
+  // const [testDataUser, setIsTestDataUser]= useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
-
+ 
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
-      firebase.database().ref('user').push({
-        photo:firebase.auth().currentUser.photoURL,
-        uid: firebase.auth().currentUser.uid,
-        displayName: firebase.auth().currentUser.displayName
-      })
       
-          
+      
+      var pushDataRef = firebase.database().ref("user");
+      pushDataRef.on("child_added", function(snapshot){
+        if(snapshot.val().uid !== firebase.auth().currentUser.uid){
+        
+          // firebase.database().ref('user').push({
+          //   photo:firebase.auth().currentUser.photoURL,
+          //   uid: firebase.auth().currentUser.uid,
+          //   displayName: firebase.auth().currentUser.displayName
+          // })
+        }
+        else{
+          return false
+        }
+      });
+    
     });
+
+      
+
     return () => unregisterAuthObserver(); 
     
-  }, []);
+  },[]);
+ 
   localStorage.setItem('isSignedIn',isSignedIn)
   if (!isSignedIn) {
+    
     return (
       <div>
         <Login uiConfig={uiConfig}/>
