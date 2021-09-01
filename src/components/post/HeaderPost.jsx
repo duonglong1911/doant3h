@@ -62,12 +62,13 @@ onEdit = () =>{
 render() {
 var {post} = this.props;
 const {isToggle, modalIsOpen, dataUser} = this.state
+console.log(dataUser)
 return (
 <div className="postTop">
     <div className="postTopLeft">
-        <img className="postProfileImg" src={dataUser.map(item=>item.uid===post.userId? item.photo : false)} alt=""/>
+        <img className="postProfileImg" src={1} alt=""/>
         <div className="postname">
-            <span className="postUsername">{dataUser.map(item=>item.uid===post.userId? item.displayName : false)}</span>
+            <span className="postUsername">{1}</span>
             <br />
             <span className="postDate">{post.date}</span>
         </div>

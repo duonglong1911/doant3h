@@ -50,30 +50,34 @@ function App() {
  
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-      setIsSignedIn(!!user);
-      
-      
       var pushDataRef = firebase.database().ref("user");
-      pushDataRef.on("child_added", function(snapshot){
-        if(snapshot.val().uid !== firebase.auth().currentUser.uid){
-        
-          // firebase.database().ref('user').push({
-          //   photo:firebase.auth().currentUser.photoURL,
-          //   uid: firebase.auth().currentUser.uid,
-          //   displayName: firebase.auth().currentUser.displayName
-          // })
-        }
-        else{
-          return false
-        }
-      });
-    
+            pushDataRef.on('value', (res)=>{
+              const data = res.val();
+              let postList = []
+              for(let id in data){
+                  postList.push(
+                  data[id].uid,
+                  )
+              }  
+                if(user){
+                    if(postList.indexOf(user.uid) === -1){
+                      firebase.database().ref('user').push({
+                        photo:firebase.auth().currentUser.photoURL,
+                        uid: firebase.auth().currentUser.uid,
+                        displayName: firebase.auth().currentUser.displayName
+                      })
+                    }
+                    else{
+                      return false
+                    }
+                  }
+              
+    })
+    setIsSignedIn(!!user); 
+          
+
     });
-
-      
-
-    return () => unregisterAuthObserver(); 
-    
+    return () => unregisterAuthObserver();   
   },[]);
  
   localStorage.setItem('isSignedIn',isSignedIn)
