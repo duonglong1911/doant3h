@@ -13,9 +13,13 @@ class RouterLink extends Component {
             <Switch>
                 <Route path="/" exact><Home displayName={this.props.displayName}/></Route>
                 <Route path="/profile/:id" exact><Profile displayName={this.props.displayName}/></Route>
-                <Route path="/imagesgallery/" component={ImagesGallery} exact />
+                <Route path="/imagesgallery/" exact>
+                    <ImagesGallery 
+                        postsList={this.props.postsList} 
+                        usersList={this.props.usersList}/>
+                </Route>
                 <Route path="/introduce" component={Introduce} exact />
-                <Route path="/people" component={People} exact />
+                <Route path="/people"  exact><People usersList={this.props.usersList} /></Route>
                 <Route path="/login" render={()=>{
                     return this.props.isSignedIn === true ? <Redirect to="/" /> : <Login/>
                 }} exact />

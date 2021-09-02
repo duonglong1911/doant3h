@@ -45,6 +45,8 @@ function App() {
   }
 
 
+  const [usersList, setUsersList] = useState([]);
+  const [postsList, setPostsList] = useState([])
   const [isSignedIn, setIsSignedIn] = useState(false);
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
@@ -56,8 +58,18 @@ function App() {
                   postList.push(
                   data[id].uid,
                   )
-              }  
+              }
                 if(user){
+                  let users = []
+                  for(let id in data) {
+                    users.push({
+                        id: id,
+                        photo:data[id].photo,
+                        uid: data[id].uid,
+                        displayName: data[id].displayName
+                    })
+                  }
+              setUsersList(users)
                     if(postList.indexOf(user.uid) === -1){
                       firebase.database().ref('user').push({
                         photo:firebase.auth().currentUser.photoURL,
@@ -69,14 +81,28 @@ function App() {
                       return false
                     }
                   }
-
     })
     setIsSignedIn(!!user); 
-
-
     });
+
+    const firebaseStore = firebase.database().ref('post');
+        firebaseStore.on('value', (res)=>{
+            const data = res.val();
+            let posts = [];
+            for(let id in data){
+                posts.push({
+                    id: id,
+                    desc: data[id].desc,
+                    photo: data[id].photo,
+                    date: data[id].date,
+                    userId: data[id].userId
+                })
+            }
+            setPostsList(posts)
+        })
     return () => unregisterAuthObserver();   
   },[]);
+  // console.log(postsList);
   localStorage.setItem('isSignedIn',isSignedIn)
   
   if (!isSignedIn) {
@@ -92,7 +118,12 @@ function App() {
           <GlobalStyles />
             <StyledApp>
             {isSignedIn && <Header handleToggleDarkmode={themeToggle} displayName={firebase.auth().currentUser}/>}
-              <RouterLink displayName={firebase.auth().currentUser} isSignedIn={isSignedIn}/>
+              <RouterLink 
+              displayName={firebase.auth().currentUser} 
+              isSignedIn={isSignedIn}
+              usersList={usersList}
+              postsList={postsList}
+              />
             </StyledApp>
           </ThemeProvider>
     </Router>

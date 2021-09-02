@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './imagesgallery.css'
 import { Button, ButtonGroup } from 'reactstrap';
-import {Posts} from './../../../dataPost.js'
 import Pagination from './../../layout/pagination/Pagination'
 import ImageGalleryItem from './ImageGalleryItem';
 
@@ -10,7 +9,7 @@ class ImagesGallery extends Component {
     constructor(props) {
             super(props);
             this.state = {
-                  images:Posts,
+                  images:[],
                   loading:false,
                   currentPage:1,
                   imagesPerPage:8,
@@ -41,6 +40,12 @@ class ImagesGallery extends Component {
                 for(let i = newYear; i >= 1980; i--){
                     year.innerHTML += '<option value='+i+'>'+i+'</option>'
                 }
+
+
+                const postsHaveImg = this.props.postsList.filter(el => el.photo)
+                this.setState({
+                    images: postsHaveImg,
+                })
             }
             onChange = (event) =>{
                 const target = event.target;
@@ -153,6 +158,7 @@ class ImagesGallery extends Component {
                                         index={index}
                                         date={image.date}
                                         userId={image.userId}
+                                        usersList={this.props.usersList}
                                         />
                                     )
                                 }

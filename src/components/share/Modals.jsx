@@ -13,6 +13,7 @@ class Modals extends Component {
             file:'',
             isUploadFile:false,
             isEdit:false,
+            isExistImg:false
         }
     }
     componentDidMount() {
@@ -22,6 +23,11 @@ class Modals extends Component {
                 isEdit:true,
                 desc: post.desc,
                 id: post.id
+            })
+        }
+        if(this.props.photo) {
+            this.setState({
+                isExistImg:true,
             })
         }
     }
@@ -69,8 +75,7 @@ class Modals extends Component {
     }
 
     render() {
-        const {isUploadFile, isEdit} = this.state
-        console.log(this.props.newdata);
+        const {isUploadFile, isEdit,isExistImg} = this.state
         return (
                 <Modal
                     isOpen={this.props.modalIsOpen}
@@ -100,7 +105,7 @@ class Modals extends Component {
                                         <img src={this.props.photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}} />
                                     </div>
                                 ) : <div onClick={this.removeImage}>
-                                        <img src={this.props.photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}} />
+                                    {isExistImg ? <img src={this.props.photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}} /> : ''}
                                     </div>
                                  }
                                 <br /><br />
