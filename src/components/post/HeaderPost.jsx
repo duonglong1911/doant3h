@@ -75,7 +75,10 @@ return (
         </div>
     </div>
     <div className="postTopRight">
-        <MoreVert className="btn-show" onClick={this.onClickToggle} />
+      {
+        post.userId === this.props.displayName.uid ? <MoreVert className="btn-show" onClick={this.onClickToggle} /> : false
+      }
+        
         {
         isToggle &&
         <ul className="menu-child">

@@ -1,60 +1,65 @@
 .ReactModal__Content {
-    inset: unset !important; 
+    inset: unset !important;
     text-align: center;
     padding: 0 !important;
     z-index: 99999999 !important;
 }
+
 .ReactModal__Overlay {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.titlepost h3{
+
+.titlepost h3 {
     margin: 0;
 }
-.titlepost{
+
+.titlepost {
     border-bottom: 1px solid rgba(0, 0, 0, 0.14);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
 }
-.form-Modalpost{
+
+.form-Modalpost {
     padding: 20px;
 }
 
-.modalpost-p{
+.modalpost-p {
     padding: 20px;
     position: relative;
 }
 
-.shareTop h4{
+.shareTop h4 {
     margin: 0;
     font-size: 18px;
     font-weight: 400;
     text-transform: capitalize;
 }
-form{
+
+form {
     text-align: left;
 }
-.shareInput-modalpost{
+
+.shareInput-modalpost {
     width: 100%;
-    margin: 20px 0;
     height: auto;
     border: none;
     outline: none;
 }
 
-.shareOptions-modalpost{
+.shareOptions-modalpost {
     margin: 0;
     border: 1px solid rgba(0, 0, 0, 0.14);
     padding: 15px 20px;
     border-radius: 5px;
 }
 
-.shareButton-modalpost{
+.shareButton-modalpost {
     margin: 10px 0;
     width: 100% !important;
 }
 
-.titlepost button{
+.titlepost button {
     border-radius: 100%;
     border: none;
     outline: none;
@@ -65,13 +70,26 @@ form{
     padding: 10px;
 }
 
-.overflow{
+.overflow {
     position: absolute;
     width: 100%;
     opacity: 0;
     cursor: pointer;
     text-indent: none;
 }
-input{
+
+input {
     cursor: pointer !important;
+}
+
+.bg-gray {
+    position: absolute;
+    opacity: 0.3;
+    background: black;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
 }
