@@ -1,0 +1,28 @@
+.people {
+    
+
+}
+
+.peopleCard {
+    height: 300px;
+}
+
+.peopleCardImg {
+    height: 60%;
+    object-fit: cover;
+}
+
+.peopleCardBody {
+
+}
+
+.peopleCardName {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.peopleCardBtn {
+    background-color: #1877F2 !important;
+    border: none !important;
+}

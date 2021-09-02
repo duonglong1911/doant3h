@@ -34,7 +34,8 @@ export default class Post extends Component {
                       onSubmitcmp={this.props.onSubmitcmp}
                       displayName={this.props.displayName}
                       upload={this.props.upload}
-                      photo={this.props.photo}/>
+                      photo={this.props.photo}
+                      />
                     <div className="postCenter">
                         <span className="postText">{post.desc}</span>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
