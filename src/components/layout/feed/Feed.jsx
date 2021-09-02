@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Share from '../../share/Share'
 import ".//feed.css"
-import { Posts } from './../../../dataPost'
-// import { v4 as uuidv4 } from 'uuid';
-import Post from './../../post/Post';
+import Post from '../../post/Post';
 import firebase from 'firebase';
 import AlertNotification from './../alertNotification/AlertNotification'
 
@@ -12,9 +10,8 @@ export default class Feed extends Component {
     constructor(props){
         super(props);
         this.state= {
-            data: [...Posts],
             newdata: null,
-            photo:'',
+            photo: null,
             desc:'',
             date:'',
             userId:'',
@@ -49,16 +46,30 @@ export default class Feed extends Component {
         
         const today = new Date();
         
-        firebase.database().ref('post').push({
-            desc:post.desc,
-            photo:this.state.photo,
-            userId: this.props.displayName.uid,
-            date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
-        })
-        this.setState({
-            isToggleNotice:true,
-            type:'add',
-        })
+        if(post.id === ''){
+            firebase.database().ref('post').push({
+                desc:post.desc,
+                photo:this.state.photo,
+                userId: this.props.displayName.uid,
+                date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
+            })
+            this.setState({
+                isToggleNotice:true,
+                type:'add',
+            })
+        }
+        else{
+            firebase.database().ref('post').child(post.id).set({
+                desc: post.desc,
+                photo: this.state.photo,
+                userId: this.props.displayName.uid,
+                date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
+            })
+            this.setState({
+                isToggleNotice:true,
+                type:'edit',
+            })
+        }
         setTimeout(() => {
             this.setState({
              isToggleNotice:false,
@@ -84,37 +95,9 @@ export default class Feed extends Component {
             }
         )
     }
-    // onSubmitcmp = (post) =>{
-    //     var {data} = this.state
-    //     var today = new Date();
-    //     var date = today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
-    //     if(post.id === ''){
-    //         var newdata = {
-    //             id: uuidv4(),
-    //             desc: post.desc,
-    //             userId: 1,
-    //             date: date
-    //         }
-    //         data.unshift(newdata)
-    //     }
-    //     else{
-    //         var index = this.findIndex(post.id);
-    //         data[index] = post
-    //     }
-    //     this.setState({
-    //         data: data,
-    //         newdata: null
-    //     })
-    // }
     onDelete = (id) =>{
-        const {data} = this.state;
-        var index = this.findIndex(id);
-            if(index !== -1){
-                data.splice(index, 1);
-                this.setState({
-                    data: data
-                })
-            }
+        const deletePost = firebase.database().ref('post');
+        deletePost.child(id).remove();
         this.setState({
             isToggleNotice:true,
             type:'delete',
@@ -127,9 +110,9 @@ export default class Feed extends Component {
     }
 
     findIndex = (id) =>{
-        var {data} =this.state;
+        var {dataPost} =this.state;
         var result = -1;
-        data.forEach((itemData, index) =>{
+        dataPost.forEach((itemData, index) =>{
             if(itemData.id === id){
                 result = index;
             }
@@ -137,25 +120,53 @@ export default class Feed extends Component {
         return result
     }
     onEdit = (id) =>{
-        var {data} = this.state;
+        var {dataPost} = this.state;
         var index = this.findIndex(id);
-        var newdata = data[index];
+        var newdata = dataPost[index];
         this.setState({
-            newdata: newdata
+            newdata: newdata,
+            photo:newdata.photo,
         })
     }
+
+
+    onUploadFile = (e) => {
+        const reader = new FileReader();
+        if(e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+        
+        reader.onload = (readerEvent) => {
+            this.setState({
+                photo:readerEvent.target.result,
+            })
+        }
+    }
+
+    removeImage = () => {
+        this.setState({
+            photo:null,
+        })
+    }
+
+
+
     render() {
         const {dataPost, photo, isToggleNotice} = this.state;
         return (
             <div className ="feed">
                 <div className="feedWrapper">
                     <Share onChangeContent={this.onChangeContent}
-                     onSubmitcmp={this.onSubmitcmp} 
+                    onSubmitcmp={this.onSubmitcmp} 
                     displayName={this.props.displayName} 
                     upload={this.upload}
-                    photo={photo}/>
+                    photo={photo}
+                    onUploadFile={this.onUploadFile}
+                    removeImage={this.removeImage}
+                    newdata={this.state.newdata}
+                    />
                     {dataPost.map((post,index) => {
-                        if(post.userId === this.props.displayName.uid){
+                        if(window.location.href === 'http://localhost:4000/'){
                             return(
                                 <Post key={post.id}
                                     post={post} 
@@ -165,10 +176,29 @@ export default class Feed extends Component {
                                     onSubmitcmp={this.onSubmitcmp}
                                     displayName={this.props.displayName}
                                     upload={this.upload}
+                                    photo={photo}
+                                    onUploadFile={this.onUploadFile}
+                                    removeImage={this.removeImage}
                                 />
                             )
                         }
-                        return false
+                        else{
+                            if(post.userId === this.props.displayName.uid){
+                                return(
+                                    <Post key={post.id}
+                                        post={post} 
+                                        index={index}
+                                        onDelete={this.onDelete}
+                                        onEdit={this.onEdit}
+                                        onSubmitcmp={this.onSubmitcmp}
+                                        displayName={this.props.displayName}
+                                        upload={this.upload}
+                                        photo={photo}
+                                    />
+                                )
+                            }
+                            return false
+                        }
                     })}
                 </div>
                 { isToggleNotice ? <AlertNotification type={this.state.type} />:''}

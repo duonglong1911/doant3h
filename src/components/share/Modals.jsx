@@ -11,42 +11,40 @@ class Modals extends Component {
             id: '',
             desc: '',
             file:'',
-            isToggleIMG: false
+            isUploadFile:false,
+            isEdit:false,
         }
     }
     componentDidMount() {
         const {post} = this.props;
         if(post){
             this.setState({
+                isEdit:true,
                 desc: post.desc,
-                id: post.id,
+                id: post.id
             })
         }
     }
     upload = (e) =>{
         e.preventDefault();
         this.props.upload(this.state)
-        this.setState({
-            isToggleIMG: !this.state.isToggleIMG
-        })
     }
     closeModal = () =>{
         this.props.closeModal()
         this.setState({
             desc: '',
             file:'',
-            isToggleIMG: false
         })
     }
     onChangeContent = (e) =>{
-        // this.props.onChangeContent(e)
         const target = e.target;
         const value = target.value;
-        const name = target.name;
         this.setState({
-            [name]: name === 'desc' ? value : e.target.files[0]
+            desc:value,
         })
     }
+
+    
     onSubmit = (event) =>{
         event.preventDefault();
         this.props.onSubmitcmp(this.state)
@@ -54,12 +52,25 @@ class Modals extends Component {
         this.setState({
             desc: '',
             file:'',
-            isToggleIMG: false
         })
     }
+
+    onUploadFile =(e) => {
+        this.props.onUploadFile(e)
+        this.setState({
+            isUploadFile:true,
+        })
+    }
+    removeImage = () => {
+        this.props.removeImage()
+        this.setState({
+            isUploadFile:false,
+        })
+    }
+
     render() {
-        const {isToggleIMG} = this.state
-        const {photo} = this.props
+        const {isUploadFile, isEdit} = this.state
+        console.log(this.props.newdata);
         return (
                 <Modal
                     isOpen={this.props.modalIsOpen}
@@ -84,12 +95,19 @@ class Modals extends Component {
                                 name="desc"
                                 value={this.state.desc}
                                 />
-                                {isToggleIMG && <img src={photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}}/>}
+                                {!isEdit ? isUploadFile && (
+                                    <div onClick={this.removeImage}>
+                                        <img src={this.props.photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}} />
+                                    </div>
+                                ) : <div onClick={this.removeImage}>
+                                        <img src={this.props.photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}} />
+                                    </div>
+                                 }
                                 <br /><br />
-                                <button onClick={this.upload}>upload</button>
+                                {/* <button onClick={this.upload}>upload</button> */}
                                 <div className="shareOptions shareOptions-modalpost">
                                     <div className="shareOption shareOption-modalpost">
-                                        <input type="file" className="overflow" name="file" onChange={this.onChangeContent}/>
+                                        <input type="file" className="overflow" name="file" onChange={this.onUploadFile}/>
                                         <PermMedia htmlColor="tomato" className="shareIcon"/>
                                         <span className="shareOptionText">Photo or Video</span>
                                     </div>

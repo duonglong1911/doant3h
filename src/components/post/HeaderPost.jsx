@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { MoreVert} from "@material-ui/icons"
 import Modal from 'react-modal';
 import Modals from '../share/Modals';
+import firebase from 'firebase';
 
 export default class HeaderPost extends Component {
 constructor(props){
@@ -10,27 +11,44 @@ constructor(props){
         isToggle: false,
         modalIsOpen: false,
         isDelete:false,
+        dataUser: [],
     }
 }
 componentDidMount() {
     Modal.setAppElement('body');
+    const firebaseStore = firebase.database().ref('user');
+        firebaseStore.on('value', (res)=>{
+            const data = res.val();
+            let postList = []
+            for(let id in data){
+                postList.push({
+                    id: id,
+                    photo:data[id].photo,
+                    uid: data[id].uid,
+                    displayName: data[id].displayName
+                })
+            }
+            this.setState({
+              dataUser: postList,
+            })
+        })
   };
 
-  openModal = () => {
-    this.setState({
-      modalIsOpen: true,
-    });
-  };
+openModal = () => {
+  this.setState({
+    modalIsOpen: true,
+  });
+};
 
-  closeModal = () => {
-    this.setState({
-      modalIsOpen: false
-    });
-  };
+closeModal = () => {
+  this.setState({
+    modalIsOpen: false
+  });
+};
 onClickToggle = () =>{
-this.setState({
-isToggle: !this.state.isToggle
-})
+  this.setState({
+  isToggle: !this.state.isToggle
+  })
 }
 onDelete = () =>{
   this.props.onDelete(this.props.post.id)
@@ -43,13 +61,15 @@ onEdit = () =>{
 }
 render() {
 var {post} = this.props;
-const {isToggle, modalIsOpen, isDelete} = this.state
+const {isToggle, modalIsOpen, dataUser} = this.state;
+var dataAbc = dataUser.map(item=>item.uid === post.userId ? item.photo : '');
+var abc = dataAbc.filter(item=>item!=='');
 return (
 <div className="postTop">
     <div className="postTopLeft">
-        <img className="postProfileImg" src={this.props.displayName.photoURL} alt=""/>
+        <img className="postProfileImg" src={abc} alt=""/>
         <div className="postname">
-            <span className="postUsername">{this.props.displayName.displayName}</span>
+            <span className="postUsername">{dataUser.map(item=>item.uid === post.userId ? item.displayName : '')}</span>
             <br />
             <span className="postDate">{post.date}</span>
         </div>
@@ -59,8 +79,8 @@ return (
         {
         isToggle &&
         <ul className="menu-child">
-            <li className="menuChildDrop" onClick={this.onEdit}>Edit</li>
-            <li className="menuChildDrop" onClick={() => {if(window.confirm('Bạn có muốn xóa bài viết?')){this.onDelete(this.props.id)}}}>Delete</li>
+            <li onClick={this.onEdit}>Edit</li>
+            <li onClick={() => {if(window.confirm('Bạn có muốn xóa bài viết?')){this.onDelete(this.props.id)}}}>Delete</li>
         </ul>
         }
     </div>
@@ -71,6 +91,8 @@ return (
                 post={post}
                 displayName={this.props.displayName}
                 upload={this.props.upload}
+                photo={this.props.photo}
+                newdata={this.props.newdata}
                 />
 </div>
 );

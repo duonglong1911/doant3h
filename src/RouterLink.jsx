@@ -12,7 +12,7 @@ class RouterLink extends Component {
         return (
             <Switch>
                 <Route path="/" exact><Home displayName={this.props.displayName}/></Route>
-                <Route path="/profile/" exact><Profile displayName={this.props.displayName}/></Route>
+                <Route path="/profile/:id" exact><Profile displayName={this.props.displayName}/></Route>
                 <Route path="/imagesgallery/" component={ImagesGallery} exact />
                 <Route path="/introduce" component={Introduce} exact />
                 <Route path="/people" component={People} exact />

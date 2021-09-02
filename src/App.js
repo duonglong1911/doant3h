@@ -48,11 +48,35 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-      setIsSignedIn(!!user);
-     
+     var pushDataRef = firebase.database().ref("user");
+            pushDataRef.on('value', (res)=>{
+              const data = res.val();
+              let postList = []
+              for(let id in data){
+                  postList.push(
+                  data[id].uid,
+                  )
+              }  
+                if(user){
+                    if(postList.indexOf(user.uid) === -1){
+                      firebase.database().ref('user').push({
+                        photo:firebase.auth().currentUser.photoURL,
+                        uid: firebase.auth().currentUser.uid,
+                        displayName: firebase.auth().currentUser.displayName
+                      })
+                    }
+                    else{
+                      return false
+                    }
+                  }
+
+    })
+    setIsSignedIn(!!user); 
+
+
     });
-    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
-  }, []);
+    return () => unregisterAuthObserver();   
+  },[]);
   localStorage.setItem('isSignedIn',isSignedIn)
   
   if (!isSignedIn) {
