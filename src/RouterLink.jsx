@@ -4,6 +4,7 @@ import Home from './components/pages/home/Home';
 import ImagesGallery from './components/pages/imagesgallery/ImagesGallery';
 import Introduce from './components/pages/introduce/Introduce';
 import Login from './components/pages/login/Login';
+import Found404 from './components/pages/notfound/Found404';
 import People from './components/pages/people/People';
 import Profile from './components/pages/profile/Profile';
 
@@ -23,6 +24,7 @@ class RouterLink extends Component {
                 <Route path="/login" render={()=>{
                     return this.props.isSignedIn === true ? <Redirect to="/" /> : <Login/>
                 }} exact />
+                <Route component={Found404}/>
             </Switch>
         );
     }

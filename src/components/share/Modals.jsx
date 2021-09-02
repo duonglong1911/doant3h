@@ -13,7 +13,7 @@ class Modals extends Component {
             file:'',
             isUploadFile:false,
             isEdit:false,
-            isExistImg:false
+            photoEdit: ''
         }
     }
     componentDidMount() {
@@ -22,12 +22,8 @@ class Modals extends Component {
             this.setState({
                 isEdit:true,
                 desc: post.desc,
-                id: post.id
-            })
-        }
-        if(this.props.photo) {
-            this.setState({
-                isExistImg:true,
+                id: post.id,
+                photoEdit: post.photo
             })
         }
     }
@@ -75,7 +71,8 @@ class Modals extends Component {
     }
 
     render() {
-        const {isUploadFile, isEdit,isExistImg} = this.state
+        const {isUploadFile, isEdit, photoEdit, desc} = this.state
+        const {titleTxt, displayName, photo} = this.props;
         return (
                 <Modal
                     isOpen={this.props.modalIsOpen}
@@ -83,14 +80,14 @@ class Modals extends Component {
                     <div className="modalpost">
                         <div className="titlepost">
                             <div className="modalpost-p">
-                                <h3>Tạo bài viết</h3>
+                                <h3>{titleTxt} bài viết</h3>
                                 <button onClick={this.closeModal}><CloseIcon/></button>
                             </div>
                         </div>
                         <div className="form-Modalpost">
                             <div className="shareTop">
-                                <img className="shareProfileImg" src={this.props.displayName.photoURL} alt="" />
-                                <h4>{this.props.displayName.displayName}</h4>
+                                <img className="shareProfileImg" src={displayName.photoURL} alt="" />
+                                <h4>{displayName.displayName}</h4>
                             </div>
                             <form action="" onSubmit={this.onSubmit}>
                                 <textarea rows="5" cols="40" 
@@ -98,36 +95,40 @@ class Modals extends Component {
                                 placeholder="What's in your mind ?"
                                 onChange={this.onChangeContent}
                                 name="desc"
-                                value={this.state.desc}
+                                value={desc}
                                 />
                                 {!isEdit ? isUploadFile && (
                                     <div onClick={this.removeImage}>
-                                        <img src={this.props.photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}} />
+                                        <img src={photo} alt="" width="150px" height="10%" style={{objectFit: 'cover'}} />
                                     </div>
-                                ) : <div onClick={this.removeImage}>
-                                    {isExistImg ? <img src={this.props.photo} alt="" width="200px" height="200px" style={{objectFit: 'cover'}} /> : ''}
+                                ) : <div>
+                                        {photoEdit === '' ? false : <img src={photoEdit} alt="" width="150px" height="10%" style={{objectFit: 'cover'}} />}
                                     </div>
                                  }
                                 <br /><br />
                                 {/* <button onClick={this.upload}>upload</button> */}
+                                <div style={{position: 'relative'}}>
                                 <div className="shareOptions shareOptions-modalpost">
-                                    <div className="shareOption shareOption-modalpost">
-                                        <input type="file" className="overflow" name="file" onChange={this.onUploadFile}/>
-                                        <PermMedia htmlColor="tomato" className="shareIcon"/>
-                                        <span className="shareOptionText">Photo or Video</span>
-                                    </div>
-                                    <div className="shareOption ">
-                                        <Label htmlColor="blue"  className="shareIcon"/>
-                                        <span className="shareOptionText">Tag</span>
-                                    </div>
-                                    <div className="shareOption">
-                                        <Room htmlColor="green"  className="shareIcon"/>
-                                        <span className="shareOptionText">Location</span>
-                                    </div>
-                                    <div className="shareOption">
-                                        <EmojiEmotions htmlColor="goldenrod"   className="shareIcon"/>
-                                        <span className="shareOptionText">Feelings</span>
-                                    </div>
+                                        <div className="shareOption shareOption-modalpost">
+                                            <input type="file" className="overflow" name="file" onChange={this.onUploadFile}/>
+                                            <PermMedia htmlColor="tomato" className="shareIcon"/>
+                                            <span className="shareOptionText">Photo or Video</span>
+                                        </div>
+                                        <div className="shareOption ">
+                                            <Label htmlColor="blue"  className="shareIcon"/>
+                                            <span className="shareOptionText">Tag</span>
+                                        </div>
+                                        <div className="shareOption">
+                                            <Room htmlColor="green"  className="shareIcon"/>
+                                            <span className="shareOptionText">Location</span>
+                                        </div>
+                                        <div className="shareOption">
+                                            <EmojiEmotions htmlColor="goldenrod"   className="shareIcon"/>
+                                            <span className="shareOptionText">Feelings</span>
+                                        </div>
+                                    
+                                </div>
+                                {isEdit && <div className="bg-gray"></div>}
                                 </div>
                                 <button className="shareButton shareButton-modalpost" type="submit">Share</button>
                             </form>

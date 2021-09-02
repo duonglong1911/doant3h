@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import SelectPost from '../../selectpost/SelectPost';
 
+
 export default class ImageGalleryItem extends Component {
     constructor(props) {
             super(props);
@@ -35,7 +36,7 @@ export default class ImageGalleryItem extends Component {
             })
         }
     render() {
-        const {photo, id, date, userId, index,usersList} = this.props;
+        const {photo, id, date, userId,usersList} = this.props;
         return(
             <div className="col-12 col-lg-3 col-md-4 col-sm-6" key={id}>
                 { this.state.isImg ? <Card onClick={this.onClickImg} className="galleryCard mb-5 text-center">

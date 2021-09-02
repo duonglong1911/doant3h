@@ -153,6 +153,32 @@ export default class Feed extends Component {
 
     render() {
         const {dataPost, photo, isToggleNotice} = this.state;
+        dataPost.sort((a,b)=>{
+            if(a.date.slice(16,20) > b.date.slice(16,20)){
+                return -1
+            }
+            else{
+                if(a.date.slice(13,15) > b.date.slice(13,15)){
+                    return -1
+                }
+                else{
+                    if(a.date.slice(10,12) > b.date.slice(10,12)){
+                        return -1
+                    }
+                    else{
+                        if(a.date.slice(3,5) > b.date.slice(3,5)){
+                            return -1
+                        }
+                        else{
+                            if(a.date > b.date){
+                                return -1
+                            }
+                        }
+                    }
+                }
+            }
+            return 0
+        })
         return (
             <div className ="feed">
                 <div className="feedWrapper">

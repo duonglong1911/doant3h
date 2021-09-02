@@ -36,6 +36,7 @@ const uiConfig = {
     signInSuccessWithAuthResult: () => false,
   },
 };
+
 firebase.initializeApp(config);
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
   const [usersList, setUsersList] = useState([]);
   const [postsList, setPostsList] = useState([])
   const [isSignedIn, setIsSignedIn] = useState(false);
+ 
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
      var pushDataRef = firebase.database().ref("user");
@@ -104,8 +106,8 @@ function App() {
   },[]);
   // console.log(postsList);
   localStorage.setItem('isSignedIn',isSignedIn)
-  
   if (!isSignedIn) {
+    
     return (
       <div>
         <Login uiConfig={uiConfig}/>
