@@ -11,7 +11,7 @@ export default class Feed extends Component {
         super(props);
         this.state= {
             newdata: null,
-            photo:'',
+            photo: null,
             desc:'',
             date:'',
             userId:'',
@@ -124,19 +124,47 @@ export default class Feed extends Component {
         var index = this.findIndex(id);
         var newdata = dataPost[index];
         this.setState({
-            newdata: newdata
+            newdata: newdata,
+            photo:newdata.photo,
         })
     }
+
+
+    onUploadFile = (e) => {
+        const reader = new FileReader();
+        if(e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+        
+        reader.onload = (readerEvent) => {
+            this.setState({
+                photo:readerEvent.target.result,
+            })
+        }
+    }
+
+    removeImage = () => {
+        this.setState({
+            photo:null,
+        })
+    }
+
+
+
     render() {
         const {dataPost, photo, isToggleNotice} = this.state;
         return (
             <div className ="feed">
                 <div className="feedWrapper">
                     <Share onChangeContent={this.onChangeContent}
-                     onSubmitcmp={this.onSubmitcmp} 
+                    onSubmitcmp={this.onSubmitcmp} 
                     displayName={this.props.displayName} 
                     upload={this.upload}
-                    photo={photo}/>
+                    photo={photo}
+                    onUploadFile={this.onUploadFile}
+                    removeImage={this.removeImage}
+                    newdata={this.state.newdata}
+                    />
                     {dataPost.map((post,index) => {
                         // if(window.location.href === 'http://localhost:4000/'){
                             return(
@@ -149,6 +177,8 @@ export default class Feed extends Component {
                                     displayName={this.props.displayName}
                                     upload={this.upload}
                                     photo={photo}
+                                    onUploadFile={this.onUploadFile}
+                                    removeImage={this.removeImage}
                                 />
                             )
                         // }

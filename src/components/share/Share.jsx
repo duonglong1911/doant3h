@@ -64,6 +64,9 @@ class Share extends Component {
                         displayName={this.props.displayName}
                         upload={this.props.upload}
                         photo={this.props.photo}
+                        onUploadFile={this.props.onUploadFile}
+                        removeImage={this.props.removeImage}
+                        newdata={this.props.newdata}
                     />
                 </div>
             </div>

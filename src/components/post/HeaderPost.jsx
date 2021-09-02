@@ -11,7 +11,7 @@ constructor(props){
         isToggle: false,
         modalIsOpen: false,
         isDelete:false,
-        dataUser: []
+        dataUser: [],
     }
 }
 componentDidMount() {
@@ -29,26 +29,26 @@ componentDidMount() {
                 })
             }
             this.setState({
-                dataUser: postList
+              dataUser: postList,
             })
         })
   };
 
-  openModal = () => {
-    this.setState({
-      modalIsOpen: true,
-    });
-  };
+openModal = () => {
+  this.setState({
+    modalIsOpen: true,
+  });
+};
 
-  closeModal = () => {
-    this.setState({
-      modalIsOpen: false
-    });
-  };
+closeModal = () => {
+  this.setState({
+    modalIsOpen: false
+  });
+};
 onClickToggle = () =>{
-this.setState({
-isToggle: !this.state.isToggle
-})
+  this.setState({
+  isToggle: !this.state.isToggle
+  })
 }
 onDelete = () =>{
   this.props.onDelete(this.props.post.id)
@@ -61,8 +61,7 @@ onEdit = () =>{
 }
 render() {
 var {post} = this.props;
-const {isToggle, modalIsOpen, dataUser} = this.state
-console.log(dataUser)
+const {isToggle, modalIsOpen, dataUser} = this.state;
 return (
 <div className="postTop">
     <div className="postTopLeft">
@@ -91,6 +90,7 @@ return (
                 displayName={this.props.displayName}
                 upload={this.props.upload}
                 photo={this.props.photo}
+                newdata={this.props.newdata}
                 />
 </div>
 );
