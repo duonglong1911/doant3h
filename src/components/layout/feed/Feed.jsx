@@ -166,7 +166,7 @@ export default class Feed extends Component {
                     newdata={this.state.newdata}
                     />
                     {dataPost.map((post,index) => {
-                        // if(window.location.href === 'http://localhost:4000/'){
+                        if(window.location.href === 'http://localhost:4000/'){
                             return(
                                 <Post key={post.id}
                                     post={post} 
@@ -181,24 +181,24 @@ export default class Feed extends Component {
                                     removeImage={this.removeImage}
                                 />
                             )
-                        // }
-                        // else{
-                        //     if(post.userId === this.props.displayName.uid){
-                        //         return(
-                        //             <Post key={post.id}
-                        //                 post={post} 
-                        //                 index={index}
-                        //                 onDelete={this.onDelete}
-                        //                 onEdit={this.onEdit}
-                        //                 onSubmitcmp={this.onSubmitcmp}
-                        //                 displayName={this.props.displayName}
-                        //                 upload={this.upload}
-                        //                 photo={photo}
-                        //             />
-                        //         )
-                        //     }
-                        //     return false
-                        // }
+                        }
+                        else{
+                            if(post.userId === this.props.displayName.uid){
+                                return(
+                                    <Post key={post.id}
+                                        post={post} 
+                                        index={index}
+                                        onDelete={this.onDelete}
+                                        onEdit={this.onEdit}
+                                        onSubmitcmp={this.onSubmitcmp}
+                                        displayName={this.props.displayName}
+                                        upload={this.upload}
+                                        photo={photo}
+                                    />
+                                )
+                            }
+                            return false
+                        }
                     })}
                 </div>
                 { isToggleNotice ? <AlertNotification type={this.state.type} />:''}
