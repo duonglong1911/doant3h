@@ -11,7 +11,7 @@ constructor(props){
         isToggle: false,
         modalIsOpen: false,
         isDelete:false,
-        dataUser: []
+        dataUser: [],
     }
 }
 componentDidMount() {
@@ -29,26 +29,26 @@ componentDidMount() {
                 })
             }
             this.setState({
-                dataUser: postList
+              dataUser: postList,
             })
         })
   };
 
-  openModal = () => {
-    this.setState({
-      modalIsOpen: true,
-    });
-  };
+openModal = () => {
+  this.setState({
+    modalIsOpen: true,
+  });
+};
 
-  closeModal = () => {
-    this.setState({
-      modalIsOpen: false
-    });
-  };
+closeModal = () => {
+  this.setState({
+    modalIsOpen: false
+  });
+};
 onClickToggle = () =>{
-this.setState({
-isToggle: !this.state.isToggle
-})
+  this.setState({
+  isToggle: !this.state.isToggle
+  })
 }
 onDelete = () =>{
   this.props.onDelete(this.props.post.id)
@@ -61,7 +61,7 @@ onEdit = () =>{
 }
 render() {
 var {post} = this.props;
-const {isToggle, modalIsOpen, dataUser} = this.state
+const {isToggle, modalIsOpen, dataUser} = this.state;
 var dataAbc = dataUser.map(item=>item.uid === post.userId ? item.photo : '');
 var abc = dataAbc.filter(item=>item!=='');
 return (
@@ -75,7 +75,10 @@ return (
         </div>
     </div>
     <div className="postTopRight">
-        <MoreVert className="btn-show" onClick={this.onClickToggle} />
+      {
+        post.userId === this.props.displayName.uid ? <MoreVert className="btn-show" onClick={this.onClickToggle} /> : false
+      }
+        
         {
         isToggle &&
         <ul className="menu-child">
@@ -92,6 +95,8 @@ return (
                 displayName={this.props.displayName}
                 upload={this.props.upload}
                 photo={this.props.photo}
+                newdata={this.props.newdata}
+                titleTxt={this.props.titleTxt}
                 />
 </div>
 );

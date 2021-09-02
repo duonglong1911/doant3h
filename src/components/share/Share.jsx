@@ -16,6 +16,7 @@ class Share extends Component {
       };
 
       openModal = () => {
+        this.props.openModal();
         this.setState({
           modalIsOpen: true,
         });
@@ -64,6 +65,10 @@ class Share extends Component {
                         displayName={this.props.displayName}
                         upload={this.props.upload}
                         photo={this.props.photo}
+                        onUploadFile={this.props.onUploadFile}
+                        removeImage={this.props.removeImage}
+                        newdata={this.props.newdata}
+                        titleTxt={this.props.titleTxt}
                     />
                 </div>
             </div>

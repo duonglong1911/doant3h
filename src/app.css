@@ -190,4 +190,16 @@
         font-size: 14px;
         padding: 5px 8px ;
     }
+    .profileCenterIntro{
+        display: none;
+    }
+    .profile{
+        margin-top: 7rem;
+    }
+}
+@media screen and (max-width: 424px){
+    .profileAvatarImg{
+        width: 120px;
+        height: 120px;
+    }
 }

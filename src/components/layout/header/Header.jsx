@@ -52,7 +52,7 @@ export default class Header extends Component {
               centered
             >
               <Tab icon={<HomeIcon />} to="/" component={Link}/>
-              <Tab icon={<GroupIcon />} />
+              <Tab icon={<GroupIcon />} to="/people" component={Link} />
               <Tab icon={<PermMediaIcon />} to="/imagesgallery" component={Link}/>
               <Tab icon={<ContactSupportIcon />} to="/introduce" component={Link}/>
             </Tabs>
@@ -60,7 +60,7 @@ export default class Header extends Component {
         </div>
         <div className="topbarRight">
           <div className="topbarIcons">
-          <Link to={"/profile/"+this.props.displayName.uid}>  
+          <Link style={{textDecoration: 'none'}} to={"/profile/"+this.props.displayName.uid}>
           <div className="topbarIconItem">
             <img src={this.props.displayName.photoURL} alt="" className="topbarImg" />
             <span className="topbarUsername">{this.props.displayName.displayName.slice(this.props.displayName.displayName.lastIndexOf(' '), 1000)}</span>

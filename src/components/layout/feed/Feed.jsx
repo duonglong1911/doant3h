@@ -11,13 +11,14 @@ export default class Feed extends Component {
         super(props);
         this.state= {
             newdata: null,
-            photo:'',
+            photo: null,
             desc:'',
             date:'',
             userId:'',
             dataPost: [],
             isToggleNotice:false,
             type:'nothing',
+            titleTxt:''
         }
     }
     
@@ -45,13 +46,17 @@ export default class Feed extends Component {
     onSubmitcmp = (post) =>{
         
         const today = new Date();
-        
+        const hour = today.getHours() < 10 ? '0' + today.getHours() : today.getHours();
+        const minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes();
+        const date = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
+        const month = today.getMonth() < 10 ? '0' + today.getMonth() : today.getMonth();
+        const time = hour + ':' + minutes + ' --- ' + date + '/' + month + '/' + today.getFullYear();
         if(post.id === ''){
             firebase.database().ref('post').push({
                 desc:post.desc,
                 photo:this.state.photo,
                 userId: this.props.displayName.uid,
-                date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
+                date:time,
             })
             this.setState({
                 isToggleNotice:true,
@@ -63,7 +68,7 @@ export default class Feed extends Component {
                 desc: post.desc,
                 photo: this.state.photo,
                 userId: this.props.displayName.uid,
-                date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
+                date:time
             })
             this.setState({
                 isToggleNotice:true,
@@ -124,19 +129,80 @@ export default class Feed extends Component {
         var index = this.findIndex(id);
         var newdata = dataPost[index];
         this.setState({
-            newdata: newdata
+            newdata: newdata,
+            // photo:newdata.photo,
+            titleTxt: 'Sửa'
         })
     }
+
+
+    onUploadFile = (e) => {
+        const reader = new FileReader();
+        if(e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+        
+        reader.onload = (readerEvent) => {
+            this.setState({
+                photo:readerEvent.target.result,
+            })
+        }
+    }
+
+    removeImage = () => {
+        this.setState({
+            photo:null,
+        })
+    }
+
+    openModal = () =>{
+        this.setState({
+            titleTxt: 'Tạo'
+        })
+    }
+
     render() {
-        const {dataPost, photo, isToggleNotice} = this.state;
+        const {dataPost, photo, isToggleNotice, titleTxt} = this.state;
+        dataPost.sort((a,b)=>{
+            if(a.date.slice(16,20) > b.date.slice(16,20)){
+                return -1
+            }
+            else{
+                if(a.date.slice(13,15) > b.date.slice(13,15)){
+                    return -1
+                }
+                else{
+                    if(a.date.slice(10,12) > b.date.slice(10,12)){
+                        return -1
+                    }
+                    else{
+                        if(a.date.slice(3,5) > b.date.slice(3,5)){
+                            return -1
+                        }
+                        else{
+                            if(a.date > b.date){
+                                return -1
+                            }
+                        }
+                    }
+                }
+            }
+            return 0
+        })
         return (
             <div className ="feed">
                 <div className="feedWrapper">
                     <Share onChangeContent={this.onChangeContent}
-                     onSubmitcmp={this.onSubmitcmp} 
+                    onSubmitcmp={this.onSubmitcmp} 
                     displayName={this.props.displayName} 
                     upload={this.upload}
-                    photo={photo}/>
+                    photo={photo}
+                    onUploadFile={this.onUploadFile}
+                    removeImage={this.removeImage}
+                    newdata={this.state.newdata}
+                    openModal={this.openModal}
+                    titleTxt={titleTxt}
+                    />
                     {dataPost.map((post,index) => {
                         if(window.location.href === 'http://localhost:4000/'){
                             return(
@@ -149,6 +215,9 @@ export default class Feed extends Component {
                                     displayName={this.props.displayName}
                                     upload={this.upload}
                                     photo={photo}
+                                    onUploadFile={this.onUploadFile}
+                                    removeImage={this.removeImage}
+                                    titleTxt={titleTxt}
                                 />
                             )
                         }
@@ -164,6 +233,7 @@ export default class Feed extends Component {
                                         displayName={this.props.displayName}
                                         upload={this.upload}
                                         photo={photo}
+                                        titleTxt={titleTxt}
                                     />
                                 )
                             }

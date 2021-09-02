@@ -1,0 +1,23 @@
+.found{
+    width: 100%;
+    object-fit: contain;
+}
+
+.found-sum{
+    position: absolute;
+    background: rgb(234, 255, 111);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (min-width: 768px) {
+    .found{
+        height: 80%;
+    }
+}
