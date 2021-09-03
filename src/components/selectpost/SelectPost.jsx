@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './selectpost.css'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import { Posts } from './../../dataPost'
 import CloseIcon from '@material-ui/icons/Close';
 
 
@@ -11,9 +10,10 @@ class SelectPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                current: this.props.index,
-                length: Posts.length,
-                imageUrl:this.props.image,
+                current: -1,
+                length: 0,
+                imageUrl:'',
+                isToggleChangeImg:false,
             };
         }
     
@@ -25,8 +25,8 @@ class SelectPost extends Component {
     handleCloseForm = () => {
         this.props.handleSelect();
     }
-    handlePrevImg = () => {
-        if(this.state.current === 0) {
+    handleNextImg = () => {
+        if(this.state.current === 1) {
             this.setState({
                 current : this.state.length -1
             })
@@ -38,11 +38,11 @@ class SelectPost extends Component {
     }
 
 
-    handleNextImg = () => {
+    handlePrevImg = () => {
         
         if(this.state.current === this.state.length -1) {
             this.setState({
-                current : 0
+                current : 1
             })
         } else {
             this.setState({
@@ -53,27 +53,50 @@ class SelectPost extends Component {
     componentDidUpdate(preProps, preState) {
         if(this.state.current !== preState.current) {
             this.setState({
-            imageUrl:[...Posts][this.state.current].photo,
+            imageUrl:[...this.props.images][this.state.current].photo,
         })
         }
     }
+    componentDidMount() {
+        
+         if(window.location.pathname === '/imagesgallery') {
+            this.setState({
+                imageUrl:this.props.image,
+                length: this.props.postsList.length,
+            })
+        } else if(window.location.pathname === '/'){
+            this.setState({
+                isToggleChangeImg:true,
+                current: this.props.index,
+                length: this.props.images.length,
+                imageUrl:this.props.post.photo,
+            })
+        } else {
+            this.setState({
+                isToggleChangeImg:false,
+                current: this.props.index,
+                length: this.props.images.length,
+                imageUrl:this.props.post.photo,
+            })
+        }
+    }
+    
+    
 
 
     render() {
-        console.log(this.state.current);
-        console.log(this.props.image);
-        console.log(this.props.index);
+        const { isToggleChangeImg} = this.state;
         return (
             <div className ="selectpost" onClick={this.handleSelect}>
                 <div className="selectpostContent">
-                    <NavigateBeforeIcon className="selectpostIcon selectpostIconPrev" onClick={this.handlePrevImg} />
+                    {isToggleChangeImg ? <NavigateBeforeIcon className="selectpostIcon selectpostIconPrev" onClick={this.handlePrevImg} /> : ''}
                      <div key={this.state.index}>
                          
                          <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
                          
                      </div>
                       <CloseIcon className="selectCloseIcon" onClick={this.handleCloseForm}/>
-                    <NavigateNextIcon className= "selectpostIcon selectpostIconNext" onClick={this.handleNextImg}/>
+                    {isToggleChangeImg ? <NavigateNextIcon className= "selectpostIcon selectpostIconNext" onClick={this.handleNextImg}/> : ''}
                 </div>
             </div>
         );

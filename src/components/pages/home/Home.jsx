@@ -11,7 +11,10 @@ export default class Home extends Component {
             <div>
                 <div className="homeContainer">
                     <Sidebar displayName={this.props.displayName} />
-                    <Feed displayName={this.props.displayName}/>
+                    <Feed 
+                        displayName={this.props.displayName}
+                        postsList={this.props.postsList} 
+                    />
                     <Rightbar />
                 </div>
                 {/* <SelectPost /> */}

@@ -73,9 +73,8 @@ class Profile extends Component {
                     </li>
                   </ul>
                 </div>
-                <div className="profileCenterFeed">
+                <div className="profileCenterFeed"> 
                   <Feed displayName={this.props.displayName}/>
-                  
                 </div>
               </div>
             </div>

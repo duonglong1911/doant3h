@@ -50,7 +50,7 @@ export default class ImageGalleryItem extends Component {
                 </Card> : false}
                 {this.state.isChecked=== 1 ? <SelectPost image ={photo} 
                     postID ={id} index={this.props.index}
-                     handleSelect={this.handleSelect}  /> : ''}
+                    handleSelect={this.handleSelect} postsList={this.props.postsList} /> : ''}
             </div>
         )
     }

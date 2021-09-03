@@ -159,6 +159,7 @@ class ImagesGallery extends Component {
                                         date={image.date}
                                         userId={image.userId}
                                         usersList={this.props.usersList}
+                                        postsList={this.props.postsList}
                                         />
                                     )
                                 }

@@ -18,6 +18,7 @@ export default class Feed extends Component {
             dataPost: [],
             isToggleNotice:false,
             type:'nothing',
+            titleTxt:''
         }
     }
     
@@ -38,20 +39,24 @@ export default class Feed extends Component {
                 })
             }
             this.setState({
-                dataPost: postList
+                dataPost: postList,
             })
         })
     }
-    onSubmitcmp = (post) =>{
+        onSubmitcmp = (post) =>{
         
         const today = new Date();
-        
+        const hour = today.getHours() < 10 ? '0' + today.getHours() : today.getHours();
+        const minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes();
+        const date = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
+        const month = today.getMonth() < 10 ? '0' + today.getMonth() : today.getMonth();
+        const time = hour + ':' + minutes + ' --- ' + date + '/' + month + '/' + today.getFullYear();
         if(post.id === ''){
             firebase.database().ref('post').push({
                 desc:post.desc,
                 photo:this.state.photo,
                 userId: this.props.displayName.uid,
-                date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear(),
+                date:time,
             })
             this.setState({
                 isToggleNotice:true,
@@ -63,7 +68,7 @@ export default class Feed extends Component {
                 desc: post.desc,
                 photo: this.state.photo,
                 userId: this.props.displayName.uid,
-                date:today.getHours() + ':' + today.getMinutes() + ' --- ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
+                date:time
             })
             this.setState({
                 isToggleNotice:true,
@@ -125,7 +130,7 @@ export default class Feed extends Component {
         var newdata = dataPost[index];
         this.setState({
             newdata: newdata,
-            photo:newdata.photo,
+            titleTxt: 'Sửa',
         })
     }
 
@@ -148,11 +153,10 @@ export default class Feed extends Component {
             photo:null,
         })
     }
-
-
+    
 
     render() {
-        const {dataPost, photo, isToggleNotice} = this.state;
+        const {dataPost, photo, isToggleNotice, titleTxt} = this.state;
         dataPost.sort((a,b)=>{
             if(a.date.slice(16,20) > b.date.slice(16,20)){
                 return -1
@@ -205,6 +209,8 @@ export default class Feed extends Component {
                                     photo={photo}
                                     onUploadFile={this.onUploadFile}
                                     removeImage={this.removeImage}
+                                    postsList={this.props.postsList}
+                                    titleTxt={titleTxt}
                                 />
                             )
                         }
@@ -220,6 +226,8 @@ export default class Feed extends Component {
                                         displayName={this.props.displayName}
                                         upload={this.upload}
                                         photo={photo}
+                                        postsList={this.props.images}
+                                        titleTxt={titleTxt}
                                     />
                                 )
                             }

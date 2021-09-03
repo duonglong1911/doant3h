@@ -12,8 +12,18 @@ class RouterLink extends Component {
     render() {
         return (
             <Switch>
-                <Route path="/" exact><Home displayName={this.props.displayName}/></Route>
-                <Route path="/profile/:id" exact><Profile displayName={this.props.displayName}/></Route>
+                <Route path="/" exact>
+                    <Home 
+                        displayName={this.props.displayName}
+                        postsList={this.props.postsList} 
+                    />
+                </Route>
+                <Route path="/profile/:id" exact>
+                    <Profile 
+                        displayName={this.props.displayName}
+                        postsList={this.props.postsList}
+                    />
+                </Route>
                 <Route path="/imagesgallery/" exact>
                     <ImagesGallery 
                         postsList={this.props.postsList} 

@@ -39,12 +39,10 @@ const uiConfig = {
 
 firebase.initializeApp(config);
 function App() {
-
   const [theme, setTheme] = useState('light');
   const themeToggle = () => {
     theme ==='light' ? setTheme("dark") : setTheme("light");
   }
-
 
   const [usersList, setUsersList] = useState([]);
   const [postsList, setPostsList] = useState([])
@@ -104,7 +102,7 @@ function App() {
         })
     return () => unregisterAuthObserver();   
   },[]);
-  // console.log(postsList);
+
   localStorage.setItem('isSignedIn',isSignedIn)
   if (!isSignedIn) {
     
