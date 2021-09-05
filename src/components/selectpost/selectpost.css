@@ -14,7 +14,6 @@
 
 .selectpostImg {
     max-height: 600px;
-    width: 100%;
     object-fit: cover;
     border-radius: 4px;
     cursor: pointer;
@@ -57,4 +56,9 @@
     top: -100px;
     right: 100px;
     cursor: pointer;
+}
+.selectpostImages {
+    width: 70%;
+    display: flex;
+    justify-content: center;
 }

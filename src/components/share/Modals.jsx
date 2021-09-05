@@ -70,6 +70,8 @@ class Modals extends Component {
         })
     }
 
+
+    
     render() {
         const {isUploadFile, isEdit, photoEdit, desc} = this.state
         const {titleTxt, displayName, photo} = this.props;
@@ -96,6 +98,7 @@ class Modals extends Component {
                                 onChange={this.onChangeContent}
                                 name="desc"
                                 value={desc}
+                                autoFocus 
                                 />
                                 {!isEdit ? isUploadFile && (
                                     <div onClick={this.removeImage}>

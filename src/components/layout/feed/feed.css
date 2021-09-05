@@ -1,8 +1,27 @@
 .feed {
     flex: 6;
     /* background-color: #F0F2F5; */
+    position: relative;
 
 }
 .feedWrapper {
     padding: 20px;
 }
+.feedButton {
+    display: flex;
+    justify-content: center;
+    
+   
+}
+.feedButtonBtn {
+    width: 100px;
+    height: 50px;
+    background-color: #1475f3;
+    border-radius: 15px;
+    color: white;
+    border: none;
+}
+.feedButtonBtn:hover {
+    background-color: blue;
+}
+

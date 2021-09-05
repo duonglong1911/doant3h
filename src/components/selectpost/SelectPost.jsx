@@ -81,16 +81,13 @@ class SelectPost extends Component {
         }
     }
     
-    
-
-
     render() {
         const { isToggleChangeImg} = this.state;
         return (
             <div className ="selectpost" onClick={this.handleSelect}>
                 <div className="selectpostContent">
                     {isToggleChangeImg ? <NavigateBeforeIcon className="selectpostIcon selectpostIconPrev" onClick={this.handlePrevImg} /> : ''}
-                     <div key={this.state.index}>
+                     <div className="selectpostImages" key={this.state.index}>
                          
                          <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
                          

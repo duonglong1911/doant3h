@@ -22,12 +22,12 @@ export default class People extends Component {
             <div className="people">
                 <div className="container mt-5">
                     <h3 className="peopleTitle">Mọi người:</h3>
-                    <div className="row mt-5">
+                    <div className="row">
                         {usersList.map((user,index) => {
                         const {id, photo, displayName} = user;
                         return (
                             <div className="col-2" key={id}>
-                                <Card className="peopleCard">
+                                <Card className="peopleCard mt-5">
                                     <CardImg className="peopleCardImg" top width="100%" src={photo} alt="Card image cap" />
                                     <CardBody className="peopleCardBody">
                                     <CardTitle className="peopleCardName" tag="h5">{displayName}</CardTitle>

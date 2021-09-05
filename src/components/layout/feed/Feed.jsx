@@ -10,6 +10,7 @@ export default class Feed extends Component {
     constructor(props){
         super(props);
         this.state= {
+            visible:10,
             newdata: null,
             photo: null,
             desc:'',
@@ -153,10 +154,16 @@ export default class Feed extends Component {
             photo:null,
         })
     }
+    handleVisible = () => {
+        this.setState({
+            visible: this.state.visible + 10,
+        })
+    }
+    
     
 
     render() {
-        const {dataPost, photo, isToggleNotice, titleTxt} = this.state;
+        const {dataPost, photo, isToggleNotice, titleTxt,visible} = this.state;
         dataPost.sort((a,b)=>{
             if(a.date.slice(16,20) > b.date.slice(16,20)){
                 return -1
@@ -195,7 +202,7 @@ export default class Feed extends Component {
                     removeImage={this.removeImage}
                     newdata={this.state.newdata}
                     />
-                    {dataPost.map((post,index) => {
+                    {dataPost.slice(0,visible).map((post,index) => {
                         if(window.location.href === 'http://localhost:4000/'){
                             return(
                                 <Post key={post.id}
@@ -234,6 +241,10 @@ export default class Feed extends Component {
                             return false
                         }
                     })}
+               
+                <div className="feedButton">
+                    <button className="feedButtonBtn" onClick={this.handleVisible}>Load more</button>
+                </div>
                 </div>
                 { isToggleNotice ? <AlertNotification type={this.state.type} />:''}
             </div>

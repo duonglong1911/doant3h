@@ -6,9 +6,45 @@ import GroupIcon from '@material-ui/icons/Group';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import './sidebar.css'
 
+
 export default class SideBar extends Component {
+
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            isScroll:false,
+        };
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+        if(window.scrollY !==0 ) {
+            this.setState({
+                isScroll:true,
+            })
+        }
+        if(window.scrollY ===0 ) {
+            this.setState({
+                isScroll:false,
+            })
+        }
+    }
+
+    scrollTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        
+    }
+
     render() {
         return (
             <div className= "sidebar">
@@ -50,6 +86,10 @@ export default class SideBar extends Component {
                     </ul>
                     <button className="sidebarButton">Show More</button>
                     <hr className="sidebarHr"/>
+                    <div onClick={this.scrollTop} className={this.state.isScroll ? "feedButtonArrow" : "hide"}>
+                        <ArrowUpwardIcon className="feedButtonArrowIcon" />
+                    </div>
+                     
                 </div>
             </div>
         )
