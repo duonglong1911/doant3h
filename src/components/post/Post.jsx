@@ -32,7 +32,7 @@ export default class Post extends Component {
 }
 
     componentDidMount() {
-         if(window.location.href === 'http://localhost:4000/'){
+         if(window.location.pathname === '/'){
             const postsHaveImg = this.props.postsList.filter(el => el.photo)
             this.setState({
                 images: postsHaveImg,

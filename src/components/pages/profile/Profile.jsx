@@ -7,10 +7,28 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import Feed from './../../layout/feed/Feed';
+import SelectPost from './../../selectpost/SelectPost'
 
 
 class Profile extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      imagesOfUser:[]
+    }
+  }
+  componentDidMount() {
+    const listPost = this.props.postsList.filter(el => el.userId === this.props.displayName.uid)
+    const listImages= listPost.filter(el => el.photo !== undefined)
+    this.setState({
+      imagesOfUser:listImages,
+    })
+  }
+
+
   render() {
+    const {imagesOfUser} = this.state;
     return (
       <div className="profile">
         <div className="profileWrapper">
@@ -72,9 +90,27 @@ class Profile extends Component {
                       </a>
                     </li>
                   </ul>
+                  <hr/>
+                  <span className="profileIntroTitle">Ảnh</span>
+                  <div className="profileTotalImages">
+                    <div className="container">
+                      <div className="row">
+                        {
+                          imagesOfUser.map(image => {
+                            return (
+                              <div className="profileImageItem col-4">
+                              <img className="profileImageImg" src={image.photo} alt="" />
+                            </div>
+                            )
+                          })
+                        }
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="profileCenterFeed"> 
+                <div className="profileCenterFeed">
                   <Feed displayName={this.props.displayName}/>
+                  {/* <SelectPost /> */}
                 </div>
               </div>
             </div>

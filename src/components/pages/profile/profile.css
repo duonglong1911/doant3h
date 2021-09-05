@@ -76,6 +76,7 @@
 }
 
 .profileIntroList {
+    list-style: none;
     padding: 0px;
     margin: 0;
 }
@@ -90,4 +91,13 @@
 
 .profileIntroDes {
     text-decoration: none;
+}
+.container {
+    width: 100%;
+}
+.profileImageImg {
+    width: 100%;
+}
+.profileImageItem {
+    padding:  3px 3px;
 }
