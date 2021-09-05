@@ -81,6 +81,7 @@ export default class Feed extends Component {
              isToggleNotice:false,
             })
         }, 3000);
+        this.removeImage()
     }
     upload = (post) =>{
         const storage = firebase.storage();

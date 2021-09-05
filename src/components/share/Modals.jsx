@@ -37,7 +37,6 @@ class Modals extends Component {
             desc: '',
             file:'',
         })
-        this.removeImage();
     }
     onChangeContent = (e) =>{
         const target = e.target;
@@ -56,7 +55,7 @@ class Modals extends Component {
             desc: '',
             file:'',
         })
-        this.removeImage();
+        this.closeModal();
     }
 
     onUploadFile =(e) => {
@@ -66,7 +65,7 @@ class Modals extends Component {
         })
     }
     removeImage = () => {
-        this.props.removeImage()
+        this.props.removeImage();
         this.setState({
             isUploadFile:false,
             photoEdit:''
