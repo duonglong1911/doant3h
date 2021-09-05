@@ -15,7 +15,7 @@ export default class Home extends Component {
                         displayName={this.props.displayName}
                         postsList={this.props.postsList} 
                     />
-                    <Rightbar />
+                    <Rightbar usersList={this.props.usersList} />
                 </div>
                 {/* <SelectPost /> */}
             </div>

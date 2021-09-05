@@ -1,19 +1,11 @@
 import React, { Component } from 'react'
 import "./rightbar.css"
-import { Users } from "./../../../dataPost"
 
 export default class Rightbar extends Component {
+    
     render() {
-
-       const listUser = Users.map(user => ( 
-            <li className="sidebarFriend" key={user.id}>
-               <div className="sidebarFriendOnline">
-                    <img src={user.profilePictrue} alt="" className="sidebarFriendImg" />
-                    <span className="sidebarFriendOnlineLeb"></span>
-               </div>
-                <span className="sidebarFriendName">{user.userName}</span>
-            </li>
-        ))
+    const { usersList} = this.props;
+        
 
         return (
             <div className ="rightbar">
@@ -33,7 +25,17 @@ export default class Rightbar extends Component {
                     <div className="rightbarContent">
                         <h5 className="rightbarContentTitle">People:</h5>
                         <ul className="sidebarFriendList">
-                            {listUser} 
+                            {
+                                usersList.map(user => ( 
+                                    <li className="sidebarFriend" key={user.uid}>
+                                    <div className="sidebarFriendOnline">
+                                            <img src={user.photo} alt="" className="sidebarFriendImg" />
+                                            <span className="sidebarFriendOnlineLeb"></span>
+                                    </div>
+                                        <span className="sidebarFriendName">{user.displayName}</span>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>
                 </div>

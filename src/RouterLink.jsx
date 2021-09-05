@@ -16,6 +16,7 @@ class RouterLink extends Component {
                     <Home 
                         displayName={this.props.displayName}
                         postsList={this.props.postsList}
+                        usersList={this.props.usersList}
                     />
                 </Route>
                 <Route path="/profile/:id" exact>
