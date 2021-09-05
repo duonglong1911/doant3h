@@ -37,6 +37,7 @@ class Modals extends Component {
             desc: '',
             file:'',
         })
+        this.removeImage();
     }
     onChangeContent = (e) =>{
         const target = e.target;
@@ -55,6 +56,7 @@ class Modals extends Component {
             desc: '',
             file:'',
         })
+        this.removeImage();
     }
 
     onUploadFile =(e) => {
@@ -110,7 +112,6 @@ class Modals extends Component {
                                     </div>
                                  }
                                 <br /><br />
-                                {/* <button onClick={this.upload}>upload</button> */}
                                 <div style={{position: 'relative'}}>
                                 <div className="shareOptions shareOptions-modalpost">
                                         <div className="shareOption shareOption-modalpost">
