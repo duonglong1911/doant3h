@@ -18,7 +18,7 @@ class Profile extends Component {
           <div className="profileContent">
             <div className="profileTop">
               <img
-                src="assets/images/post1.jpg"
+                src="http://t3h.edu.vn/sites/default/files/untitled-4.jpg"
                 alt=""
                 className="profileCoverImg"
               />
@@ -31,7 +31,7 @@ class Profile extends Component {
             <div className="profileUserInfo">
               <h3 className="profileUsername">{this.props.displayName.displayName}</h3>
               <span className="profileUserDesc">
-                Contact for work:0366369782
+                Contact for work: {this.props.displayName.email}
               </span>
             </div>
 

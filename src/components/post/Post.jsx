@@ -18,11 +18,12 @@ export default class Post extends Component {
         this.setState({
             isChecked:1
         })
-        const a = this.state.images.map(el => {
+        this.state.images.map(el => {
             const index= this.state.images.findIndex(el => this.props.post.id === el.id)
             this.setState({
                 index:index,
             })
+            return false
         })
     } 
     handleSelect = () => {
@@ -31,15 +32,15 @@ export default class Post extends Component {
         })
 }
 
-    componentDidMount() {
-         if(window.location.href === 'http://localhost:4000/'){
-            const postsHaveImg = this.props.postsList.filter(el => el.photo)
-            this.setState({
-                images: postsHaveImg,
-            })
-         } else{
-                return false;
-    }}
+    // componentDidMount() {
+    //      if(window.location.href === 'http://localhost:4000/'){
+    //         const postsHaveImg = this.props.postsList.filter(el => el.photo)
+    //         this.setState({
+    //             images: postsHaveImg,
+    //         })
+    //      } else{
+    //             return false;
+    // }}
     
 
     render() {     
@@ -56,18 +57,12 @@ export default class Post extends Component {
                       upload={this.props.upload}
                       photo={this.props.photo}
                       titleTxt={this.props.titleTxt}
+                      closeModal={this.props.closeModal}
                       />
                     <div className="postCenter">
-                        <span className="postText">{post.desc}</span>
+                        <pre className="postText">{post.desc}</pre>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
                     </div>
-                    {/* <div className="postBottom">
-                        <div className="postBottomLeft">
-                        </div>
-                        <div className="postBottomRight">
-                            <span className="postCommentText">9 comments</span>
-                        </div>
-                    </div> */}
                 </div>
                 {this.state.isChecked=== 1 ? 
                     <SelectPost

@@ -125,7 +125,7 @@ export default class Header extends Component {
         </div>
         <div className="topbarRight">
           <div className="topbarIcons">
-          <Link to={"/profile/"+this.props.displayName.uid}>
+          <Link style={{textDecoration: 'none'}} to={"/profile/"+this.props.displayName.uid}>
           <div className="topbarIconItem">
             <img src={this.props.displayName.photoURL} alt="" className="topbarImg" />
             <span className="topbarUsername">{this.props.displayName.displayName.slice(this.props.displayName.displayName.lastIndexOf(' '), 1000)}</span>

@@ -23,6 +23,7 @@ class Share extends Component {
       };
 
       closeModal = () => {
+        this.props.removeImage()
         this.setState({
           modalIsOpen: false
         });

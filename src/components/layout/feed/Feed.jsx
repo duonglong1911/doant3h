@@ -12,7 +12,7 @@ export default class Feed extends Component {
         this.state= {
             visible:10,
             newdata: null,
-            photo: null,
+            photo: '',
             desc:'',
             date:'',
             userId:'',
@@ -23,9 +23,7 @@ export default class Feed extends Component {
         }
     }
     
-    componentDidMount(){
-        // const {desc, photo, date, userId, dataPost} = this.state
-        
+    componentDidMount(){      
         const firebaseStore = firebase.database().ref('post');
         firebaseStore.on('value', (res)=>{
             const data = res.val();
@@ -44,14 +42,18 @@ export default class Feed extends Component {
             })
         })
     }
+    componentWillUnmount(){
+        return this.state.dataPost
+    }
     onSubmitcmp = (post) =>{
         
         const today = new Date();
+        const second = today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds();
         const hour = today.getHours() < 10 ? '0' + today.getHours() : today.getHours();
         const minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes();
         const date = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
        const month = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1;
-        const time = hour + ':' + minutes + ' --- ' + date + '/' + month + '/' + today.getFullYear();
+        const time = hour + ':' + minutes + ':' + second + ' --- ' + date + '/' + month + '/' + today.getFullYear();
         if(post.id === ''){
             firebase.database().ref('post').push({
                 desc:post.desc,
@@ -130,11 +132,19 @@ export default class Feed extends Component {
         var {dataPost} = this.state;
         var index = this.findIndex(id);
         var newdata = dataPost[index];
-        this.setState({
+        if(dataPost[index].photo === undefined) {
+            this.setState({
             newdata: newdata,
-            photo:newdata.photo,
+            photo:'',
             titleTxt: 'Sửa',
-        })
+            })
+        } else {
+            this.setState({
+            newdata: newdata,
+            photo:dataPost[index].photo,
+            titleTxt: 'Sửa', 
+            })
+        }
     }
 
 
@@ -168,30 +178,32 @@ export default class Feed extends Component {
             visible: this.state.visible + 10,
         })
     }
-    
-    
-
     render() {
         const {dataPost, photo, isToggleNotice, titleTxt,visible} = this.state;
         dataPost.sort((a,b)=>{
-            if(a.date.slice(16,20) > b.date.slice(16,20)){
+            if(a.date.slice(19,23) > b.date.slice(19,23)){
                 return -1
             }
             else{
-                if(a.date.slice(13,15) > b.date.slice(13,15)){
+                if(a.date.slice(16,18) > b.date.slice(16,18)){
                     return -1
                 }
                 else{
-                    if(a.date.slice(10,12) > b.date.slice(10,12)){
+                    if(a.date.slice(15,17) > b.date.slice(15,17)){
                         return -1
                     }
                     else{
-                        if(a.date > b.date){
+                        if(a.date.slice(0,2) > b.date.slice(0,2)){
                             return -1
                         }
                         else{
                             if(a.date.slice(3,5) > b.date.slice(3,5)){
                                 return -1
+                            }
+                            else{
+                                if(a.date.slice(6,8) > b.date.slice(6,8)){
+                                    return -1
+                                }
                             }
                         }
                     }
@@ -226,9 +238,9 @@ export default class Feed extends Component {
                                     upload={this.upload}
                                     photo={photo}
                                     onUploadFile={this.onUploadFile}
-                                    removeImage={this.removeImage}
                                     postsList={this.props.postsList}
                                     titleTxt={titleTxt}
+                                    closeModal={this.closeModal}
                                 />
                             )
                         }
@@ -246,11 +258,12 @@ export default class Feed extends Component {
                                         photo={photo}
                                         postsList={this.props.images}
                                         titleTxt={titleTxt}
+                                        closeModal={this.closeModal}
                                     />
                                 )
                             }
-                            return false
                         }
+                        return false
                     })}
                
                 <div className="feedButton">

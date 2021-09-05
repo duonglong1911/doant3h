@@ -55,7 +55,6 @@ form {
 }
 
 .shareButton-modalpost {
-    margin: 10px 0;
     width: 100% !important;
 }
 
@@ -92,4 +91,5 @@ input {
     top: 0;
     bottom: 0;
     border-radius: 5px;
+    cursor: no-drop;
 }
