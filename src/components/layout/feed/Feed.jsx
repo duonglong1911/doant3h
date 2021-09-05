@@ -44,13 +44,13 @@ export default class Feed extends Component {
             })
         })
     }
-        onSubmitcmp = (post) =>{
+    onSubmitcmp = (post) =>{
         
         const today = new Date();
         const hour = today.getHours() < 10 ? '0' + today.getHours() : today.getHours();
         const minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes();
         const date = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
-        const month = today.getMonth() < 10 ? '0' + today.getMonth() : today.getMonth();
+       const month = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1;
         const time = hour + ':' + minutes + ' --- ' + date + '/' + month + '/' + today.getFullYear();
         if(post.id === ''){
             firebase.database().ref('post').push({
@@ -131,6 +131,7 @@ export default class Feed extends Component {
         var newdata = dataPost[index];
         this.setState({
             newdata: newdata,
+            photo:newdata.photo,
             titleTxt: 'Sửa',
         })
     }
@@ -152,6 +153,13 @@ export default class Feed extends Component {
     removeImage = () => {
         this.setState({
             photo:null,
+        })
+    }
+
+
+    openModal = () =>{
+        this.setState({
+            titleTxt: 'Tạo'
         })
     }
     handleVisible = () => {
@@ -177,11 +185,11 @@ export default class Feed extends Component {
                         return -1
                     }
                     else{
-                        if(a.date.slice(3,5) > b.date.slice(3,5)){
+                        if(a.date > b.date){
                             return -1
                         }
                         else{
-                            if(a.date > b.date){
+                            if(a.date.slice(3,5) > b.date.slice(3,5)){
                                 return -1
                             }
                         }
@@ -201,9 +209,11 @@ export default class Feed extends Component {
                     onUploadFile={this.onUploadFile}
                     removeImage={this.removeImage}
                     newdata={this.state.newdata}
+                    openModal={this.openModal}
+                    titleTxt={titleTxt}
                     />
                     {dataPost.slice(0,visible).map((post,index) => {
-                        if(window.location.href === 'http://localhost:4000/'){
+                        if(window.location.pathname === '/'){
                             return(
                                 <Post key={post.id}
                                     post={post} 

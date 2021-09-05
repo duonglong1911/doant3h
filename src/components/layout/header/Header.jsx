@@ -19,27 +19,92 @@ export default class Header extends Component {
   constructor(props) {
         super(props);
         this.state = {
-                value: 0 
+                value: 0,
+                keyword: '',
+                isSearch: false,
+                isSearchRespon: false
             };
         }
 
     handleToggleDarkmode= (e) => {
       console.log(e.target);
     }
+
+    onKeyDownSearch = (e) =>{
+      this.setState({
+        keyword: e.target.value,
+        isSearch: true
+      })
+    }
+    hideSearch = () =>{
+      this.setState({
+        keyword: '',
+        isSearch: false
+      })
+    }
+    componentDidMount(){
+      window.addEventListener('click', this.hideSearch)
+      window.addEventListener('resize', ()=>{
+        if(window.innerWidth >= 1024){
+          this.setState({
+            isSearchRespon: false,
+            isSearch: false,
+            keyword: ''
+          })
+        }
+      })
+    }
+    onClickShowSearch = () =>{
+        if(window.innerWidth <= 1023){
+          this.setState({
+            isSearchRespon: !this.state.isSearchRespon,
+            isSearch: false,
+            keyword: ''
+          })
+        } 
+    }
+
   render() {
     const handleChange = (event, newValue) => {
       this.setState({
         value:newValue
       })
     };
+    const {keyword, isSearch, isSearchRespon} = this.state
+    var {usersList} = this.props;
+    if(keyword){
+      usersList = usersList.filter(item=>{
+        return item.displayName.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+      })
+    }
 
     return (
       <div className="topbarContainer">
         <div className="topbarLeft">
           <span className="logo">NoteBook</span>
-          <div className="searchbar">
-            <Search className="searchIcon" />
-            <input type="text" className="searchInput" placeholder="Tìm kiếm"/>
+          <div>
+            <div className="">
+              <div className="searchbar">
+                <Search className="searchIcon" onClick={this.onClickShowSearch}/>
+                <input type="search" onChange={this.onKeyDownSearch} value={this.state.keyword} className="searchInput" placeholder="Tìm kiếm"/>
+              </div>
+              {isSearchRespon && <input type="search" onChange={this.onKeyDownSearch} value={this.state.keyword} className="searchInput1" placeholder="Tìm kiếm"/>}
+            </div>
+            {
+              isSearch && 
+              <div className="searchName">
+                {
+                  usersList.map((item,index)=>{
+                    return(
+                        <div key={index} className="searchName-child">
+                          <img src={item.photo} alt="" width="60px" height="60px" style={{objectFit: 'cover'}}/> 
+                          <span style={{marginLeft: '10px', fontSize: '16px'}}>{item.displayName}</span>
+                        </div>
+                    )
+                  })
+                }
+              </div> 
+            }
           </div>
         </div>
         <div className="topbarCenter">

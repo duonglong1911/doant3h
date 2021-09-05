@@ -159,15 +159,7 @@
         height: 140px;
     }
 }
-@media screen and (min-width:500px) and (max-width: 738px)  {
-    .searchInput {
-        display: block !important;
-        width: 50%;
-    }
-    .searchbar {
-        width: 60% !important;
-    }
-}
+
 
 @media screen and (max-width: 321px) {
     .MuiTab-root {
@@ -189,5 +181,9 @@
     .loginBtnText{
         font-size: 14px;
         padding: 5px 8px ;
+    }
+    .searchName {
+        top: 100%;
+        left: 0;
     }
 }

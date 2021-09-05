@@ -117,7 +117,10 @@ function App() {
           <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme } >
           <GlobalStyles />
             <StyledApp>
-            {isSignedIn && <Header handleToggleDarkmode={themeToggle} displayName={firebase.auth().currentUser}/>}
+            {isSignedIn && <Header 
+                usersList={usersList} 
+                handleToggleDarkmode={themeToggle} 
+                displayName={firebase.auth().currentUser}/>}
               <RouterLink 
               displayName={firebase.auth().currentUser} 
               isSignedIn={isSignedIn}

@@ -30,13 +30,13 @@
 }
 
 .searchbar {
-    width: 60%;
+    width: 80%;
     height: 40px;
-    margin-left:20px ;
+    margin-left: 20px;
     background-color: #eeeeee;
     border-radius: 40px;
     display: flex;
-    align-items:center ;
+    align-items: center;
 }
 
 .searchIcon {
@@ -44,11 +44,13 @@
     margin-left: 10px;
 }
 
-.searchInput {
+.searchInput,
+.searchInput1 {
     border: none;
     width: 80%;
     background-color: #eeeeee;
 }
+
 .searchInput:focus {
     outline: none;
 }
@@ -86,11 +88,13 @@
     align-items: center;
     justify-content: center;
 }
-.topbarIconItem:first-child{
+
+.topbarIconItem:first-child {
     border-radius: unset;
     background-color: unset;
     margin-right: 30px;
 }
+
 .topbarIconBadge {
     width: 20px;
     height: 20px;
@@ -114,6 +118,7 @@
     object-fit: cover;
     cursor: pointer;
 }
+
 .topbarUsername {
     font-size: 16px;
     font-weight: 500;
@@ -132,6 +137,7 @@
 .MuiTabs-indicator {
     height: 3px !important;
 }
+
 .MuiTabs-scroller {
     padding: 6px 0;
 }
@@ -139,40 +145,99 @@
 .PrivateTabIndicator-colorPrimary-2 {
     background-color: #1877f2 !important;
 }
+
 .MuiTab-textColorPrimary {
     color: #b0b3b8 !important;
 }
+
 .Mui-selected {
     color: #1877f2 !important;
 }
+
+.searchName {
+    position: absolute;
+    top: 100%;
+    left: 80px;
+    width: 25%;
+    height: 20rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.14);
+    overflow-y: scroll;
+    z-index: 9999;
+}
+
+.searchName-child {
+    position: relative;
+    padding: 12px 10px;
+
+}
+
+.searchInput1 {
+    position: absolute;
+    top: 100%;
+    left: 80px;
+    width: 50%;
+    outline: none;
+    border-radius: 40px;
+    padding: 5px 15px;
+}
+
 @media screen and (max-width: 1439px) {
-    .topbarIconItem:first-child{
+    .topbarIconItem:first-child {
         margin-right: 15px;
     }
 }
+
+@media screen and (max-width: 1023px) {
+    .searchName {
+        width: 50%;
+    }
+
+    .searchName {
+        top: 155%;
+    }
+}
+
 @media screen and (max-width: 767px) {
-    .MuiButtonBase-root{
+    .MuiButtonBase-root {
         padding: 0 !important;
     }
-    .topbarContainer{
+
+    .topbarContainer {
         padding-top: 5px;
         padding-bottom: 5px;
         flex-direction: column;
         height: auto !important;
     }
-    .topbarRight{
+
+    .topbarRight {
         width: 100%;
         display: block;
         padding: 8px 0;
     }
-    .topbarIcons{
+
+    .topbarIcons {
         width: 100%;
         flex-wrap: nowrap;
         justify-content: space-evenly;
         margin: 0;
     }
-    .topbarIconItem, .topbarIconItem:first-child{
+
+    .topbarIconItem,
+    .topbarIconItem:first-child {
         margin: 0;
     }
-    
+
+    .searchName {
+        width: 100%;
+        left: 0;
+    }
+
+    .searchInput1 {
+        top: 8px;
+        right: 65px;
+        width: 35%;
+        left: unset;
+    }
 }

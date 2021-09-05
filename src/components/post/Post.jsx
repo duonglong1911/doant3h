@@ -55,6 +55,7 @@ export default class Post extends Component {
                       displayName={this.props.displayName}
                       upload={this.props.upload}
                       photo={this.props.photo}
+                      titleTxt={this.props.titleTxt}
                       />
                     <div className="postCenter">
                         <span className="postText">{post.desc}</span>

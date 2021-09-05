@@ -13,7 +13,7 @@ class Modals extends Component {
             file:'',
             isUploadFile:false,
             isEdit:false,
-            photoEdit: ''
+            photoEdit: '',
         }
     }
     componentDidMount() {
@@ -67,6 +67,7 @@ class Modals extends Component {
         this.props.removeImage()
         this.setState({
             isUploadFile:false,
+            photoEdit:''
         })
     }
 

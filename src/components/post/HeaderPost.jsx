@@ -96,6 +96,7 @@ return (
                 upload={this.props.upload}
                 photo={this.props.photo}
                 newdata={this.props.newdata}
+                titleTxt={this.props.titleTxt}
                 />
 </div>
 );
