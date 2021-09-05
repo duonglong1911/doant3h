@@ -12,7 +12,7 @@ export default class Feed extends Component {
         this.state= {
             visible:10,
             newdata: null,
-            photo: null,
+            photo: '',
             desc:'',
             date:'',
             userId:'',
@@ -130,11 +130,23 @@ export default class Feed extends Component {
         var {dataPost} = this.state;
         var index = this.findIndex(id);
         var newdata = dataPost[index];
-        this.setState({
+        if(dataPost[index].photo === undefined) {
+            this.setState({
             newdata: newdata,
-            photo:newdata.photo,
+            photo:'',
             titleTxt: 'Sửa',
-        })
+            })
+        } else {
+            this.setState({
+            newdata: newdata,
+            photo:dataPost[index].photo,
+            titleTxt: 'Sửa', 
+            })
+        }
+
+        // setTimeout(() => {
+        //     console.log(this.state.photo);
+        // }, 3000);
     }
 
 
@@ -169,8 +181,6 @@ export default class Feed extends Component {
         })
     }
     
-    
-
     render() {
         const {dataPost, photo, isToggleNotice, titleTxt,visible} = this.state;
         dataPost.sort((a,b)=>{
