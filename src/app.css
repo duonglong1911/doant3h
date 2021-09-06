@@ -190,4 +190,7 @@
         width: 120px;
         height: 120px;
     }
+    .profileCenterIntro {
+        display: none;
+    }
 }

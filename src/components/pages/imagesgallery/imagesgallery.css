@@ -1,7 +1,5 @@
-
-
 .galleryCenter {
-    padding-top:30px;
+    padding-top: 30px;
     padding-bottom: 20px;
     background-color: white;
     border-radius: 10px;
@@ -27,26 +25,26 @@
     object-fit: cover;
 }
 
-.inputSearch{
+.inputSearch {
     width: 100%;
     text-align: center;
 }
-.inputSearch input{
+
+.inputSearch input {
     width: 30%;
     padding: 8px 10px;
-    border:1px solid rgba(0, 0, 0, 0.14);
+    border: 1px solid rgba(0, 0, 0, 0.14);
     outline: none;
 
 }
 
-.selectDate select{
+.selectDate select {
     padding: 8px 10px;
     outline: none;
     margin-right: 10px;
     cursor: pointer;
-    text-align: center;
 }
 
-.paginationPage{
+.paginationPage {
     margin-bottom: 50px;
 }

@@ -44,6 +44,9 @@ export default class Feed extends Component {
             })
         })
     }
+    componentWillUnmount(){
+        return this.state.dataPost
+    }
     onSubmitcmp = (post) =>{
         
         const today = new Date();
@@ -143,10 +146,6 @@ export default class Feed extends Component {
             titleTxt: 'Sửa', 
             })
         }
-
-        // setTimeout(() => {
-        //     console.log(this.state.photo);
-        // }, 3000);
     }
 
 
@@ -184,24 +183,29 @@ export default class Feed extends Component {
     render() {
         const {dataPost, photo, isToggleNotice, titleTxt,visible} = this.state;
         dataPost.sort((a,b)=>{
-            if(a.date.slice(16,20) > b.date.slice(16,20)){
+            if(a.date.slice(19,23) > b.date.slice(19,23)){
                 return -1
             }
             else{
-                if(a.date.slice(13,15) > b.date.slice(13,15)){
+                if(a.date.slice(16,18) > b.date.slice(16,18)){
                     return -1
                 }
                 else{
-                    if(a.date.slice(10,12) > b.date.slice(10,12)){
+                    if(a.date.slice(15,17) > b.date.slice(15,17)){
                         return -1
                     }
                     else{
-                        if(a.date > b.date){
+                        if(a.date.slice(0,2) > b.date.slice(0,2)){
                             return -1
                         }
                         else{
                             if(a.date.slice(3,5) > b.date.slice(3,5)){
                                 return -1
+                            }
+                            else{
+                                if(a.date.slice(6,8) > b.date.slice(6,8)){
+                                    return -1
+                                }
                             }
                         }
                     }
@@ -239,6 +243,7 @@ export default class Feed extends Component {
                                     removeImage={this.removeImage}
                                     postsList={this.props.postsList}
                                     titleTxt={titleTxt}
+                                    closeModal={this.closeModal}
                                 />
                             )
                         }
@@ -256,6 +261,7 @@ export default class Feed extends Component {
                                         photo={photo}
                                         postsList={this.props.images}
                                         titleTxt={titleTxt}
+                                        closeModal={this.closeModal}
                                     />
                                 )
                             }
@@ -268,6 +274,7 @@ export default class Feed extends Component {
                 </div>
                 </div>
                 { isToggleNotice ? <AlertNotification type={this.state.type} />:''}
+                
             </div>
         )
     }
