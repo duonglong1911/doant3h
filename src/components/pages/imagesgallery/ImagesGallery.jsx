@@ -70,15 +70,17 @@ class ImagesGallery extends Component {
         var {a, day, month, year} = this.state
 
         var getMonth = newdate.getMonth()+1;
+
+        var getday = newdate.getDate();
         currentImages = currentImages.filter(image=>{
             if(a === 'all'){
                 return image;
             }
             else if(a === 'day'){
-                return image.date.slice(0,2) === newdate.getDate().toString();
+                return image.date.slice(13,15) === (getday < 10 ? '0'+getday : getday).toString();
             }
             else if(a === 'month'){
-                return image.date.slice(3,5) === (getMonth < 10 ? '0'+getMonth : getMonth).toString();
+                return image.date.slice(16,18) === (getMonth < 10 ? '0'+getMonth : getMonth).toString();
             }
             else if(a === 'year'){
                 return image.date.indexOf(newdate.getFullYear()) !== -1;
@@ -91,7 +93,7 @@ class ImagesGallery extends Component {
                     return image;
                 }
                 else{
-                 return image.date.slice(0,2) === day.toString()
+                 return image.date.slice(13,15) === day.toString()
                 }
             }) 
         }
@@ -101,7 +103,7 @@ class ImagesGallery extends Component {
                     return image;
                 }
                 else{
-                    return image.date.slice(3,5) === month.toString()
+                    return image.date.slice(16,18) === month.toString()
                 }
             }) 
         }
@@ -120,7 +122,7 @@ class ImagesGallery extends Component {
                 <div className="galleryWrapp">
                     <div className="galleryTop container mt-3 mb-3">
                         <h3 className="galleryTopHeader">
-                            Member's photos
+                            Bộ sưu tập của mọi người:
                         </h3>
                     </div>
                     <div className="galleryCenter container">
@@ -141,10 +143,10 @@ class ImagesGallery extends Component {
                         </div>
                         <div className="galleryCenterButtons m-3 text-center">
                             <ButtonGroup>
-                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('all')}>All</Button>
-                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('day')}>Day </Button>
-                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('month')}>Month</Button>
-                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('year')}>Year</Button>
+                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('all')}>Tất cả</Button>
+                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('day')}>Theo ngày </Button>
+                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('month')}>Theo tháng</Button>
+                                    <Button color="primary" className="m-1" onClick={() => this.onClickFilter('year')}>Theo năm</Button>
                                 </ButtonGroup>
                         </div>
                         <div className="galleryCenterContent mt-5">

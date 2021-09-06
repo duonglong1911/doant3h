@@ -58,36 +58,38 @@ export default class SideBar extends Component {
                             <span className="sidebarUsername">{this.props.displayName.displayName}</span>
                         </li>
                         <li className="sidebarListItem">
-                            <GroupIcon htmlColor="blue"  className="sidebarIcon"/>
+                            <img src="assets/icons/people.png" alt="" />
                             <span className="sidebarListItemText">People</span>
                         </li>
                         
                         <li className="sidebarListItem">
-                            <ChatIcon className="sidebarIcon"/>
-                            <span className="sidebarListItemText">Chat</span>
+                            <img src="assets/icons/save.png" alt="" />
+                            <span className="sidebarListItemText">Đã lưu</span>
                         </li>
                         <li className="sidebarListItem">
-                            <PermMediaIcon htmlColor="tomato" className="sidebarIcon"/>
-                            <span className="sidebarListItemText">Images</span>
+                            <img src="assets/icons/group.png" alt="" />
+                            <span className="sidebarListItemText">Nhóm</span>
                         </li>
                         <li className="sidebarListItem">
-                            <OndemandVideoIcon className="sidebarIcon"/>
-                            <span className="sidebarListItemText">Video</span>
+                            <img src="assets/icons/images.png" alt="" />
+                            <span className="sidebarListItemText">Ảnh và Video</span>
                         </li>
                         <li className="sidebarListItem">
-                            <LocationOnIcon htmlColor="green" className="sidebarIcon"/>
-                            <span className="sidebarListItemText">Location</span>
+                            <img src="assets/icons/event.png" alt="" />
+                            <span className="sidebarListItemText">Sự kiện</span>
                         </li>
                         <li className="sidebarListItem">
-                            <RssFeed className="sidebarIcon"/>
-                            <span className="sidebarListItemText">Feed</span>
+                            <img src="assets/icons/weather.png" alt="" />
+                            <span className="sidebarListItemText">Thời tiết</span>
                         </li>
                         <li className="sidebarListItem">
-                            <BookmarkIcon htmlColor="goldenrod" className="sidebarIcon"/>
-                            <span className="sidebarListItemText">BookMark</span>
+                            <div className="sidebarListItemBtn">
+                                <i className="fas fa-chevron-down sidebarListItemBtnIcon"></i>
+                            </div>
+                            <span className="sidebarListItemText">Xem thêm</span>
                         </li>
                     </ul>
-                    <button className="sidebarButton">Show More</button>
+                    
                     <hr className="sidebarHr"/>
                     <div onClick={this.scrollTop} className={this.state.isScroll ? "feedButtonArrow" : "hide"}>
                         <ArrowUpwardIcon className="feedButtonArrowIcon" />

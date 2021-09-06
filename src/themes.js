@@ -10,7 +10,8 @@ export const darkTheme = {
     fontColor:'#e4e6eb',
     backgroundColor:'#242526',
     colorInput:'#242526',
-    colorIconHeader:'#b0b3b8'
+    colorIconHeader:'#b0b3b8',
+    colorHover:'#4E4F50'
 }
 
 export const GlobalStyles = createGlobalStyle`
@@ -67,7 +68,21 @@ export const GlobalStyles = createGlobalStyle`
     }
     .peopleCardBody {
         background-color:${(props) => props.theme.colorInput};
-
+    }
+    .topbarCenterIconItem:hover {
+        background-color:${(props) => props.theme.colorHover};
+    }
+    .topbarCenterIconItem svg path {
+        fill:${(props) => props.theme.colorIconHeader};
+    }
+    .searchName {
+        background-color:${(props) => props.theme.colorHover};
+    }
+    .searchbar input {
+        color:${(props) => props.theme.fontColor};
+    }
+    #search::-webkit-search-cancel-button{
+        color:${(props) => props.theme.fontColor};
     }
     
 `;

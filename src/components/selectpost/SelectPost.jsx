@@ -25,8 +25,32 @@ class SelectPost extends Component {
     handleCloseForm = () => {
         this.props.handleSelect();
     }
+
+
+    componentDidMount() {
+         if(window.location.pathname === '/imagesgallery') {
+            this.setState({
+                imageUrl:this.props.image,
+                length: this.props.postsList.length,
+            })
+        } else if(window.location.pathname === '/'){
+            this.setState({
+                isToggleChangeImg:true,
+                current: this.props.index,
+                length: this.props.images.length,
+                imageUrl:this.props.post.photo,
+            })
+        } else {
+            this.setState({
+                isToggleChangeImg:false,
+                current: this.props.index,
+                length: this.props.images.length,
+                imageUrl:this.props.post.photo,
+            })
+        }
+    }
     handleNextImg = () => {
-        if(this.state.current === 1) {
+        if(this.state.current === 0) {
             this.setState({
                 current : this.state.length -1
             })
@@ -57,32 +81,12 @@ class SelectPost extends Component {
         })
         }
     }
-    componentDidMount() {
-        
-         if(window.location.pathname === '/imagesgallery') {
-            this.setState({
-                imageUrl:this.props.image,
-                length: this.props.postsList.length,
-            })
-        } else if(window.location.pathname === '/'){
-            this.setState({
-                isToggleChangeImg:true,
-                current: this.props.index,
-                length: this.props.images.length,
-                imageUrl:this.props.post.photo,
-            })
-        } else {
-            this.setState({
-                isToggleChangeImg:false,
-                current: this.props.index,
-                length: this.props.images.length,
-                imageUrl:this.props.post.photo,
-            })
-        }
-    }
+    
     
     render() {
         const { isToggleChangeImg} = this.state;
+        console.log(this.state.current);
+        // console.log(this.state.imageUrl);
         return (
             <div className ="selectpost" onClick={this.handleSelect}>
                 <div className="selectpostContent">

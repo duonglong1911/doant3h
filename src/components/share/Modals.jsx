@@ -96,7 +96,7 @@ class Modals extends Component {
                             <form action="" onSubmit={this.onSubmit}>
                                 <textarea rows="5" cols="40" 
                                 className="shareInput shareInput-modalpost" 
-                                placeholder="What's in your mind ?"
+                                placeholder="Bạn đang nghĩ gì thế?"
                                 onChange={this.onChangeContent}
                                 name="desc"
                                 value={desc}
@@ -116,7 +116,7 @@ class Modals extends Component {
                                         <div className="shareOption shareOption-modalpost">
                                             <input type="file" className="overflow" name="file" onChange={this.onUploadFile}/>
                                             <PermMedia htmlColor="tomato" className="shareIcon"/>
-                                            <span className="shareOptionText">Photo or Video</span>
+                                            <span className="shareOptionText">Ảnh/Video</span>
                                         </div>
                                         <div className="shareOption ">
                                             <Label htmlColor="blue"  className="shareIcon"/>
@@ -124,17 +124,17 @@ class Modals extends Component {
                                         </div>
                                         <div className="shareOption">
                                             <Room htmlColor="green"  className="shareIcon"/>
-                                            <span className="shareOptionText">Location</span>
+                                            <span className="shareOptionText">Địa điểm</span>
                                         </div>
                                         <div className="shareOption">
                                             <EmojiEmotions htmlColor="goldenrod"   className="shareIcon"/>
-                                            <span className="shareOptionText">Feelings</span>
+                                            <span className="shareOptionText">Cảm xúc</span>
                                         </div>
                                     
                                 </div>
                                 {isEdit && <div className="bg-gray"></div>}
                                 </div>
-                                <button className="shareButton shareButton-modalpost" type="submit">Share</button>
+                                <button className="shareButton shareButton-modalpost" type="submit">Đăng</button>
                             </form>
                         </div>
                     </div>

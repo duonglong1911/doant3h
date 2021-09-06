@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import "./header.css";
 import { Search, Chat, ExitToApp } from "@material-ui/icons"
-import HomeIcon from '@material-ui/icons/Home';
-import GroupIcon from '@material-ui/icons/Group';
-import PermMediaIcon from '@material-ui/icons/PermMedia';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
-import ContactSupportIcon from '@material-ui/icons/ContactSupport';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom'
 import firebase from 'firebase';
 
@@ -91,7 +84,7 @@ export default class Header extends Component {
                 <Search className="searchIcon" onClick={this.onClickShowSearch}/>
                 <input type="search" onChange={this.onKeyDownSearch} value={this.state.keyword} className="searchInput" placeholder="Tìm kiếm"/>
               </div>
-              {isSearchRespon && <input type="search" onChange={this.onKeyDownSearch} value={this.state.keyword} className="searchInput1" placeholder="Tìm kiếm"/>}
+              {isSearchRespon && <input id="search" type="search" onChange={this.onKeyDownSearch} value={this.state.keyword} className="searchInput1" placeholder="Tìm kiếm"/>}
             </div>
             {
               isSearch && 

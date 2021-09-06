@@ -11,7 +11,7 @@ export default class Rightbar extends Component {
             <div className ="rightbar">
                 <div className="rightbarWrapper">
                     <div className="rightbarTop">
-                        <h5 className="rightbarTopTitle">Developed By:</h5>
+                        <h5 className="rightbarTopTitle">Được phát triển bởi:</h5>
                         <div className="rightbarTopDev">
                             <img src="/assets/images/user2.jpg" alt="" className="rightbarDevImg" />
                             <span className="rightbarTopName">Hải Long</span>
@@ -23,7 +23,7 @@ export default class Rightbar extends Component {
                     </div>
                     <hr className="rightbarHr" />
                     <div className="rightbarContent">
-                        <h5 className="rightbarContentTitle">People:</h5>
+                        <h5 className="rightbarContentTitle">Mọi người:</h5>
                         <ul className="sidebarFriendList">
                             {
                                 usersList.map(user => ( 

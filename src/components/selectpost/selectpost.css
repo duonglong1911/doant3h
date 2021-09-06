@@ -9,6 +9,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: opacity .4s ease, transform .5s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
 }
 
 

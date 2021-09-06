@@ -4,6 +4,7 @@ import ".//feed.css"
 import Post from '../../post/Post';
 import firebase from 'firebase';
 import AlertNotification from './../alertNotification/AlertNotification'
+import Loading from '../loading/Loading';
 
 
 export default class Feed extends Component {
@@ -19,12 +20,16 @@ export default class Feed extends Component {
             dataPost: [],
             isToggleNotice:false,
             type:'nothing',
-            titleTxt:''
+            titleTxt:'',
+            loading:false,
         }
     }
     
     componentDidMount(){
         // const {desc, photo, date, userId, dataPost} = this.state
+        this.setState({
+            loading:true,
+        })
         
         const firebaseStore = firebase.database().ref('post');
         firebaseStore.on('value', (res)=>{
@@ -41,6 +46,7 @@ export default class Feed extends Component {
             }
             this.setState({
                 dataPost: postList,
+                loading:false,
             })
         })
     }
@@ -50,11 +56,12 @@ export default class Feed extends Component {
     onSubmitcmp = (post) =>{
         
         const today = new Date();
+        const second = today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds();
         const hour = today.getHours() < 10 ? '0' + today.getHours() : today.getHours();
         const minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes();
         const date = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
        const month = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1;
-        const time = hour + ':' + minutes + ' --- ' + date + '/' + month + '/' + today.getFullYear();
+        const time = hour + ':' + minutes + ':' + second + ' --- ' + date + '/' + month + '/' + today.getFullYear();
         if(post.id === ''){
             firebase.database().ref('post').push({
                 desc:post.desc,
@@ -215,6 +222,7 @@ export default class Feed extends Component {
         })
         return (
             <div className ="feed">
+                { this.state.loading ? <Loading/> :
                 <div className="feedWrapper">
                     <Share onChangeContent={this.onChangeContent}
                     onSubmitcmp={this.onSubmitcmp} 
@@ -272,9 +280,9 @@ export default class Feed extends Component {
                 <div className="feedButton">
                     <button className="feedButtonBtn" onClick={this.handleVisible}>Load more</button>
                 </div>
-                </div>
                 { isToggleNotice ? <AlertNotification type={this.state.type} />:''}
-                
+                </div>
+                }
             </div>
         )
     }

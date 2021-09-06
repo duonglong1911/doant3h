@@ -35,14 +35,14 @@ class Share extends Component {
                 <div className="shareWrapper">
                     <div className="shareTop">
                         <img className="shareProfileImg" src={this.props.displayName.photoURL} alt="" />
-                        <input type="text" className="shareInput" placeholder="What's in your mind ?" onClick={this.openModal}/>
+                        <input type="text" className="shareInput" placeholder="Bạn đang nghĩ gì thế?" onClick={this.openModal}/>
                     </div>
                     <hr className="shareHr" />
                     <div className="shareBottom">
                         <div className="shareOptions">
                             <div className="shareOption">
                                 <PermMedia htmlColor="tomato" className="shareIcon"/>
-                                <span className="shareOptionText">Photo or Video</span>
+                                <span className="shareOptionText">Ảnh/Video</span>
                             </div>
                             <div className="shareOption">
                                 <Label htmlColor="blue"  className="shareIcon"/>
@@ -50,11 +50,11 @@ class Share extends Component {
                             </div>
                             <div className="shareOption">
                                 <Room htmlColor="green"  className="shareIcon"/>
-                                <span className="shareOptionText">Location</span>
+                                <span className="shareOptionText">Địa điểm</span>
                             </div>
                             <div className="shareOption">
                                 <EmojiEmotions htmlColor="goldenrod"   className="shareIcon"/>
-                                <span className="shareOptionText">Feelings</span>
+                                <span className="shareOptionText">Cảm xúc</span>
                             </div>
                         </div>
                         

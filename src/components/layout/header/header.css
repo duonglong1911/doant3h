@@ -151,8 +151,11 @@
     box-shadow: none !important;
 }
 
+.topbarCenterIconItem svg path {
+    fill:#747474 !important;
+}
 
-.active path {
+.active svg path {
     color: #1877f2 !important;
     fill:#1877f2 !important;
 }

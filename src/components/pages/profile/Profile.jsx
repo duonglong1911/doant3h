@@ -67,7 +67,7 @@ class Profile extends Component {
                     </li>
                     <li className="profileIntroItem">
                       <SchoolIcon className="profileIntroIcon" />
-                      <span className="profileIntroDes">Học tại Hà Nội</span>
+                      <span className="profileIntroDes">Học tại Viện công nghệ thông tin T3H</span>
                     </li>
                     <li className="profileIntroItem">
                       <HomeWorkIcon className="profileIntroIcon" />
