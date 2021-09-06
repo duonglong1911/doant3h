@@ -44,6 +44,9 @@ export default class SideBar extends Component {
         });
         
     }
+    componentWillUnmount(){
+        return false;
+    }
 
     render() {
         return (

@@ -25,6 +25,9 @@
     .topbarUsername {
         display: none;
     }
+    .topbarCenterIconItem {
+        padding: 0 40px;
+    }
 }
 
 /* Mobile & Tablet */
@@ -46,6 +49,9 @@
         width: 40px;
         height: 40px;
         margin-left:5px
+    }
+    .topbarCenterIconItem {
+        padding: 0 30px
     }
 }
 
@@ -114,6 +120,7 @@
     }
     .feed {
         width: 100% !important;
+        margin-bottom: 100px;
     }
     .feedWrapper {
         padding: 0;
@@ -150,6 +157,18 @@
     .profileCenterIntro {
         position: initial;
         padding-left: 20px;
+    }
+    .topbarCenterIconItem {
+        width: 25%;
+        padding: 0 40px;
+    }
+    .topbarCenterIcons {
+        background-color: white;
+        width: 100% !important;
+        padding: 0;
+    }
+    .people {
+        margin-bottom: 100px;
     }
 }
 

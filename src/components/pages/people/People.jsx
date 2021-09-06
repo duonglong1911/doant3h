@@ -26,7 +26,7 @@ export default class People extends Component {
                         {usersList.map((user,index) => {
                         const {id, photo, displayName} = user;
                         return (
-                            <div className="col-2" key={id}>
+                            <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6" key={id}>
                                 <Card className="peopleCard mt-5">
                                     <CardImg className="peopleCardImg" top width="100%" src={photo} alt="Card image cap" />
                                     <CardBody className="peopleCardBody">

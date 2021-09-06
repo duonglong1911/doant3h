@@ -30,7 +30,7 @@ class Profile extends Component {
   render() {
     const {imagesOfUser} = this.state;
     return (
-      <div className="profile">
+      <div className="profile" key={this.props.displayName.uid}>
         <div className="profileWrapper">
           <div className="a"></div>
           <div className="profileContent">
@@ -58,7 +58,7 @@ class Profile extends Component {
               <div className="profileCenterContent">
                 <div className="profileCenterIntro">
                   <span className="profileIntroTitle">Giới thiệu</span>
-                  <ul className="profileIntroList">
+                  <ul className="profileIntroList" key={this.props.displayName}>
                     <li className="profileIntroItem">
                       <WorkIcon className="profileIntroIcon" />
                       <span className="profileIntroDes">
@@ -98,7 +98,7 @@ class Profile extends Component {
                         {
                           imagesOfUser.map(image => {
                             return (
-                              <div className="profileImageItem col-4">
+                              <div className="profileImageItem col-4" key={image.id}>
                               <img className="profileImageImg" src={image.photo} alt="" />
                             </div>
                             )
