@@ -3,7 +3,7 @@ import './selectpost.css'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import CloseIcon from '@material-ui/icons/Close';
-
+import {Spring} from 'react-spring'
 
 class SelectPost extends Component {
    
@@ -82,24 +82,33 @@ class SelectPost extends Component {
         }
     }
     
+               
     
     render() {
         const { isToggleChangeImg} = this.state;
-        console.log(this.state.current);
-        // console.log(this.state.imageUrl);
         return (
-            <div className ="selectpost" onClick={this.handleSelect}>
-                <div className="selectpostContent">
-                    {isToggleChangeImg ? <NavigateBeforeIcon className="selectpostIcon selectpostIconPrev" onClick={this.handlePrevImg} /> : ''}
-                     <div className="selectpostImages" key={this.state.index}>
-                         
-                         <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
-                         
-                     </div>
-                      <CloseIcon className="selectCloseIcon" onClick={this.handleCloseForm}/>
-                    {isToggleChangeImg ? <NavigateNextIcon className= "selectpostIcon selectpostIconNext" onClick={this.handleNextImg}/> : ''}
+        <Spring
+            from={{ opacity:0}}
+            to={{ opacity:1}}
+            config={{delay:1000}}
+        >
+            {props => 
+                <div style={props}>
+                    <h1>Hello</h1>
+                        <div className ="selectpost" onClick={this.handleSelect}>
+                            <div className="selectpostContent">
+                                {isToggleChangeImg ? <NavigateBeforeIcon className="selectpostIcon selectpostIconPrev" onClick={this.handlePrevImg} /> : ''}
+                                <div className="selectpostImages" key={this.state.index}>
+                                            <img src={this.state.imageUrl} alt="postImg" className="selectpostImg"/>
+                                </div>
+                                <CloseIcon className="selectCloseIcon" onClick={this.handleCloseForm}/>
+                                {isToggleChangeImg ? <NavigateNextIcon className= "selectpostIcon selectpostIconNext" onClick={this.handleNextImg}/> : ''}
+                            </div>
+                        </div>
                 </div>
-            </div>
+            }
+        </Spring>
+                
         );
     }
 }

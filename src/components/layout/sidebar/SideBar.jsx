@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import { RssFeed } from '@material-ui/icons';
-import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
-import ChatIcon from '@material-ui/icons/Chat';
-import GroupIcon from '@material-ui/icons/Group';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import PermMediaIcon from '@material-ui/icons/PermMedia';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import './sidebar.css'
 
 
 export default class SideBar extends Component {
+    _isMounted = false;
 
     constructor(props)
     {
@@ -21,6 +15,7 @@ export default class SideBar extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
         window.addEventListener('scroll', this.handleScroll);
     }
 
@@ -44,9 +39,12 @@ export default class SideBar extends Component {
         });
         
     }
-    componentWillUnmount(){
-        return false;
-    }
+    componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
 
     render() {
         return (

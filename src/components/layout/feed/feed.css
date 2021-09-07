@@ -22,6 +22,6 @@
     border: none;
 }
 .feedButtonBtn:hover {
-    background-color: blue;
+    filter: brightness(80%);
 }
 

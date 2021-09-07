@@ -9,9 +9,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity .4s ease, transform .5s ease-in-out;
+    /* transition: opacity .4s ease, transform .5s ease-in-out;
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1); */
 }
 
 
@@ -59,9 +59,23 @@
     top: -100px;
     right: 100px;
     cursor: pointer;
+    background-color: #333;
+}
+.selectCloseIcon:hover {
+    color: red;
 }
 .selectpostImages {
     width: 70%;
     display: flex;
     justify-content: center;
+}
+.selectpostIconNext,
+.selectpostIconPrev {
+    background-color: rgb(112, 112, 112);
+    border-radius: 50%;
+}
+.selectpostIconPrev:hover, 
+.selectpostIconNext:hover {
+    background-color: #E4E6EB;
+    color: #333;
 }

@@ -15,6 +15,7 @@ constructor(props){
     }
 }
 componentDidMount() {
+    this._isMounted = true;
     Modal.setAppElement('body');
     const firebaseStore = firebase.database().ref('user');
         firebaseStore.on('value', (res)=>{
@@ -59,6 +60,9 @@ onEdit = () =>{
   this.props.onEdit(this.props.post.id);
   this.onClickToggle()
 }
+componentWillUnmount() {
+    this._isMounted = false;
+  }
 render() {
 var {post} = this.props;
 const {isToggle, modalIsOpen, dataUser} = this.state;

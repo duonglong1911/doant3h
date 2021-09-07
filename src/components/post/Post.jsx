@@ -18,11 +18,12 @@ export default class Post extends Component {
         this.setState({
             isChecked:1
         })
-        const a = this.state.images.map(el => {
+        this.state.images.map(el => {
             const index= this.state.images.findIndex(el => this.props.post.id === el.id)
             this.setState({
                 index:index,
             })
+            return 0;
         })
     } 
     handleSelect = () => {
@@ -70,15 +71,15 @@ export default class Post extends Component {
                     </div> */}
                 </div>
                 {this.state.isChecked=== 1 ? 
-                    <SelectPost
-                        postID ={post.id}
-                        index={this.state.index}
-                        handleSelect={this.handleSelect}
-                        postsList={this.props.postsList} 
-                        images={this.state.images}
-                        post={post}
-
-                    /> : ''
+                                <SelectPost
+                                postID ={post.id}
+                                index={this.state.index}
+                                handleSelect={this.handleSelect}
+                                postsList={this.props.postsList} 
+                                images={this.state.images}
+                                post={post}
+                            />
+                     : ''
                 }
             </div>
         )

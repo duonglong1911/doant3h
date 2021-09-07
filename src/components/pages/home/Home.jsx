@@ -6,6 +6,13 @@ import './home.css'
 
 
 export default class Home extends Component {
+    _isMounted = false;
+   componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
     render() {
         return (
             <div>

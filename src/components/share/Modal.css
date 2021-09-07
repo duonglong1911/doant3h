@@ -20,9 +20,6 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
 }
 
-.form-Modalpost {
-    padding: 20px;
-}
 
 .modalpost-p {
     padding: 20px;
@@ -54,8 +51,8 @@ form {
     border-radius: 5px;
 }
 
+
 .shareButton-modalpost {
-    margin: 10px 0;
     width: 100% !important;
 }
 
@@ -92,4 +89,15 @@ input {
     top: 0;
     bottom: 0;
     border-radius: 5px;
+    cursor: no-drop;
+}
+.menu-child {
+    z-index: 999;
+}
+.modalpost-p button svg:hover {
+    color: red;
+}
+.form-Modalpost {
+    padding: 20px;
+    background-color: white !important;
 }

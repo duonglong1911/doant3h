@@ -36,6 +36,7 @@ class Modals extends Component {
         this.setState({
             desc: '',
             file:'',
+            isUploadFile: false
         })
     }
     onChangeContent = (e) =>{
@@ -68,7 +69,6 @@ class Modals extends Component {
         this.props.removeImage();
         this.setState({
             isUploadFile:false,
-            photoEdit:''
         })
     }
 
@@ -134,7 +134,12 @@ class Modals extends Component {
                                 </div>
                                 {isEdit && <div className="bg-gray"></div>}
                                 </div>
-                                <button className="shareButton shareButton-modalpost" type="submit">Đăng</button>
+                                <div style={{position: 'relative', margin: '10px 0'}}>
+                                    {
+                                        desc === '' && isUploadFile === false ? <div className="bg-gray"></div> : false
+                                    }
+                                    <button className="shareButton shareButton-modalpost" type="submit">Share</button>
+                                </div>
                             </form>
                         </div>
                     </div>

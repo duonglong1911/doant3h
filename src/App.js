@@ -14,14 +14,15 @@ const StyledApp = styled.div`
 `
 
 const config = {
-  apiKey: "AIzaSyAGKQy0I3gi1LvjrcTglcZghqB7DG8FVDc",
-  authDomain: "notebook-993f2.firebaseapp.com",
-  projectId: "notebook-993f2",
-  storageBucket: "notebook-993f2.appspot.com",
-  messagingSenderId: "206579832087",
-  appId: "1:206579832087:web:562e8007ed170224d59352",
-  measurementId: "G-VSHKGQTY0W"
+  apiKey: process.env.REACT_APP_FIREBASE_API,
+  authDomain:process.env.REACT_APP_FIREBASE_AUTH_DOMAIN ,
+  projectId:process.env.REACT_APP_FIREBASE_PROJECT_ID ,
+  storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET ,
+  messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDERID ,
+  appId:process.env.REACT_APP_FIREBASE_APP_ID ,
+  measurementId:process.env.REACT_APP_FIREBASE_MEASUREMEN_ID
 };
+console.log(process.env.REACT_APP_FIREBASE_API);
 
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
@@ -39,7 +40,7 @@ const uiConfig = {
 
 firebase.initializeApp(config);
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme'));
   const themeToggle = () => {
     theme ==='light' ? setTheme("dark") : setTheme("light");
   }
@@ -104,6 +105,7 @@ function App() {
   },[]);
 
   localStorage.setItem('isSignedIn',isSignedIn)
+  localStorage.setItem('theme',theme)
   if (!isSignedIn) {
     
     return (

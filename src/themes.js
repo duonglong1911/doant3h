@@ -84,5 +84,29 @@ export const GlobalStyles = createGlobalStyle`
     #search::-webkit-search-cancel-button{
         color:${(props) => props.theme.fontColor};
     }
-    
+    .page-link {
+        background-color: ${(props) => props.theme.body};
+    }
+    .selectDate select {
+        background-color: ${(props) => props.theme.body};
+        color:${(props) => props.theme.fontColor};
+    }
+    .modalpost-p {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
+    .modalpost-p button {
+        background-color: ${(props) => props.theme.body};
+    }
+    .modalpost-p button svg {
+        color:${(props) => props.theme.fontColor};
+    }
+    .modalpost-p h3 {
+        color:${(props) => props.theme.fontColor};
+    }
+    .form-Modalpost {
+        background-color: ${(props) => props.theme.body} !important;
+    }
+    .shareTop h4, .shareOptionText {
+        color:${(props) => props.theme.fontColor} !important;
+    }
 `;

@@ -79,6 +79,9 @@
     color: aliceblue;
     animation: show_Arrow 1s ease forwards;
 }
+.feedButtonArrow:hover {
+    filter:brightness(80%)
+}
 
 .sidebarListItemBtn {
     width: 40px;

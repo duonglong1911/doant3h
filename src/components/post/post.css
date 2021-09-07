@@ -55,7 +55,7 @@
     cursor: pointer;
 }
 .postImg:hover {
-    filter:opacity(.8) 
+    filter: brightness(80%)
 }
 
 .btn-show {

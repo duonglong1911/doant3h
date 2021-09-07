@@ -27,7 +27,7 @@ class ImagesGallery extends Component {
             componentDidMount(){
                 const newdate = new Date();
                 const newYear = newdate.getFullYear();
-                var monthLetter = ["", "January", 'February', "March", "April", "May", "June", "July", 'August', "September", "October", 'November', 'December']
+                var monthLetter = ["", "Tháng 1", 'Tháng 2', "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", 'Tháng 8', "Tháng 9", "Tháng 10", 'Tháng 11', 'Tháng 12']
                 var day = document.getElementById('day');
                 for(let i = 1; i <= 31; i++){
                    day.innerHTML += '<option value='+(i<10?"0"+i:i)+'>'+(i<10?"0"+i:i)+'</option>'
