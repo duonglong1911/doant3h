@@ -101,6 +101,6 @@
     object-fit: cover;
 }
 .profileImageItem {
-    padding:  3px 3px;
+    padding:  3px 3px !important;
     height: 100px;
 }

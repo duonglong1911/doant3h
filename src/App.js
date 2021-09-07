@@ -20,9 +20,9 @@ const config = {
   storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET ,
   messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDERID ,
   appId:process.env.REACT_APP_FIREBASE_APP_ID ,
-  measurementId:process.env.REACT_APP_FIREBASE_MEASUREMEN_ID
+  measurementId:process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
-console.log(process.env.REACT_APP_FIREBASE_API);
+
 
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
