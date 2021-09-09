@@ -115,4 +115,13 @@ export const GlobalStyles = createGlobalStyle`
     .functionTextContent, .functionTextHeader {
         color:${(props) => props.theme.fontColor};
     }
+    .peopleListOption {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
+    .peopleOptionItemBtn {
+        background-color: ${(props) => props.theme.body} !important;
+    }
+    .peopleOptionItem:hover {
+        background-color: ${(props) => props.theme.body} !important;
+    }
 `;
