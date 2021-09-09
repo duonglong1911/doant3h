@@ -142,4 +142,10 @@ export const GlobalStyles = createGlobalStyle`
     .sidebarListItemBtn {
         background-color: ${(props) => props.theme.colorInputComment};
     }
+    .shareInput  {
+        color:${(props) => props.theme.fontColor};
+    }
+    .menu-child li {
+        background-color: ${(props) => props.theme.body} !important;
+    }
 `;
