@@ -50,9 +50,12 @@ export default class Feed extends Component {
             })
         })
     }
-    componentWillUnmount(){
-        return this.state.dataPost
-    }
+    componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
     onSubmitcmp = (post) =>{
         
         const today = new Date();
@@ -278,7 +281,7 @@ export default class Feed extends Component {
                     })}
                
                 <div className="feedButton">
-                    <button className="feedButtonBtn" onClick={this.handleVisible}>Load more</button>
+                    <button className="feedButtonBtn" onClick={this.handleVisible}>Xem thêm <i className="fas fa-sort-down feedBtnIcon"></i></button>
                 </div>
                 { isToggleNotice ? <AlertNotification type={this.state.type} />:''}
                 </div>

@@ -14,11 +14,76 @@ export default class Introduce extends Component {
         
         return (
             <div className="introduce mb-5">
+                <h3 className="introduceTitle">Chào mừng bạn đến với NoteBook!</h3>
+                <div className="introduceFunction">
+                        <div className="introduceFunctionItem">
+                            <div className="introduceFunctionWrap">
+                            <div className="introduceFunctionImage">
+                                <img src="assets/images/yourprofile.png" style={{width:'100px'}} alt="" className="functionImg" />
+                            </div>
+                            <div className="introduceFunctionText">
+                                <p className="functionTextHeader">Cài đặt tài khoản</p>
+                                <span className="functionTextContent">Điều chỉnh cài đặt, quản lý thông báo, tìm hiểu về thay đổi tên và các nội dung khác.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="introduceFunctionItem">
+                        <div className="introduceFunctionWrap">
+                            <div className="introduceFunctionImage">
+                                <img src="assets/images/loginandpassword.png" style={{width:'100px'}} alt="" className="functionImg" />
+                            </div>
+                            <div className="introduceFunctionText">
+                                <p className="functionTextHeader">Đăng nhập và mật khẩu</p>
+                                <span className="functionTextContent">Khắc phục sự cố khi đăng nhập và tìm hiểu cách thay đổi hoặc đặt lại mật khẩu.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="introduceFunctionItem">
+                        <div className="introduceFunctionWrap">
+                        <div className="introduceFunctionImage">
+                            <img src="assets/images/yourprivacy.png" style={{width:'100px'}} alt="" className="functionImg" />
+                        </div>
+                        <div className="introduceFunctionText">
+                            <p className="functionTextHeader">Quyền riêng tư và Bảo mật</p>
+                            <span className="functionTextContent">Kiểm soát và gia tăng mức độ bảo vệ tài khoản.</span>
+                        </div></div>
+                    </div>
+                    <div className="introduceFunctionItem">
+                        <div className="introduceFunctionWrap">
+                        <div className="introduceFunctionImage">
+                            <img src="assets/images/marketplace.png" style={{width:'100px'}} alt="" className="functionImg" />
+                        </div>
+                        <div className="introduceFunctionText">
+                            <p className="functionTextHeader">Ảnh và Video</p>
+                            <span className="functionTextContent">Chia sẻ nội dụng hấp dẫn với mọi người cùng tham gia NotBook đều biết.</span>
+                        </div></div>
+                    </div>
+                    <div className="introduceFunctionItem">
+                        <div className="introduceFunctionWrap">
+                        <div className="introduceFunctionImage">
+                            <img src="assets/images/groups.png" style={{width:'100px'}} alt="" className="functionImg" />
+                        </div>
+                        <div className="introduceFunctionText">
+                            <p className="functionTextHeader">Mọi người</p>
+                            <span className="functionTextContent">Tìm hiểu cách tạo, quản lý và sử dụng NoteBook hiệu quả.</span>
+                    </div></div>
+                    </div>
+                    <div className="introduceFunctionItem">
+                        <div className="introduceFunctionWrap">
+                        <div className="introduceFunctionImage">
+                            <img src="assets/images/pages.png" style={{width:'100px'}} alt="" className="functionImg" />
+                        </div>
+                        <div className="introduceFunctionText">
+                            <p className="functionTextHeader">Giới thiệu về NoteBook</p>
+                            <span className="functionTextContent">Thông tin nền tảng , điều khoản và dịch vụ của công ty.</span>
+                        </div>
+                    </div></div>
+                </div>
+
                  <Container>
                     <Row className="mt-5">
                         <Col sm="12" md="12">
                             <h2>Giới thiệu</h2>
-                            <span>Chào mừng bạn đến với NoteBook!</span>
                             <div className="introduceContent">
                                 <div className="introducePart mt-3">
                                     <h5>I, Về NoteBook</h5>

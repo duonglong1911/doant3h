@@ -1,7 +1,89 @@
 
+.people {
+    display: flex;
+    position: relative;
+}
+.peopleListOption {
+    flex: 2;
+    background-color: white;
+    box-shadow: 1px 1px 0px 0px rgba(122, 122, 122, 0.34);
+    -webkit-box-shadow: 1px 1px 0px 0px rgba(122, 122, 122, 0.34);
+    -moz-box-shadow: 1px 1px 0px 0px rgba(122, 122, 122, 0.34);
+    height: calc(100vh - 70px);
+    position: sticky;
+    top: 50px;
+    padding-top: 30px;
+}
+.peopleListOptionIconBtn {
+    display: none;
+    /* margin-top: 140px; */
+    width: 40px;
+    margin-left: 15px;
+     font-size: 32px;
+}
+.peopleListOptionTitle {
+    margin-left: 20px;
+}
+.peopleOptions {
+    padding-left: 10px;
+}
+.peopleOptionIcon {
+    font-size: 20px;
+    
+}
+.peopleOptionItem {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 20.0005px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+}
+.peopleOptionItem:hover {
+    background-color: #ADBDC7;
+    border-radius: 10px;
+}
 
+.peopleListOptionClose {
+    width: 30px;
+    display: none;
+    float: right;
+}
+.peopleListOptionClose:hover {
+    color: red;
+}
+.peopleListOptionCloseBtn {
+    font-size: 30px;
+}
+
+
+.peopleOptionItemBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color:#D8DADF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.peopleListFriends {
+    flex: 10;
+    overflow-y: auto;
+    margin-top: 30px;
+}
+
+.peopleFriends {
+    padding: 0 24px !important;
+}
+.peopleTitle {
+    text-align: center;
+    margin: 35px;
+}
 .peopleCard {
     height: 300px;
+    border: none !important;
+    border-radius: 5px !important;
 }
 
 .peopleCardImg {
@@ -9,9 +91,6 @@
     object-fit: cover;
 }
 
-.peopleCardBody {
-
-}
 
 .peopleCardName {
     overflow: hidden;
@@ -22,4 +101,35 @@
 .peopleCardBtn {
     background-color: #1877F2 !important;
     border: none !important;
+}
+.show {
+    display: block !important;
+     animation: show_bar 1s ease forwards;
+}
+
+.hide {
+    display: none !important;
+    animation: hide_bar 1s ease forwards;
+}
+.peopleListOption .hide {
+    
+}
+
+@keyframes show_bar {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+@keyframes hide_bar {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }

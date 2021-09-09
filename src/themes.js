@@ -109,4 +109,10 @@ export const GlobalStyles = createGlobalStyle`
     .shareTop h4, .shareOptionText {
         color:${(props) => props.theme.fontColor} !important;
     }
+    .introduceFunctionWrap {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
+    .functionTextContent, .functionTextHeader {
+        color:${(props) => props.theme.fontColor};
+    }
 `;

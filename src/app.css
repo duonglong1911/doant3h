@@ -53,6 +53,18 @@
     .topbarCenterIconItem {
         padding: 0 30px
     }
+    .peopleListOption {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        top: auto;
+    }
+    .peopleListOptionIconBtn {
+        display: block;      
+    }
+    .peopleListOptionClose {
+        display: block;
+    }
 }
 
 /* Tablet */
@@ -107,7 +119,7 @@
         display: none;
     } */
     .homeContainer {
-        margin-top: 80px;
+        margin-top: 140px;
     }
     .topbarUsername {
         display: none;
@@ -129,17 +141,23 @@
         max-height: 540px
     } */
     .introduce {
-        margin-top: 80px;
+        margin-top: 140px;
+    }
+    .introduceFunctionWrap {
+        display: flex;
+    }
+    .introduceFunctionText {
+        margin-left: 10px;
     }
     .imagesgallery {
-        margin-top: 80px;
+        margin-top: 140px;
     }
     .profile {
         margin-top: 70px;
     }
-    .a {
+    /* .a {
         display: none;
-    }
+    } */
 
     .profileContent {
         flex: 12;
@@ -161,6 +179,8 @@
     .topbarCenterIconItem {
         width: 25%;
         padding: 0 40px;
+        margin: 0 !important;
+        width: 100%;
     }
     .topbarCenterIcons {
         background-color: white;
@@ -168,7 +188,14 @@
         padding: 0;
     }
     .people {
-        margin-bottom: 100px;
+        /* margin-top: 100px; */
+        margin-bottom: 40px;
+    }
+    .peopleListOptionIconBtn {
+        margin-top: 120px;
+    }
+    .peopleWrapper {
+        margin-top: 100px;
     }
 }
 
@@ -178,7 +205,22 @@
         height: 140px;
     }
 }
-
+@media screen and (max-width: 575px) {
+    .peopleCard {
+        display: flex;
+        flex-direction: inherit !important;
+        align-items: center;
+    }
+    .peopleCardImg {
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 50% !important;
+        margin-left: 10px;
+    }
+    .peopleCard {
+        height: 120px;
+    }
+}
 
 @media screen and (max-width: 321px) {
     .MuiTab-root {
