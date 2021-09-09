@@ -27,7 +27,7 @@ class ImagesGallery extends Component {
             componentDidMount(){
                 const newdate = new Date();
                 const newYear = newdate.getFullYear();
-                var monthLetter = ["", "January", 'February', "March", "April", "May", "June", "July", 'August', "September", "October", 'November', 'December']
+                var monthLetter = ["", "Tháng 1", 'Tháng 2', "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", 'Tháng 8', "Tháng 9", "Tháng 10", 'Tháng 11', 'Tháng 12']
                 var day = document.getElementById('day');
                 for(let i = 1; i <= 31; i++){
                    day.innerHTML += '<option value='+(i<10?"0"+i:i)+'>'+(i<10?"0"+i:i)+'</option>'
@@ -70,15 +70,16 @@ class ImagesGallery extends Component {
         var {a, day, month, year} = this.state
 
         var getMonth = newdate.getMonth()+1;
+        var getday = newdate.getDate();
         currentImages = currentImages.filter(image=>{
             if(a === 'all'){
                 return image;
             }
             else if(a === 'day'){
-                return image.date.slice(0,2) === newdate.getDate().toString();
+                return image.date.slice(13,15) === (getday < 10 ? '0'+getday : getday).toString();
             }
             else if(a === 'month'){
-                return image.date.slice(3,5) === (getMonth < 10 ? '0'+getMonth : getMonth).toString();
+                return image.date.slice(16,18) === (getMonth < 10 ? '0'+getMonth : getMonth).toString();
             }
             else if(a === 'year'){
                 return image.date.indexOf(newdate.getFullYear()) !== -1;
@@ -91,7 +92,7 @@ class ImagesGallery extends Component {
                     return image;
                 }
                 else{
-                 return image.date.slice(0,2) === day.toString()
+                 return image.date.slice(13,15) === day.toString()
                 }
             }) 
         }
@@ -101,7 +102,7 @@ class ImagesGallery extends Component {
                     return image;
                 }
                 else{
-                    return image.date.slice(3,5) === month.toString()
+                    return image.date.slice(16,18) === month.toString()
                 }
             }) 
         }

@@ -74,7 +74,7 @@ function App() {
                       firebase.database().ref('user').push({
                         photo:firebase.auth().currentUser.photoURL,
                         uid: firebase.auth().currentUser.uid,
-                        displayName: firebase.auth().currentUser.displayName
+                        displayName: firebase.auth().currentUser.displayName,
                       })
                     }
                     else{
@@ -95,10 +95,12 @@ function App() {
                     desc: data[id].desc,
                     photo: data[id].photo,
                     date: data[id].date,
-                    userId: data[id].userId
+                    userId: data[id].userId, 
+                    like:data[id].like
                 })
             }
             setPostsList(posts)
+            
         })
     return () => unregisterAuthObserver();   
   },[]);
@@ -112,6 +114,7 @@ function App() {
       </div>
     );
   }
+
   return (
     <Router>
           <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme } >

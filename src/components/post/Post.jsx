@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import "./post.css"
-
 import SelectPost from './../selectpost/SelectPost'
 import HeaderPost from './HeaderPost';
-
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 export default class Post extends Component {
     constructor(props) {
         super(props);
@@ -31,21 +30,14 @@ export default class Post extends Component {
             isChecked: 0
         })
 }
-
-    // componentDidMount() {
-    //      if(window.location.href === 'http://localhost:4000/'){
-    //         const postsHaveImg = this.props.postsList.filter(el => el.photo)
-    //         this.setState({
-    //             images: postsHaveImg,
-    //         })
-    //      } else{
-    //             return false;
-    // }}
     
-
+onClickLike = () =>{
+    this.props.onClickLike(this.props.post)
+}
     render() {     
-        var {post} = this.props;
-
+        var {post, dataSetLike} = this.props;
+        var mapSetLike = dataSetLike.map(item=>item.IdUser === this.props.displayName.uid && item.IdPost === post.id ? item.classLike : 0)
+        var filterSetLike = mapSetLike.filter(item=>item !== 0 ? item : 0)
         return (
             <div className="post">
                 <div className="postWrapper">
@@ -62,6 +54,10 @@ export default class Post extends Component {
                     <div className="postCenter">
                         <pre className="postText">{post.desc}</pre>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
+                        <div className="like">
+                            <FavoriteBorderIcon style={{cursor: 'pointer'}} className={String(filterSetLike)} onClick={this.onClickLike}/>
+                            <span>{post.like} Like</span>
+                        </div>
                     </div>
                 </div>
                 {this.state.isChecked=== 1 ? 
