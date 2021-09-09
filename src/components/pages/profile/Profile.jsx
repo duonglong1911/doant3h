@@ -3,11 +3,11 @@ import "./profile.css";
 import WorkIcon from "@material-ui/icons/Work";
 import SchoolIcon from "@material-ui/icons/School";
 import HomeWorkIcon from "@material-ui/icons/HomeWork";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import Feed from './../../layout/feed/Feed';
-import SelectPost from './../../selectpost/SelectPost'
+import MailIcon from '@material-ui/icons/Mail';
+// import SelectPost from './../../selectpost/SelectPost'
 
 
 class Profile extends Component {
@@ -29,6 +29,8 @@ class Profile extends Component {
 
   render() {
     const {imagesOfUser} = this.state;
+    const postHaveImages = imagesOfUser.filter(el => el.photo !== "")
+
     return (
       <div className="profile" key={this.props.displayName.uid}>
         <div className="profileWrapper">
@@ -73,10 +75,10 @@ class Profile extends Component {
                       <HomeWorkIcon className="profileIntroIcon" />
                       <span className="profileIntroDes">Sống tại Hà Nội</span>
                     </li>
-                    <li className="profileIntroItem">
+                    {/* <li className="profileIntroItem">
                       <LocationOnIcon className="profileIntroIcon" />
                       <span className="profileIntroDes">Đến từ Hải Dương</span>
-                    </li>
+                    </li> */}
                     <li className="profileIntroItem">
                       <RssFeedIcon className="profileIntroIcon" />
                       <span className="profileIntroDes">
@@ -84,10 +86,10 @@ class Profile extends Component {
                       </span>
                     </li>
                     <li className="profileIntroItem">
-                      <InstagramIcon className="profileIntroIcon" />
-                      <a href="/" className="profileIntroDes">
-                        duonglong20
-                      </a>
+                      <MailIcon className="profileIntroIcon" />
+                      <span className="profileIntroDes">
+                        {this.props.displayName.email}
+                      </span>
                     </li>
                   </ul>
                   <hr/>
@@ -96,7 +98,7 @@ class Profile extends Component {
                     <div className="container">
                       <div className="row">
                         {
-                          imagesOfUser.map(image => {
+                          postHaveImages.map(image => {
                             return (
                               <div className="profileImageItem col-4" key={image.id}>
                               <img className="profileImageImg" src={image.photo} alt="" />

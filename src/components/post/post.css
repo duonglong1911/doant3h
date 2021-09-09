@@ -1,14 +1,13 @@
 .post {
-    width: 100%;
+    width: 90%;
     border-radius: 10px;
     box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
     -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-    margin: 20px 0;
+    margin: 20px auto;
     background-color: white;
 }
 
 .postWrapper {
-    padding: 10px;
     position: relative;
 }
 
@@ -16,6 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0 0 10px;
 }
 .postname {
     padding: 0 10px;
@@ -44,7 +44,7 @@
 
 
 .postCenter {
-    margin: 20px 0;
+    margin-top:20px; 
 }
 
 .postImg {
@@ -87,14 +87,108 @@
 .postText {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
+    padding-left: 10px;
 }
 
 .like {
-    padding: 10px 0;
     display: flex;
     align-items: center;
 }
 
 .red {
     color: red !important;
+}
+.postNumberLike {
+    margin-top: 10px;
+}
+.postHr1 {
+    margin: 10px 10px 0!important;
+}
+.postHr2 {
+    margin: 0 10px 10px !important;
+}
+.postListFunction {
+    display: flex;
+    margin: 5px 10px;
+}
+.postFunctionIcon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.postUsersLike {
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.postFunctionComment {
+    display: flex;
+    padding: 0 10px;
+}
+.funcionCommentUser {
+    width: 40px;
+    height: 40px;
+}
+.funcionCommentUser img {
+    border-radius: 50%;
+}
+.functionCommentInput {
+    width: 100%;
+    background-color: #F0F2F5;
+    border-radius: 25px;
+    display: flex;
+
+}
+.functionCommentInput input {
+    border: none;
+    background-color: #F0F2F5;
+    width: 80%;
+    margin-left: 15px;
+}
+.functionCommentInput input:focus {
+    outline: none !important;
+}
+.functionCommentInput ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #050505;
+    font-size: 15px;
+    line-height: 20.1px;
+    /* Firefox */
+}
+
+.functionCommentInput :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+     color: #050505;
+     font-size: 15px;
+     line-height: 20.1px;
+}
+
+.functionCommentInput ::-ms-input-placeholder {
+    /* Microsoft Edge */
+     color: #050505;
+     font-size: 15px;
+     line-height: 20.1px;
+}
+.functionCommentBox {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.like,
+.postFunctionCommentIcon,
+.postFunctionShareIcon {
+    flex: 4;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+}
+.like:hover,
+.postFunctionCommentIcon:hover,
+.postFunctionShareIcon:hover {
+    background-color: #F0F2F5;
+    border-radius: 4px;
+}
+.functionCommentShowmore {
+    font-weight: 500;
+    font-size: 15px;
 }

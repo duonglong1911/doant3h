@@ -11,7 +11,8 @@ export const darkTheme = {
     backgroundColor:'#242526',
     colorInput:'#242526',
     colorIconHeader:'#b0b3b8',
-    colorHover:'#4E4F50'
+    colorHover:'#4E4F50',
+    colorInputComment:'#3A3B3C',
 }
 
 export const GlobalStyles = createGlobalStyle`
@@ -124,4 +125,18 @@ export const GlobalStyles = createGlobalStyle`
     .peopleOptionItem:hover {
         background-color: ${(props) => props.theme.body} !important;
     }
+    .functionCommentInput input {
+        background-color: ${(props) => props.theme.colorInputComment} !important;
+    }
+    .functionCommentInput {
+        background-color: ${(props) => props.theme.colorInputComment} !important;
+    }
+    .functionCommentInput ::placeholder {
+        color:${(props) => props.theme.fontColor};
+    }
+    .like:hover,
+    .postFunctionCommentIcon:hover,
+    .postFunctionShareIcon:hover {
+        background-color: ${(props) => props.theme.colorInputComment};
+}
 `;
