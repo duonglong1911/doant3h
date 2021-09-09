@@ -12,7 +12,7 @@ export default class Home extends Component {
     this.setState = (state,callback)=>{
         return;
     };
-}
+    }  
     render() {
         return (
             <div>

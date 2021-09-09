@@ -22,6 +22,7 @@ export default class Feed extends Component {
             type:'nothing',
             titleTxt:'',
             loading:false,
+            dataSetLike:[]
         }
     }
     
@@ -41,7 +42,8 @@ export default class Feed extends Component {
                     desc: data[id].desc,
                     photo: data[id].photo,
                     date: data[id].date,
-                    userId: data[id].userId
+                    userId: data[id].userId,
+                    like: data[id].like
                 })
             }
             this.setState({
@@ -49,6 +51,26 @@ export default class Feed extends Component {
                 loading:false,
             })
         })
+
+        const firebaseLike = firebase.database().ref('setLike');
+        firebaseLike.on('value', (res)=>{
+            const data = res.val();
+            let postList = []
+            for(let id in data){
+                postList.push({
+                    id: id,
+                    IdPost: data[id].IdPost,
+                    IdUser: data[id].IdUser,
+                    isLike: data[id].isLike,
+                    classLike: data[id].classLike
+                })
+            }
+            this.setState({
+                dataSetLike: postList,
+            })
+        })
+
+
     }
     componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
@@ -71,6 +93,7 @@ export default class Feed extends Component {
                 photo:this.state.photo,
                 userId: this.props.displayName.uid,
                 date:time,
+                like:0
             })
             this.setState({
                 isToggleNotice:true,
@@ -78,11 +101,9 @@ export default class Feed extends Component {
             })
         }
         else{
-            firebase.database().ref('post').child(post.id).set({
+            firebase.database().ref('post').child(post.id).update({
                 desc: post.desc,
-                photo: this.state.photo,
-                userId: this.props.displayName.uid,
-                date:time
+                date:time,
             })
             this.setState({
                 isToggleNotice:true,
@@ -189,9 +210,49 @@ export default class Feed extends Component {
             visible: this.state.visible + 10,
         })
     }
+
+    onClickLike = (post) =>{
+
+        const {dataSetLike} = this.state;
+                            
+    // debugger
+        var anv = dataSetLike.filter(item=>item.IdPost===post.id && item.IdUser === this.props.displayName.uid? item: 0);
+        if(dataSetLike.indexOf(...anv) === -1){
+            firebase.database().ref('setLike').push({
+                IdPost: post.id,
+                IdUser: this.props.displayName.uid,
+                isLike: false,
+                classLike: 'unset'
+            })
+        }
+
+            dataSetLike.map((item)=>{
+                if(item.IdPost === post.id && item.IdUser === this.props.displayName.uid){
+                    if(item.isLike === false){
+                        firebase.database().ref('setLike').child(item.id).update({
+                            isLike: true,
+                            classLike: 'red'
+                        })
+                        firebase.database().ref('post').child(post.id).update({
+                            like: post.like + 1,
+                        })
+                    }
+                    else{
+                        firebase.database().ref('setLike').child(item.id).update({
+                            isLike: false,
+                            classLike: 'unset'
+                        })
+                        firebase.database().ref('post').child(post.id).update({
+                            like: post.like - 1,
+                        })
+                    }
+                }
+                return 0
+            }) 
+    }
     
     render() {
-        const {dataPost, photo, isToggleNotice, titleTxt,visible} = this.state;
+        const {dataPost, photo, isToggleNotice, titleTxt,visible, dataSetLike} = this.state;
         dataPost.sort((a,b)=>{
             if(a.date.slice(19,23) > b.date.slice(19,23)){
                 return -1
@@ -255,6 +316,8 @@ export default class Feed extends Component {
                                     postsList={this.props.postsList}
                                     titleTxt={titleTxt}
                                     closeModal={this.closeModal}
+                                    onClickLike={this.onClickLike}
+                                    dataSetLike={dataSetLike}
                                 />
                             )
                         }
@@ -273,6 +336,8 @@ export default class Feed extends Component {
                                         postsList={this.props.images}
                                         titleTxt={titleTxt}
                                         closeModal={this.closeModal}
+                                        onClickLike={this.onClickLike}
+                                        dataSetLike={dataSetLike}
                                     />
                                 )
                             }

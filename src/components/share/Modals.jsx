@@ -14,6 +14,7 @@ class Modals extends Component {
             isUploadFile:false,
             isEdit:false,
             photoEdit: '',
+            like: 0,
         }
     }
     componentDidMount() {
@@ -23,7 +24,8 @@ class Modals extends Component {
                 isEdit:true,
                 desc: post.desc,
                 id: post.id,
-                photoEdit: post.photo
+                photoEdit: post.photo,
+                like: post.like,
             })
         }
     }
