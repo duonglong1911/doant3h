@@ -148,4 +148,7 @@ export const GlobalStyles = createGlobalStyle`
     .menu-child li {
         background-color: ${(props) => props.theme.body} !important;
     }
+    .topbarIconItem {
+        background-color: ${(props) => props.theme.colorInputComment};
+    }
 `;
