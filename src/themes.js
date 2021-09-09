@@ -138,5 +138,8 @@ export const GlobalStyles = createGlobalStyle`
     .postFunctionCommentIcon:hover,
     .postFunctionShareIcon:hover {
         background-color: ${(props) => props.theme.colorInputComment};
-}
+    }  
+    .sidebarListItemBtn {
+        background-color: ${(props) => props.theme.colorInputComment};
+    }
 `;
