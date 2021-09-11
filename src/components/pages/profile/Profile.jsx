@@ -4,7 +4,6 @@ import WorkIcon from "@material-ui/icons/Work";
 import SchoolIcon from "@material-ui/icons/School";
 import HomeWorkIcon from "@material-ui/icons/HomeWork";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
-import InstagramIcon from "@material-ui/icons/Instagram";
 import Feed from './../../layout/feed/Feed';
 import MailIcon from '@material-ui/icons/Mail';
 // import SelectPost from './../../selectpost/SelectPost'

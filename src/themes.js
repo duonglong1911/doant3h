@@ -151,4 +151,7 @@ export const GlobalStyles = createGlobalStyle`
     .topbarIconItem {
         background-color: ${(props) => props.theme.colorInputComment};
     }
+    .feedButtonBtn {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
 `;

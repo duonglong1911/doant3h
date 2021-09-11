@@ -232,7 +232,7 @@
         padding: 0 2rem;
     }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .loginImage{
         display: none;
     }
@@ -251,7 +251,26 @@
         width: 120px;
         height: 120px;
     }
-    .profileCenterIntro {
+    /* .profileCenterIntro {
         display: none;
+    } */
+    .profileContent {
+        overflow: auto;
+    }
+    .profileCenterContent {
+        display: flex;
+        flex-direction: column;
+    }
+    .share {
+        width: 100%;
+    }
+    .post {
+        width: 100%;
+    }
+    .feedButtonBtn {
+        width: 100%;
+    }
+    .profileCenterFeed {
+        margin-top: 50px;
     }
 }

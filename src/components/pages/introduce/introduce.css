@@ -53,3 +53,6 @@
     line-height: 19.9995px;
     text-align: left;
 }
+ul {
+    list-style: none;
+}
