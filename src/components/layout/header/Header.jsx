@@ -94,12 +94,21 @@ export default class Header extends Component {
 
       
       document.querySelector('.topbarCenterIconItem.active').classList.remove('active')
+      if(!localStorage.getItem('index')) {
+        tabs[0].classList.add('active')
+         tab.onclick= function() {
+        document.querySelector('.topbarCenterIconItem.active').classList.remove('active')
+        this.classList.add('active')
+        localStorage.setItem('index',index)
+      }
+      } else {
       tabs[localStorage.getItem('index')].classList.add('active')
       tab.onclick= function() {
         document.querySelector('.topbarCenterIconItem.active').classList.remove('active')
         this.classList.add('active')
         localStorage.setItem('index',index)
       }
+    }
     })
 
 
