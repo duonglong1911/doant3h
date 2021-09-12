@@ -67,7 +67,7 @@ export default class Post extends Component {
                       />
                     <div className="postCenter">
                         <div>
-                            <span className="postText">{post.desc}</span>
+                            <pre className="postText">{post.desc}</pre>
                         </div>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
                         <div className="postNumberLike">
