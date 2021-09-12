@@ -138,11 +138,15 @@ export default class Feed extends Component {
     }
     onDelete = (id) =>{
         const deletePost = firebase.database().ref('post');
+        const deleteDataSetLike = firebase.database().ref('setLike');
         deletePost.child(id).remove();
         this.setState({
             isToggleNotice:true,
             type:'delete',
         })
+        
+        this.state.dataSetLike.map(item=>item.IdPost === id ? deleteDataSetLike.child(item.id).remove() : false)
+        
         setTimeout(() => {
             this.setState({
              isToggleNotice:false,
