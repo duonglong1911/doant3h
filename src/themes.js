@@ -154,4 +154,14 @@ export const GlobalStyles = createGlobalStyle`
     .feedButtonBtn {
         background-color:${(props) => props.theme.backgroundColor};
     }
+    .peopleCard {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
+    .topbarCenterIcons {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
+    .searchInput1 {
+        background-color: ${(props) => props.theme.colorInputComment};   
+        color:${(props) => props.theme.fontColor};
+    }
 `;
