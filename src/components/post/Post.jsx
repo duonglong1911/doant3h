@@ -9,7 +9,7 @@ export default class Post extends Component {
         this.state = {
                 isChecked: 0 ,
                 images:[],
-                index:-1,
+                index:0,
             };
         }
         
@@ -67,7 +67,7 @@ export default class Post extends Component {
                       />
                     <div className="postCenter">
                         <div>
-                            <pre className="postText">{post.desc}</pre>
+                            <span className="postText">{post.desc}</span>
                         </div>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>
                         <div className="postNumberLike">

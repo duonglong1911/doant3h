@@ -10,10 +10,10 @@ class SelectPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                current: -1,
-                length: 0,
-                imageUrl:'',
-                isToggleChangeImg:false,
+            length: 0,
+            current: -1,
+            imageUrl:'',
+            isToggleChangeImg:false,
             };
         }
     
@@ -50,7 +50,7 @@ class SelectPost extends Component {
         }
     }
     handleNextImg = () => {
-        if(this.state.current === 0) {
+        if(this.state.current === -1 || this.state.current === 0) {
             this.setState({
                 current : this.state.length -1
             })
@@ -63,7 +63,6 @@ class SelectPost extends Component {
 
 
     handlePrevImg = () => {
-        
         if(this.state.current === this.state.length -1) {
             this.setState({
                 current : 1
@@ -85,6 +84,8 @@ class SelectPost extends Component {
                
     
     render() {
+        console.log(this.state.current);
+        console.log(this.props.images);
         const { isToggleChangeImg} = this.state;
         return (
             <>
