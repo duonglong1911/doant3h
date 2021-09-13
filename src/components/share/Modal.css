@@ -1,3 +1,4 @@
+
 .ReactModal__Content {
     inset: unset !important;
     text-align: center;
@@ -99,5 +100,4 @@ input {
 }
 .form-Modalpost {
     padding: 20px;
-    background-color: white !important;
 }

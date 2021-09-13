@@ -66,7 +66,7 @@ export default class Post extends Component {
                       closeModal={this.props.closeModal}
                       />
                     <div className="postCenter">
-                        <div>
+                        <div className="postText1">
                             <span className="postText">{post.desc}</span>
                         </div>
                         <img className="postImg" src={post.photo} alt=""  onClick= {this.onClick }/>

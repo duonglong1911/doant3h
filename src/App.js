@@ -12,15 +12,15 @@ const StyledApp = styled.div`
   color: ${(props => props.theme.fontColor)};
   share: ${(props => props.theme.backgroundColor)};
 `
-
 const config = {
-  apiKey: process.env.REACT_APP_FIREBASE_API,
-  authDomain:process.env.REACT_APP_FIREBASE_AUTH_DOMAIN ,
-  projectId:process.env.REACT_APP_FIREBASE_PROJECT_ID ,
-  storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET ,
-  messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDERID ,
-  appId:process.env.REACT_APP_FIREBASE_APP_ID ,
-  measurementId:process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyAGKQy0I3gi1LvjrcTglcZghqB7DG8FVDc",
+  authDomain: "notebook-993f2.firebaseapp.com",
+  databaseURL: "https://notebook-993f2-default-rtdb.firebaseio.com",
+  projectId: "notebook-993f2",
+  storageBucket: "notebook-993f2.appspot.com",
+  messagingSenderId: "206579832087",
+  appId: "1:206579832087:web:0f866852f13445b1d59352",
+  measurementId: "G-VYNFMDJTFH"
 };
 
 
@@ -67,7 +67,8 @@ function App() {
                         id: id,
                         photo:data[id].photo,
                         uid: data[id].uid,
-                        displayName: data[id].displayName
+                        displayName: data[id].displayName,
+                        email: data[id].email
                     })
                   }
               setUsersList(users)
@@ -75,7 +76,8 @@ function App() {
                       firebase.database().ref('user').push({
                         photo:firebase.auth().currentUser.photoURL,
                         uid: firebase.auth().currentUser.uid,
-                        displayName: firebase.auth().currentUser.displayName
+                        displayName: firebase.auth().currentUser.displayName,
+                        email: firebase.auth().currentUser.email
                       })
                     }
                     else{

@@ -117,37 +117,42 @@ export default class Feed extends Component {
         }, 3000);
         this.removeImage()
     }
-    upload = (post) =>{
-        const storage = firebase.storage();
-        const upLoadImage = storage.ref('images/'+post.file.name).put(post.file);
-        upLoadImage.on(
-            'state_change',
-            snapshot =>{},
-            error=>{
-                console.log(error)
-            },
-            () =>{
-                storage.ref('images').child(post.file.name).getDownloadURL()
-                .then(url =>{
-                    this.setState({
-                        photo: url
-                    })
-                })
-            }
-        )
-    }
+    // upload = (post) =>{
+    //     const storage = firebase.storage();
+    //     const upLoadImage = storage.ref('images/'+post.file.name).put(post.file);
+    //     upLoadImage.on(
+    //         'state_change',
+    //         snapshot =>{},
+    //         error=>{
+    //             console.log(error)
+    //         },
+    //         () =>{
+    //             storage.ref('images').child(post.file.name).getDownloadURL()
+    //             .then(url =>{
+    //                 this.setState({
+    //                     photo: url
+    //                 })
+    //             })
+    //         }
+    //     )
+    // }
     onDelete = (id) =>{
         const deletePost = firebase.database().ref('post');
+        const deleteDataSetLike = firebase.database().ref('setLike');
         deletePost.child(id).remove();
         this.setState({
             isToggleNotice:true,
             type:'delete',
         })
+        
+        this.state.dataSetLike.map(item=>item.IdPost === id ? deleteDataSetLike.child(item.id).remove() : false)
+        
         setTimeout(() => {
             this.setState({
              isToggleNotice:false,
             })
         }, 3000);
+        
     }
 
     findIndex = (id) =>{

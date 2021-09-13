@@ -29,10 +29,10 @@ class Modals extends Component {
             })
         }
     }
-    upload = (e) =>{
-        e.preventDefault();
-        this.props.upload(this.state)
-    }
+    // upload = (e) =>{
+    //     e.preventDefault();
+    //     this.props.upload(this.state)
+    // }
     closeModal = () =>{
         this.props.closeModal()
         this.setState({

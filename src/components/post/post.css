@@ -84,10 +84,13 @@
 .menu-child li:hover {
     background: rgba(0, 0, 0, 0.14);
 }
+.postText1{
+    padding: 10px;
+
+}
 .postText {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    padding-left: 10px;
+    font-size: 15px;    
 }
 
 .like {
@@ -191,4 +194,7 @@
 .functionCommentShowmore {
     font-weight: 500;
     font-size: 15px;
+}
+.menu-child li:hover {
+    filter: brightness(80%);
 }
