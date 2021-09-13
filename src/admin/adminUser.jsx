@@ -26,7 +26,6 @@ class adminUser extends Component {
                 </button>
             </td>
         </tr>
-        // 
         );
     }
 }
