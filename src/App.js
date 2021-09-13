@@ -12,7 +12,7 @@ const StyledApp = styled.div`
   color: ${(props => props.theme.fontColor)};
   share: ${(props => props.theme.backgroundColor)};
 `
-
+//config firebase
 const config = {
   apiKey: "AIzaSyAGKQy0I3gi1LvjrcTglcZghqB7DG8FVDc",
   authDomain: "notebook-993f2.firebaseapp.com",

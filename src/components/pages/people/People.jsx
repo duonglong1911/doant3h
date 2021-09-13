@@ -9,7 +9,7 @@ export default class People extends Component {
       usersList: this.props.usersList,
     };
   }
-
+//xử lí đóng mở responsive sidebar
   handleToggleBar = () => {
     document.querySelector('.peopleListOptionIconBtn').classList.remove('show')
     document.querySelector('.peopleListOptionIconBtn').classList.add('hide')
@@ -64,7 +64,6 @@ export default class People extends Component {
         </div>
         <div className="peopleListFriends">
           <div className="peopleFriends container-fluid">
-            {/* <h3 className="peopleTitle">Mọi người:</h3> */}
             <div className="row">
               {usersList.map((user, index) => {
                 const { id, photo, displayName } = user;

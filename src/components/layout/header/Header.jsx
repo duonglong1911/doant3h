@@ -20,9 +20,6 @@ export default class Header extends Component {
             };
         }
 
-    handleToggleDarkmode= (e) => {
-      console.log(e.target);
-    }
 
     onKeyDownSearch = (e) =>{
       this.setState({
@@ -49,6 +46,7 @@ export default class Header extends Component {
       })
     }
     onClickShowSearch = () =>{
+      //responsive search
         if(window.innerWidth <= 1023){
           this.setState({
             isSearchRespon: !this.state.isSearchRespon,
@@ -68,6 +66,7 @@ export default class Header extends Component {
   render() {
     const tabs =document.querySelectorAll('.topbarCenterIconItem');
     tabs.forEach((tab,index) => {
+      //đổi path svg nếu có className là active
       if(tabs[0].classList.contains('active')){
         document.querySelector('.a').innerHTML=`<svg viewBox="0 0 28 28" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 aaxa7vy3" height="28" width="28"><path d="M25.825 12.29C25.824 12.289 25.823 12.288 25.821 12.286L15.027 2.937C14.752 2.675 14.392 2.527 13.989 2.521 13.608 2.527 13.248 2.675 13.001 2.912L2.175 12.29C1.756 12.658 1.629 13.245 1.868 13.759 2.079 14.215 2.567 14.479 3.069 14.479L5 14.479 5 23.729C5 24.695 5.784 25.479 6.75 25.479L11 25.479C11.552 25.479 12 25.031 12 24.479L12 18.309C12 18.126 12.148 17.979 12.33 17.979L15.67 17.979C15.852 17.979 16 18.126 16 18.309L16 24.479C16 25.031 16.448 25.479 17 25.479L21.25 25.479C22.217 25.479 23 24.695 23 23.729L23 14.479 24.931 14.479C25.433 14.479 25.921 14.215 26.132 13.759 26.371 13.245 26.244 12.658 25.825 12.29"></path></svg>`
       } else {
@@ -92,7 +91,7 @@ export default class Header extends Component {
         document.querySelector('.d').innerHTML=`<svg viewBox="0 0 28 28"  height="28" width="28"><path d="M23.5 9.5H10.25a.75.75 0 00-.75.75v7c0 .414.336.75.75.75H17v5.5H4.5v-19h19v5zm0 14h-5v-6.25a.75.75 0 00-.75-.75H11V11h12.5v12.5zm1.5.25V4.25C25 3.561 24.439 3 23.75 3H4.25C3.561 3 3 3.561 3 4.25v19.5c0 .689.561 1.25 1.25 1.25h19.5c.689 0 1.25-.561 1.25-1.25z"></path></svg>`
       }
 
-      
+      //xử lí active khi chuyển trang
       document.querySelector('.topbarCenterIconItem.active').classList.remove('active')
       if(!localStorage.getItem('index')) {
         tabs[0].classList.add('active')
@@ -111,10 +110,6 @@ export default class Header extends Component {
     }
     })
 
-
-    
-  
-    
 
     const {keyword, isSearch, isSearchRespon} = this.state
     var {usersList} = this.props;
@@ -177,10 +172,6 @@ export default class Header extends Component {
             <img src={this.props.displayName.photoURL} alt="" className="topbarImg" />
             <span className="topbarUsername">{this.props.displayName.displayName.slice(this.props.displayName.displayName.lastIndexOf(' '), 1000)}</span>
           </div></Link>
-            {/* <div className="topbarIconItem">
-              <Person className="topbarIconIcon" />
-              <span className="topbarIconBadge">1</span>
-            </div> */}
             <div className="topbarIconItem">
               <Chat className="topbarIconIcon" />
               <span className="topbarIconBadge">2</span>

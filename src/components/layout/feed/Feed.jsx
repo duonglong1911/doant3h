@@ -82,7 +82,7 @@ export default class Feed extends Component {
     };
 }
     onSubmitcmp = (post) =>{
-        
+       
         const today = new Date();
         const second = today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds();
         const hour = today.getHours() < 10 ? '0' + today.getHours() : today.getHours();
@@ -150,7 +150,7 @@ export default class Feed extends Component {
         })
         
         this.state.dataSetLike.map(item=>item.IdPost === id ? deleteDataSetLike.child(item.id).remove() : false)
-        
+        //tự đóng thông báo sau 3 giây
         setTimeout(() => {
             this.setState({
              isToggleNotice:false,
@@ -172,6 +172,7 @@ export default class Feed extends Component {
         var {dataPost} = this.state;
         var index = this.findIndex(id);
         var newdata = dataPost[index];
+        //các trường hợp sửa bài có ảnh, không ảnh
         if(dataPost[index].photo === undefined) {
             this.setState({
             newdata: newdata,
@@ -189,6 +190,7 @@ export default class Feed extends Component {
 
 
     onUploadFile = (e) => {
+        //đọc file
         const reader = new FileReader();
         if(e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0]);
@@ -200,7 +202,7 @@ export default class Feed extends Component {
             })
         }
     }
-
+    //bỏ ảnh đã chọn
     removeImage = () => {
         this.setState({
             photo:null,
@@ -213,6 +215,7 @@ export default class Feed extends Component {
             titleTxt: 'Tạo'
         })
     }
+    //giới hạn bài đăng trên feed
     handleVisible = () => {
         this.setState({
             visible: this.state.visible + 10,
@@ -268,6 +271,7 @@ export default class Feed extends Component {
     }
     render() {
         const {dataPost, photo, isToggleNotice, titleTxt,visible, dataSetLike} = this.state;
+        //sắp xếp bài đăng theo thời gian
         dataPost.sort((a,b)=>{
             if(a.date.slice(19,23) > b.date.slice(19,23)){
                 return -1
@@ -314,7 +318,9 @@ export default class Feed extends Component {
                     openModal={this.openModal}
                     titleTxt={titleTxt}
                     />
-                    {dataPost.slice(0,visible).map((post,index) => {
+                    { //giới hạn bài đăng trên feed
+                    dataPost.slice(0,visible).map((post,index) => {
+                        //lọc post khi vào trang cá nhân
                         if(window.location.pathname === '/'){
                             return(
                                 <Post key={post.id}

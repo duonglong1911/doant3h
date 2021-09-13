@@ -6,8 +6,8 @@ export default class Pagination extends Component {
 
     render() {
 
-        // console.log(this.props.imagesPerPage, this.props.totalImages );
         const pageNumbers = [];
+        //làm tròn lên
         for(let i =1; i<= Math.ceil(this.props.totalImages /this.props.imagesPerPage); i++) {
             pageNumbers.push(i);
         }

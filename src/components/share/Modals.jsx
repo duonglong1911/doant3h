@@ -41,6 +41,7 @@ class Modals extends Component {
             isUploadFile: false
         })
     }
+    //lấy giá trị ô text 
     onChangeContent = (e) =>{
         const target = e.target;
         const value = target.value;
@@ -67,6 +68,7 @@ class Modals extends Component {
             isUploadFile:true,
         })
     }
+    //gỡ ảnh đã chọn khi click vào ảnh
     removeImage = () => {
         this.props.removeImage();
         this.setState({
@@ -137,10 +139,10 @@ class Modals extends Component {
                                 {isEdit && <div className="bg-gray"></div>}
                                 </div>
                                 <div style={{position: 'relative', margin: '10px 0'}}>
-                                    {
+                                    { //nếu không có nội dung thì disable nút đăng
                                         desc === '' && isUploadFile === false ? <div className="bg-gray"></div> : false
                                     }
-                                    <button className="shareButton shareButton-modalpost" type="submit">Share</button>
+                                    <button className="shareButton shareButton-modalpost" type="submit">Đăng</button>
                                 </div>
                             </form>
                         </div>

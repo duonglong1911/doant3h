@@ -28,6 +28,7 @@ class SelectPost extends Component {
 
 
     componentDidMount() {
+        //tắt mở arrow change ảnh khi ở trang khác nhau
          if(window.location.pathname === '/imagesgallery') {
             this.setState({
                 imageUrl:this.props.image,
@@ -49,6 +50,7 @@ class SelectPost extends Component {
             })
         }
     }
+    //next ảnh 
     handleNextImg = () => {
         if(this.state.current === -1 || this.state.current === 0) {
             this.setState({
@@ -61,7 +63,7 @@ class SelectPost extends Component {
         }
     }
 
-
+    //pre ảnh 
     handlePrevImg = () => {
         if(this.state.current === this.state.length -1) {
             this.setState({
@@ -73,6 +75,7 @@ class SelectPost extends Component {
             })
         }   
     }
+    //đổi url ảnh khi thay đổi
     componentDidUpdate(preProps, preState) {
         if(this.state.current !== preState.current) {
             this.setState({

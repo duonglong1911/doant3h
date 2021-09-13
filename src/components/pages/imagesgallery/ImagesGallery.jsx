@@ -25,6 +25,7 @@ class ImagesGallery extends Component {
                 })
             }
             componentDidMount(){
+                //các option
                 const newdate = new Date();
                 const newYear = newdate.getFullYear();
                 var monthLetter = ["", "Tháng 1", 'Tháng 2', "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", 'Tháng 8', "Tháng 9", "Tháng 10", 'Tháng 11', 'Tháng 12']
@@ -72,6 +73,7 @@ class ImagesGallery extends Component {
         var getMonth = newdate.getMonth()+1;
 
         var getday = newdate.getDate();
+        //filter ảnh
         currentImages = currentImages.filter(image=>{
             if(a === 'all'){
                 return image;

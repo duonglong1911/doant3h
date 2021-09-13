@@ -18,7 +18,7 @@ export default class SideBar extends Component {
         this._isMounted = true;
         window.addEventListener('scroll', this.handleScroll);
     }
-
+    //hiện nút mũi tên khi cuộn trang
     handleScroll = () => {
         if(window.scrollY !==0 ) {
             this.setState({
@@ -31,7 +31,7 @@ export default class SideBar extends Component {
             })
         }
     }
-
+    //hiệu ứng cuộn mượt
     scrollTop = () => {
         window.scrollTo({
             top: 0,

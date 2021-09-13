@@ -6,7 +6,7 @@ import HomeWorkIcon from "@material-ui/icons/HomeWork";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
 import Feed from './../../layout/feed/Feed';
 import MailIcon from '@material-ui/icons/Mail';
-// import SelectPost from './../../selectpost/SelectPost'
+
 
 
 class Profile extends Component {
@@ -74,10 +74,6 @@ class Profile extends Component {
                       <HomeWorkIcon className="profileIntroIcon" />
                       <span className="profileIntroDes">Sống tại Hà Nội</span>
                     </li>
-                    {/* <li className="profileIntroItem">
-                      <LocationOnIcon className="profileIntroIcon" />
-                      <span className="profileIntroDes">Đến từ Hải Dương</span>
-                    </li> */}
                     <li className="profileIntroItem">
                       <RssFeedIcon className="profileIntroIcon" />
                       <span className="profileIntroDes">
@@ -111,7 +107,6 @@ class Profile extends Component {
                 </div>
                 <div className="profileCenterFeed">
                   <Feed displayName={this.props.displayName}/>
-                  {/* <SelectPost /> */}
                 </div>
               </div>
             </div>

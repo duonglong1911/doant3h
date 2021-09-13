@@ -15,6 +15,7 @@ export default class AlertNotification extends Component {
 
 
     componentDidMount() {
+        //thông báo theo chức năng
         if(this.props.type==="delete") {
             this.setState({
                 noticeContent:"Thông báo: Bạn đã xóa bài viết!",
@@ -32,7 +33,7 @@ export default class AlertNotification extends Component {
             })
         }
     }
-
+    //đóng thông báo
     handleCloseNotice = () => {
         this.setState({
             isCloseNotice:true
