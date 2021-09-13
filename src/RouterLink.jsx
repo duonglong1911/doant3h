@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import admin from './admin/admin';
+import adminU from './admin/adminU';
 import Home from './components/pages/home/Home';
 import ImagesGallery from './components/pages/imagesgallery/ImagesGallery';
 import Introduce from './components/pages/introduce/Introduce';
@@ -19,7 +21,7 @@ class RouterLink extends Component {
                         usersList={this.props.usersList}
                     />
                 </Route>
-                <Route path="/profile/:id" exact>
+                <Route path="/profile/:id/" exact>
                     <Profile 
                         displayName={this.props.displayName}
                         postsList={this.props.postsList}
@@ -30,11 +32,13 @@ class RouterLink extends Component {
                         postsList={this.props.postsList} 
                         usersList={this.props.usersList}/>
                 </Route>
-                <Route path="/introduce" component={Introduce} exact />
-                <Route path="/people"  exact>
+                <Route path="/introduce/" component={Introduce} exact />
+                <Route path="/admin/" component={admin} exact />
+                <Route path="/admin/user/" component={adminU} exact />
+                <Route path="/people/"  exact>
                     <People usersList={this.props.usersList} />
                 </Route>
-                <Route path="/login" render={()=>{
+                <Route path="/login/" render={()=>{
                     return this.props.isSignedIn === true ? <Redirect to="/" /> : <Login/>
                 }} exact />
                 <Route component={Found404}/>

@@ -164,4 +164,7 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props.theme.colorInputComment};   
         color:${(props) => props.theme.fontColor};
     }
+    .btnSendComment {
+        background-color: ${(props) => props.theme.colorInputComment};
+    }
 `;
