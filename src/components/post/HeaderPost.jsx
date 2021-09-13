@@ -61,11 +61,8 @@ onEdit = () =>{
   this.onClickToggle()
 }
 componentWillUnmount() {
-    // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state,callback)=>{
-        return;
-    };
-    }
+    this._isMounted = false;
+  }
 render() {
 var {post} = this.props;
 const {isToggle, modalIsOpen, dataUser} = this.state;
@@ -74,9 +71,9 @@ var abc = dataAbc.filter(item=>item!=='');
 return (
 <div className="postTop">
     <div className="postTopLeft">
-        <img className="postProfileImg" src={abc} alt=""/>
+        <img className="postProfileImg" src={post.userId === 'adminNoteBook' ? 'https://sites.google.com/site/nguyenvanthucbg/_/rsrc/1347382664227/hinh-anh/11678818_9448507_uoxYwQn_300x450.jpg.1347382663933.jpg' : abc} alt=""/>
         <div className="postname">
-            <span className="postUsername">{dataUser.map(item=>item.uid === post.userId ? item.displayName : '')}</span>
+            <span className="postUsername">{post.userId === 'adminNoteBook' ? 'Admin' : dataUser.map(item=>item.uid === post.userId ? item.displayName : '')}</span>
             <br />
             <span className="postDate">{post.date}</span>
         </div>

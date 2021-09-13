@@ -83,7 +83,7 @@ onSubmit = (e) =>{
             photo:this.state.photo,
             userId: 'adminNoteBook',
             date:time,
-            like:this.state.like
+            like: Number(this.state.like)
         })
         this.setState({
             desc: '',
@@ -130,6 +130,7 @@ onUpdate = (item, index) =>{
     const {dataAdmin} = this.state;
         if(dataAdmin[index].photo === '') {
             this.setState({
+            id: item.id,
             desc: item.desc,
             photo: item.photo,
             like: item.like,
