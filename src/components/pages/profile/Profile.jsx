@@ -27,9 +27,10 @@ class Profile extends Component {
 
 
   render() {
+    //lấy ra mảng chứa bài đăng riêng của user
     const {imagesOfUser} = this.state;
-    const postHaveImages = imagesOfUser.filter(el => el.photo !== "")
-
+    //lấu ra những bài có ảnh từ mảng trên
+    const postHaveImagesOfUser = imagesOfUser.filter(el => el.photo !== "")
     return (
       <div className="profile" key={this.props.displayName.uid}>
         <div className="profileWrapper">
@@ -93,7 +94,7 @@ class Profile extends Component {
                     <div className="container">
                       <div className="row">
                         {
-                          postHaveImages.map(image => {
+                          postHaveImagesOfUser.map(image => {
                             return (
                               <div className="profileImageItem col-4" key={image.id}>
                               <img className="profileImageImg" src={image.photo} alt="" />
@@ -106,7 +107,10 @@ class Profile extends Component {
                   </div>
                 </div>
                 <div className="profileCenterFeed">
-                  <Feed displayName={this.props.displayName}/>
+                  <Feed 
+                    postHaveImagesOfUser={postHaveImagesOfUser}
+                    displayName={this.props.displayName}
+                  />
                 </div>
               </div>
             </div>

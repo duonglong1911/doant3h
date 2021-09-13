@@ -361,6 +361,7 @@ export default class Feed extends Component {
                                         onClickLike={this.onClickLike}
                                         dataSetLike={dataSetLike}
                                         postComment={this.postComment}
+                                        postHaveImagesOfUser={this.props.postHaveImagesOfUser}
                                     />
                                 )
                             }

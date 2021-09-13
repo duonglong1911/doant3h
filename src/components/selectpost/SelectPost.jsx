@@ -87,8 +87,6 @@ class SelectPost extends Component {
                
     
     render() {
-        console.log(this.state.current);
-        console.log(this.props.images);
         const { isToggleChangeImg} = this.state;
         return (
             <>

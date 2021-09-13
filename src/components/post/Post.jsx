@@ -46,8 +46,10 @@ export default class Post extends Component {
             this.setState({
                 images: postsHaveImg,
             })
-         } else{
-                return false;
+         } else if(window.location.pathname === `/profile/${this.props.displayName.uid}`) {
+            this.setState({
+                images: this.props.postHaveImagesOfUser
+            })
     }}
     componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
@@ -72,7 +74,7 @@ export default class Post extends Component {
         })
     }
 
-    render() {   
+    render() {  
         var {post, dataSetLike, displayName} = this.props;
         var {comment} = this.state;
         var mapSetLike = dataSetLike.map(item=>item.IdUser === this.props.displayName.uid && item.IdPost === post.id ? item.classLike : 0)
