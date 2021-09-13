@@ -63,7 +63,6 @@ class adminU extends Component {
                     </tbody>
                 </table>
             </div>
-        
         );
         }
 }
