@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import "./post.css"
 import SelectPost from './../selectpost/SelectPost'
 import HeaderPost from './HeaderPost';
+import { MoreVert} from "@material-ui/icons"
+
 
 export default class Post extends Component {
     constructor(props) {
@@ -10,6 +12,8 @@ export default class Post extends Component {
                 isChecked: 0 ,
                 images:[],
                 index:0,
+                comment:'',
+                imgUser:this.props.displayName.photoURL,
             };
         }
         
@@ -45,13 +49,39 @@ export default class Post extends Component {
          } else{
                 return false;
     }}
-    
+    componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+    }
 
-    render() {     
+    postComment = (e) => {
+        e.preventDefault();
+        this.props.postComment(this.props.post.id, this.state.comment);
+        this.setState({
+            comment:''
+        })
+    }
+    onChangeContent = (e) =>{
+        // this.props.onChangeComment()
+        const target = e.target;
+        const value = target.value;
+        this.setState({
+            comment:value,
+        })
+    }
+
+    render() {   
         var {post, dataSetLike, displayName} = this.props;
+        var {comment} = this.state;
         var mapSetLike = dataSetLike.map(item=>item.IdUser === this.props.displayName.uid && item.IdPost === post.id ? item.classLike : 0)
         var filterSetLike = mapSetLike.filter(item=>item !== 0 ? item : 0)
 
+        if(post.comments) {
+            var totalComments = Object.entries(post.comments).map(([key, value]) => ({key,value}));
+            // console.log(totalComments);
+        }
         return (
             <div className="post">
                 <div className="postWrapper">
@@ -93,17 +123,39 @@ export default class Post extends Component {
                             </div>
                         </div>
                             <hr className="postHr2"/>
-                        <div className="postFunctionComment">
+
+                        <form onSubmit ={this.postComment}>
+                            <div className="postFunctionComment">
                             <div className="funcionCommentUser">
                                 <img src={displayName.photoURL} width="32px" height="32px" alt=""/>
                             </div>
                             <div className="functionCommentInput">
-                                <input type="text" placeholder="Thêm bình luận..." />
+                                <input type="text" placeholder="Thêm bình luận..." value={comment} onChange={this.onChangeContent}/>
+                                <button className="btnSendComment" type="submit">Đăng</button>
                             </div>
-                        </div>
+                            </div>
+                        </form>
+
                         <div className="functionCommentBox">
+                            <div className="commentBox">
+                                {totalComments ?
+                                    totalComments.map(el => {
+                                        return(
+                                        <div key={el.key} className="d-flex mb-3">
+                                            <img className="avatarUser" src={el.value.imageUser} width="32px" height="32px" alt=""/>
+                                            <div className="commentContent">
+                                                <span className="commentNameUser" >{el.value.nameUser}</span>
+                                                <span className="commentContentCommemt">{el.value.comment}</span>
+                                            </div>
+                                            <span className="commemtIconOption" ><MoreVert/></span>
+                                        </div>
+                                        )
+                                    }) :''
+                                }
+                            </div>
                             <span className="functionCommentShowmore">Xem thêm bình luận</span>
                         </div>
+                        
                     </div>
                 </div>
                 {this.state.isChecked=== 1 ? 

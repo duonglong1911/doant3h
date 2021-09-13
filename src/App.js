@@ -97,7 +97,8 @@ function App() {
                     photo: data[id].photo,
                     date: data[id].date,
                     userId: data[id].userId,
-                    like:data[id].like
+                    like:data[id].like,
+                    comments: data[id].comments
                 })
             }
             setPostsList(posts)

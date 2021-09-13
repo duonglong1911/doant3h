@@ -195,3 +195,24 @@
 .menu-child li:hover {
     filter: brightness(80%);
 }
+.avatarUser {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.commentContent {
+    flex-direction: column;
+    display: flex;
+}
+.commentNameUser {
+    font-weight: 500;
+}
+.commemtIconOption {
+    margin-left: 30px;
+}
+.btnSendComment {
+    border: none;
+    color: #1877F2;
+    font-weight: 500;
+}

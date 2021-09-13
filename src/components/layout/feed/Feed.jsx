@@ -22,7 +22,9 @@ export default class Feed extends Component {
             type:'nothing',
             titleTxt:'',
             loading:false,
-            dataSetLike:[]
+            dataSetLike:[],
+            comments:[],
+            totalComments:[]
         }
     }
     
@@ -43,7 +45,8 @@ export default class Feed extends Component {
                     photo: data[id].photo,
                     date: data[id].date,
                     userId: data[id].userId,
-                    like: data[id].like
+                    like: data[id].like,
+                    comments: data[id].comments,
                 })
             }
             this.setState({
@@ -93,7 +96,8 @@ export default class Feed extends Component {
                 photo:this.state.photo,
                 userId: this.props.displayName.uid,
                 date:time,
-                like:0
+                like:0,
+                comments:[]
             })
             this.setState({
                 isToggleNotice:true,
@@ -254,7 +258,14 @@ export default class Feed extends Component {
                 return 0
             }) 
     }
-    
+
+    postComment = (id, comment) => {
+        firebase.database().ref("post").child(id).child("comments").push({
+            comment,
+            imageUser: this.props.displayName.photoURL,
+            nameUser:this.props.displayName.displayName
+        })
+    }
     render() {
         const {dataPost, photo, isToggleNotice, titleTxt,visible, dataSetLike} = this.state;
         dataPost.sort((a,b)=>{
@@ -322,6 +333,7 @@ export default class Feed extends Component {
                                     closeModal={this.closeModal}
                                     onClickLike={this.onClickLike}
                                     dataSetLike={dataSetLike}
+                                    postComment={this.postComment}
                                 />
                             )
                         }
@@ -342,6 +354,7 @@ export default class Feed extends Component {
                                         closeModal={this.closeModal}
                                         onClickLike={this.onClickLike}
                                         dataSetLike={dataSetLike}
+                                        postComment={this.postComment}
                                     />
                                 )
                             }

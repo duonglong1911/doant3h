@@ -61,8 +61,11 @@ onEdit = () =>{
   this.onClickToggle()
 }
 componentWillUnmount() {
-    this._isMounted = false;
-  }
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+    }
 render() {
 var {post} = this.props;
 const {isToggle, modalIsOpen, dataUser} = this.state;
