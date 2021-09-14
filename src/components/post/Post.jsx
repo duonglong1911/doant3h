@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "./post.css"
 import SelectPost from './../selectpost/SelectPost'
 import HeaderPost from './HeaderPost';
-import { MoreVert} from "@material-ui/icons"
+import Comment from './Comment'
 
 
 export default class Post extends Component {
@@ -73,6 +73,7 @@ export default class Post extends Component {
             comment:value,
         })
     }
+    
 
     render() {  
         var {post, dataSetLike, displayName} = this.props;
@@ -141,16 +142,18 @@ export default class Post extends Component {
                         <div className="functionCommentBox">
                             <div className="commentBox">
                                 {totalComments ?
-                                    totalComments.map(el => {
+                                    totalComments.map((el,index) => {
+                                        const { key,value } = el;
                                         return(
-                                        <div key={el.key} className="d-flex mb-3">
-                                            <img className="avatarUser" src={el.value.imageUser} width="32px" height="32px" alt=""/>
-                                            <div className="commentContent">
-                                                <span className="commentNameUser" >{el.value.nameUser}</span>
-                                                <span className="commentContentCommemt">{el.value.comment}</span>
-                                            </div>
-                                            <span className="commemtIconOption" ><MoreVert/></span>
-                                        </div>
+                                        <Comment 
+                                            key = {key}
+                                            index={index}
+                                            keyCmt={key}
+                                            value={value}
+                                            handleDeleteCmt = {this.props.handleDeleteCmt}
+                                            postID={this.props.post.id}
+                                            displayName={this.props.displayName}
+                                        />
                                         )
                                     }) :''
                                 }

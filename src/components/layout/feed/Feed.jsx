@@ -97,7 +97,7 @@ export default class Feed extends Component {
                 userId: this.props.displayName.uid,
                 date:time,
                 like:0,
-                comments:[]
+                comments:[],
             })
             this.setState({
                 isToggleNotice:true,
@@ -269,6 +269,13 @@ export default class Feed extends Component {
             nameUser:this.props.displayName.displayName
         })
     }
+
+    handleDeleteCmt = (idCmt,idPost) => {
+        const deleteComment = firebase.database().ref('post').child(idPost).child("comments");
+        deleteComment.child(idCmt).remove();
+    }
+
+
     render() {
         const {dataPost, photo, isToggleNotice, titleTxt,visible, dataSetLike} = this.state;
         //sắp xếp bài đăng theo thời gian
@@ -340,6 +347,7 @@ export default class Feed extends Component {
                                     onClickLike={this.onClickLike}
                                     dataSetLike={dataSetLike}
                                     postComment={this.postComment}
+                                    handleDeleteCmt = {this.handleDeleteCmt}
                                 />
                             )
                         }
@@ -361,6 +369,7 @@ export default class Feed extends Component {
                                         onClickLike={this.onClickLike}
                                         dataSetLike={dataSetLike}
                                         postComment={this.postComment}
+                                        handleDeleteCmt = {this.handleDeleteCmt}
                                         postHaveImagesOfUser={this.props.postHaveImagesOfUser}
                                     />
                                 )

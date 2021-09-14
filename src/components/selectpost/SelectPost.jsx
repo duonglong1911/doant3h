@@ -83,7 +83,6 @@ class SelectPost extends Component {
         })
         }
     }
-    
                
     
     render() {

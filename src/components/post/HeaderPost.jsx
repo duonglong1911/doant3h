@@ -53,7 +53,6 @@ onClickToggle = () =>{
 }
 onDelete = () =>{
   this.props.onDelete(this.props.post.id)
-
 }
 onEdit = () =>{
   this.openModal();

@@ -33,8 +33,12 @@ class RouterLink extends Component {
                         usersList={this.props.usersList}/>
                 </Route>
                 <Route path="/introduce/" component={Introduce} exact />
-                <Route path="/admin/" component={admin} exact />
-                <Route path="/admin/user/" component={adminU} exact />
+                { this.props.displayName.email === 'hailong14092000@gmail.com' ?
+                    <>
+                        <Route path="/admin/" component={admin} exact />
+                        <Route path="/admin/user/" component={adminU} exact />
+                    </> : ''
+                }
                 <Route path="/people/"  exact>
                     <People usersList={this.props.usersList} />
                 </Route>
