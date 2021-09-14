@@ -11,6 +11,8 @@ class Comment extends Component {
       onEditCmt: false,
       comment:'',
       valueComment: this.props.value.comment,
+      isToggleEdit:false,
+      isToggleDelete:false,
     };
   }
   onChangeContent = (e) =>{
@@ -31,7 +33,8 @@ class Comment extends Component {
         updateComment.child(this.props.keyCmt).update({
             comment:this.state.comment,
             imageUser: this.props.displayName.photoURL,
-            nameUser:this.props.displayName.displayName    
+            nameUser:this.props.displayName.displayName,
+            idUser:this.props.displayName.uid
         });
     }
   handleToggleOption = () => {
@@ -53,10 +56,21 @@ class Comment extends Component {
         onEditCmt:false
     })
   }
+  componentDidMount() {
+          if(this.props.value.idUser === this.props.displayName.uid) {
+              this.setState({
+                  isToggleEdit:true,
+              })
+          } else {
+              this.setState({
+                  isToggleEdit:false
+              })
+          }
+  }
 
   render() {
     const { index, keyCmt, value, displayName } = this.props;
-    const { isToggleOption, onEditCmt,valueComment } = this.state;
+    const { isToggleOption, onEditCmt,valueComment,isToggleEdit } = this.state;
     return (
       <div key={keyCmt} className="d-flex mb-3 listComment">
         {!onEditCmt ? (
@@ -80,9 +94,9 @@ class Comment extends Component {
               {isToggleOption && (
                 <div key={index}>
                   <ul className="menuOption">
-                    <li className="menuOptionItem" onClick={this.handleEditCmt}>
+                    {isToggleEdit ? <li className="menuOptionItem" onClick={this.handleEditCmt}>
                       Sửa bình luận
-                    </li>
+                    </li> : ''}
                     <li
                       className="menuOptionItem"
                       onClick={() => {

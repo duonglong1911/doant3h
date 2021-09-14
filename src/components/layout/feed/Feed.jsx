@@ -266,7 +266,8 @@ export default class Feed extends Component {
         firebase.database().ref("post").child(id).child("comments").push({
             comment,
             imageUser: this.props.displayName.photoURL,
-            nameUser:this.props.displayName.displayName
+            nameUser:this.props.displayName.displayName,
+            idUser:this.props.displayName.uid
         })
     }
 

@@ -50,7 +50,9 @@ export default class Post extends Component {
             this.setState({
                 images: this.props.postHaveImagesOfUser
             })
-    }}
+        }
+
+    }
     componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
     this.setState = (state,callback)=>{
@@ -153,6 +155,7 @@ export default class Post extends Component {
                                             handleDeleteCmt = {this.props.handleDeleteCmt}
                                             postID={this.props.post.id}
                                             displayName={this.props.displayName}
+                                            totalComments={totalComments}
                                         />
                                         )
                                     }) :''
