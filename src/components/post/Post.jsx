@@ -14,6 +14,7 @@ export default class Post extends Component {
                 index:0,
                 comment:'',
                 imgUser:this.props.displayName.photoURL,
+                isToggleBtnOption:false,    
             };
         }
         
@@ -38,7 +39,8 @@ export default class Post extends Component {
 
     onClickLike = () =>{
         this.props.onClickLike(this.props.post)
-    }   
+    }
+  
 
     componentDidMount() {
          if(window.location.pathname === '/'){
@@ -52,6 +54,33 @@ export default class Post extends Component {
             })
         }
 
+        //ẩn hiện nút option 
+        if(this.props.post.userId === this.props.displayName.uid) {
+            this.setState({
+                isToggleBtnOption:true
+            })
+        } else {
+            this.setState({
+                isToggleBtnOption:false
+            })
+        }
+
+
+        // if(this.props.post.comments) {
+        //     var totalComments = Object.entries(this.props.post.comments).map(([key, value]) => ({key,value}));
+        // }
+        // if(totalComments) {
+        //     totalComments.map(el => {
+        //         console.log(this.props.displayName.uid === el.value.idUser);
+        //         // if(el.value.idUser === this.props.displayName.uid) {
+        //         //     this.setState({
+        //         //     isToggleBtnOption:true
+        //         //     })
+        //         // }
+        //     })
+        // }
+        
+        
     }
     componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
@@ -76,10 +105,11 @@ export default class Post extends Component {
         })
     }
     
+    
 
     render() {  
         var {post, dataSetLike, displayName} = this.props;
-        var {comment} = this.state;
+        var {comment,isToggleBtnOption} = this.state;
         var mapSetLike = dataSetLike.map(item=>item.IdUser === this.props.displayName.uid && item.IdPost === post.id ? item.classLike : 0)
         var filterSetLike = mapSetLike.filter(item=>item !== 0 ? item : 0)
         //convert object sang array để lặp
@@ -156,6 +186,8 @@ export default class Post extends Component {
                                             postID={this.props.post.id}
                                             displayName={this.props.displayName}
                                             totalComments={totalComments}
+                                            isToggleBtnOption = {isToggleBtnOption}
+                                            handleToggleBtnOption={this.handleToggleBtnOption}
                                         />
                                         )
                                     }) :''

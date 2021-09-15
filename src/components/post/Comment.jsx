@@ -34,7 +34,7 @@ class Comment extends Component {
             comment:this.state.comment,
             imageUser: this.props.displayName.photoURL,
             nameUser:this.props.displayName.displayName,
-            idUser:this.props.displayName.uid
+            idUser:this.props.displayName.uid,
         });
     }
   handleToggleOption = () => {
@@ -69,7 +69,7 @@ class Comment extends Component {
   }
 
   render() {
-    const { index, keyCmt, value, displayName } = this.props;
+    const { index, keyCmt, value, displayName,isToggleBtnOption } = this.props;
     const { isToggleOption, onEditCmt,valueComment,isToggleEdit } = this.state;
     return (
       <div key={keyCmt} className="d-flex mb-3 listComment">
@@ -86,11 +86,12 @@ class Comment extends Component {
               <span className="commentNameUser">{value.nameUser}</span>
               <span className="commentContentCommemt">{valueComment}</span>
             </div>
+             
             <span
               className="commemtIconOption"
               onClick={() => this.handleToggleOption(keyCmt)}
             >
-              <MoreVert />
+              {isToggleBtnOption|| value.idUser === displayName.uid?<MoreVert /> :''}
               {isToggleOption && (
                 <div key={index}>
                   <ul className="menuOption">
@@ -110,7 +111,8 @@ class Comment extends Component {
                   </ul>
                 </div>
               )}
-            </span>
+            </span>  
+            
           </div>
         ) : (
           <form className="formComment" onSubmit={this.editComment}>

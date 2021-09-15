@@ -28,14 +28,13 @@ export default class Feed extends Component {
         }
     }
     
-    componentDidMount(){
+     componentDidMount(){
         // const {desc, photo, date, userId, dataPost} = this.state
         this.setState({
             loading:true,
         })
-        
         const firebaseStore = firebase.database().ref('post');
-        firebaseStore.on('value', (res)=>{
+         firebaseStore.on('value', (res)=>{
             const data = res.val();
             let postList = []
             for(let id in data){
@@ -267,7 +266,8 @@ export default class Feed extends Component {
             comment,
             imageUser: this.props.displayName.photoURL,
             nameUser:this.props.displayName.displayName,
-            idUser:this.props.displayName.uid
+            idUser:this.props.displayName.uid,
+            idPost:id
         })
     }
 
