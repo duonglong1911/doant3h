@@ -66,19 +66,6 @@ export default class Post extends Component {
         }
 
 
-        // if(this.props.post.comments) {
-        //     var totalComments = Object.entries(this.props.post.comments).map(([key, value]) => ({key,value}));
-        // }
-        // if(totalComments) {
-        //     totalComments.map(el => {
-        //         console.log(this.props.displayName.uid === el.value.idUser);
-        //         // if(el.value.idUser === this.props.displayName.uid) {
-        //         //     this.setState({
-        //         //     isToggleBtnOption:true
-        //         //     })
-        //         // }
-        //     })
-        // }
         
         
     }
