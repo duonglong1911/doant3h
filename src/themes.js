@@ -167,4 +167,19 @@ export const GlobalStyles = createGlobalStyle`
     .btnSendComment {
         background-color: ${(props) => props.theme.colorInputComment};
     }
+    .boxMessageWrap {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
+    .message.received  {
+        background-color: ${(props) => props.theme.colorInputComment};
+    }
+    .input {
+        background-color: ${(props) => props.theme.colorInputComment};
+    }
+    .inputInput {
+        background-color: ${(props) => props.theme.colorInputComment};
+    }
+    .btnSend {
+        background-color:${(props) => props.theme.backgroundColor};
+    }
 `;
