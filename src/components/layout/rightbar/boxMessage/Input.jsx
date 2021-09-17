@@ -39,7 +39,7 @@ export default class Input extends Component {
         return (
             <form onSubmit={this.onSendMess}>
                 <div className="input">
-                    <input value={mess} className="inputInput" type="text" placeholder="Nhap tin nhan..." onChange={this.onChangeText} />
+                    <input value={mess} className="inputInput" type="text" placeholder="Nhập tin nhắn.." onChange={this.onChangeText} />
                     <button className="btnSend" type="submit"><i className="btnSendIcon fas fa-paper-plane"></i></button>
                 </div>
             </form>

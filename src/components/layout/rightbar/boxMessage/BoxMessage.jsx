@@ -50,14 +50,15 @@ export default class BoxMessage extends Component {
                 <div className="boxMessageWrap">
                     <div className="boxMessageHeader">
                         <div className="messageHeaderUser">
-                            <img src={avatarUserReceived} width="32px" height="32px" alt="" />
+                            <img src={avatarUserReceived} width="34px" height="34px" alt="" />
                             <span className="messageHeaderName">{nameUserReceived}</span>
                         </div>
                         <div className="messageHeaderBtnClose" onClick={this.onCloseBox}>
                             <i className="messageBtnCloseIcon fas fa-times"></i>
                         </div>
                     </div>
-                    <div className="boxMessageContent">
+                    <div className="boxBody">
+                        <div className="boxMessageContent">
                         {
                             totalMessages ? 
                             totalMessages.map(mess => {
@@ -68,10 +69,12 @@ export default class BoxMessage extends Component {
                                     mess={mess.value.mess}
                                     imageUserSend={mess.value.imageUserSend}
                                     idUserSend={mess.value.idUserSend}
+                                    displayName={this.props.displayName}
                                 />
                                )
                             }) : ''
                         }
+                    </div>
                     </div>
                     <div className="boxMessageFooter">
                         <Input

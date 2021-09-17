@@ -14,16 +14,27 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #999;
+    height: 40px;
+    padding-bottom: 10px;
 }
 
 .messageHeaderUser img {
     border-radius: 50%;
 }
 
-.messageHeaderName {}
+.messageHeaderName {
+    font-weight: 500;
+    font-size: 17px;
+}
 
 .messageHeaderBtnClose {
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
 }
 .messageHeaderBtnClose:hover {
     color: red;
@@ -32,14 +43,6 @@
     display: none;
 }
 
-.messageBtnCloseIcon {}
-
-
-.boxMessageContent {}
-
-.boxMessageFooter {}
-
-.messageBtnCloseIcon.fas.fa-times {}
 
 
 .input {
@@ -66,36 +69,42 @@
     padding: 5px 0;
 }
 
-.btnSendIcon {}
 
-.fas {}
-
-.fa-paper-plane {}
-
-.btnSendIcon.fas.fa-paper-plane {}
 
 
 .message {
     padding: 10px 0;
     max-width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
 }
 
 .sent {
     background-color: #395dff;
     color: white;
-    padding: 10px;
-    border-radius: 10px;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
     /* padding: 20px 20px 0 10px; */
-    text-align: end;
-    float: right;
+    /* text-align: end; */
+    /* float: right; */
+
 }
 .received {
     border: 1px solid lightgray;
     background-color: #FAFAFA;
-    border-top-left-radius: 1000px;
-    float: left;
+    /* float: left; */
 }
 .sidebarFriend {
     cursor: pointer;
+}
+.messageAvatar {
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.messageWrapper.UserSent {
+    display: flex;
+    justify-content: flex-end;
+}
+.messageWrapper.UserReceived {
+    display: flex;
 }
