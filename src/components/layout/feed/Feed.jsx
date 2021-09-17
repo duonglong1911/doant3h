@@ -231,10 +231,14 @@ export default class Feed extends Component {
             firebase.database().ref('setLike').push({
                 IdPost: post.id,
                 IdUser: this.props.displayName.uid,
-                isLike: false,
-                classLike: 'unset'
+                isLike: true,
+                classLike: 'red'
+            })
+            firebase.database().ref('post').child(post.id).update({
+                like: post.like + 1,
             })
         }
+        
 
             dataSetLike.map((item)=>{
                 if(item.IdPost === post.id && item.IdUser === this.props.displayName.uid){
@@ -289,7 +293,7 @@ export default class Feed extends Component {
                     return -1
                 }
                 else{
-                    if(a.date.slice(15,17) > b.date.slice(15,17)){
+                    if(a.date.slice(13,15) > b.date.slice(13,15)){
                         return -1
                     }
                     else{

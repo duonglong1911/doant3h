@@ -61,6 +61,7 @@ class ImagesGallery extends Component {
         const indexOfLastImage = this.state.currentPage * this.state.imagesPerPage;
         const indexOfFirstImage = indexOfLastImage - this.state.imagesPerPage;
         var currentImages = this.state.images.slice(indexOfFirstImage,indexOfLastImage);
+
         
         const paginate = (pageNumber) => {
             this.setState({

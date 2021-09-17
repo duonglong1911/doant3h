@@ -5,6 +5,7 @@
     overflow: hidden;
     width: 330px;
     height: 440px;
+    border-radius: 10px;
 }
 
 .boxMessageWrap {
@@ -22,6 +23,7 @@
 
 .messageHeaderUser img {
     border-radius: 50%;
+    margin-right: 5px;
 }
 
 .messageHeaderName {
@@ -81,6 +83,9 @@
     box-shadow: none;
     color: #1771E6;
     padding: 5px 0;
+}
+.btnSend:hover {
+    filter: brightness(80%);
 }
 
 
