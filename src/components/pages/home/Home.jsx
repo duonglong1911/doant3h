@@ -22,7 +22,10 @@ export default class Home extends Component {
                         displayName={this.props.displayName}
                         postsList={this.props.postsList} 
                     />
-                    <Rightbar usersList={this.props.usersList} />
+                    <Rightbar 
+                        usersList={this.props.usersList} 
+                        displayName={this.props.displayName}
+                    />
                 </div>
                 {/* <SelectPost /> */}
             </div>
